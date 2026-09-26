@@ -1,0 +1,296 @@
+{
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "ball": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "bed_edge": {
+    "fps": 0,
+    "frames": 3,
+    "h": 16,
+    "w": 32
+  },
+  "blanket_fold": {
+    "fps": 0,
+    "frames": 3,
+    "h": 16,
+    "w": 24
+  },
+  "blocks": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "box": {
+    "fps": 0,
+    "frames": 3,
+    "h": 16,
+    "w": 16
+  },
+  "bunny": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "bunny_big": {
+    "fps": 0,
+    "frames": 4,
+    "h": 24,
+    "w": 24
+  },
+  "car": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "confetti": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "cookie": {
+    "fps": 2,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "curtain": {
+    "fps": 0,
+    "frames": 3,
+    "h": 24,
+    "w": 16
+  },
+  "dino": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "doll": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "duck": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "fort": {
+    "fps": 2,
+    "frames": 2,
+    "h": 64,
+    "w": 96
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "heart": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "lamp": {
+    "fps": 0,
+    "frames": 2,
+    "h": 32,
+    "w": 16
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "paw_pointer": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "pillow_a": {
+    "fps": 0,
+    "frames": 3,
+    "h": 16,
+    "w": 24
+  },
+  "pillow_b": {
+    "fps": 0,
+    "frames": 3,
+    "h": 16,
+    "w": 20
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "room_bg": {
+    "fps": 0,
+    "frames": 1,
+    "h": 180,
+    "w": 320
+  },
+  "seat_flashlight": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_peekaboo": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_seeker": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "sleepy_cat": {
+    "fps": 0,
+    "frames": 4,
+    "h": 24,
+    "w": 24
+  },
+  "sleepy_mouse": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "sock": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "sparkle": {
+    "fps": 8,
+    "frames": 3,
+    "h": 8,
+    "w": 8
+  },
+  "teddy": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "teddy_big": {
+    "fps": 0,
+    "frames": 4,
+    "h": 24,
+    "w": 24
+  },
+  "tip_ball": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "tip_blocks": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "tip_bunny": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "tip_car": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "tip_dino": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "tip_doll": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "tip_duck": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "tip_teddy": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "toy_basket": {
+    "fps": 0,
+    "frames": 3,
+    "h": 24,
+    "w": 32
+  }
+}
