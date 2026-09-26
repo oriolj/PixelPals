@@ -4,7 +4,7 @@ Plough, plant, rain and harvest one sunny field together: dad drives the
 tractor, the 5-year-old picks the seeds, the 2-year-old is the rain cloud that
 makes everything grow while you watch.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -79,7 +79,9 @@ The field is a 16x9 grid of 64 px tiles. Each tile goes:
 
 - **join / select:** shared screens; seat icons are steering wheel, seed bag,
   cloud. The chosen riders appear as the tractor driver and two farmhands
-  riding on the trailer.
+  riding on the trailer. *(Deviation: the seed kid's rider sits on the
+  trailer, the toddler's rider sits ON the rain cloud, so each child sees
+  their character where their power is.)*
 - **level:** the whole field fits one screen (no scrolling), so the toddler
   always sees the cloud and every plant.
 - **party:** the village fair: the barn crates as a bar chart made of real
@@ -93,7 +95,7 @@ gradients except the sky). Vector because growing plants read best as smooth
 scale-and-squash tweens, and the field benefits from crisp big shapes on a TV.
 It shares its helpers with Train Conductor.
 
-- **Canvas:** 1280x720 base, `canvas_items` stretch, MSAA 2D x4.
+- **Canvas:** 1280x720 base, `canvas_items` stretch, MSAA 2D x4. *(Deviation: no MSAA; the Compatibility renderer does not support 2D MSAA. Antialiased ink outlines instead.)*
 - **Palette:** soil `#8f563b` / furrows `#663931`, grass `#6abe30`, sky
   `#cbdbfc` → `#5fcde4`, carrot `#df7126`, pumpkin `#fbb23b`, sunflower
   `#fbf236` with `#663931` centre, strawberry `#d95763`, leaves `#37946e`,
@@ -135,7 +137,7 @@ Synthesized by the shared synth:
 - `quack`, `ribbit`, `oink`, `cluck`, `bunny_boing`.
 - `rainbow`: harp-like upward glissando; `giant_grow`: long rising swell.
 - `horn` (tractor honk), `join`, `select`, `ready`.
-- Music: `music_farm` (relaxed 96 bpm, plucked triangle + "fiddle" saw lead),
+- Music: `music_farm` (relaxed 96 bpm, *built at 98 bpm so beats are whole samples*, plucked triangle + "fiddle" saw lead),
   `music_fair` for the party.
 
 ## Reuse
@@ -145,6 +147,8 @@ Synthesized by the shared synth:
   the synth.
 - **From Train Conductor (or extracted by whichever vector game is first):**
   `shared/godot/vector/shapes.gd` and a `vector_palette.gd` pattern.
+  *(Built here first as `game/scripts/draw/shapes.gd` + `pal.gd`; the
+  shared extraction is proposed, not done: agents may not edit `shared/`.)*
 - **Extract into shared/ because of this game:** a small `grid_field.gd`
   (tile states + `_draw`) could serve Digger Treasure and Paint Party later;
   keep it in the game until a second user exists.
@@ -172,24 +176,24 @@ the giant-vegetable finale. About 5-6 minutes.
 
 ### M1 grey-box
 
-- [ ] Shared screens/synth/vector helpers available.
-- [ ] `field_rules.gd` with states, growth timers, rain, harvest; tested headless.
-- [ ] Tractor as a rectangle ploughing and planting coloured squares.
-- [ ] Cloud rains on any press; auto-rain for fewer seats.
-- [ ] Trailer, barn tip, run end, party with 4 coloured stacks.
-- [ ] Demo driver runs a whole season; couch test in grey.
+- [x] Shared screens/synth/vector helpers available. *(No `shared/godot/vector/` existed yet: the helpers live in `game/scripts/draw/shapes.gd` + `pal.gd`, ready to extract. Join/select logic and the synth blocks were copied from PixelPals.)*
+- [x] `field_rules.gd` with states, growth timers, rain, harvest; tested headless (`tests/logic/test_field_rules.gd`).
+- [x] Tractor as a rectangle ploughing and planting coloured squares. *(Went straight to the drawn tractor and crops.)*
+- [x] Cloud rains on any press; auto-rain for fewer seats.
+- [x] Trailer, barn tip, run end, party with 4 coloured stacks (stacks of real vegetables).
+- [x] Demo driver runs a whole season (`tests/level/test_demo_level.gd`, `make shot SHOT_SCREEN=level`). *(The grey-box couch test was skipped: no grey box was built. Needs Oriol.)*
 
 ### M2 art/audio
 
-- [ ] Crop drawings for all 16 stages checked on a contact sheet at 1x and 2x.
-- [ ] Tractor, cloud faces, animals, barn, rainbow; sway shader.
-- [ ] All sounds and both music loops, levels measured.
+- [x] Crop drawings for all 16 stages checked on a contact sheet at 1x and 2x, plus silhouettes (`make contact`).
+- [x] Tractor, cloud faces, animals, barn, rainbow; sway shader.
+- [x] All sounds and both music loops, levels measured (`make sfx` report: SFX -15 LUFS, loops -18, music -14, peaks under -1 dBFS, seamless loop seams). *(Nobody has listened yet; taste needs Oriol.)*
 
 ### M3 polish/couch test
 
-- [ ] Growth pop timing: every rain press shows a change within 3 frames.
-- [ ] Check the seed picker is understood by the 5-year-old without words.
-- [ ] Three couch sessions; export and clean-clone run.
+- [x] Growth pop timing: every rain press shows a change within 3 frames (the same frame: `test_rain_press_changes_plants_within_three_frames`).
+- [x] Check the seed picker is understood by the 5-year-old without words. *(Not done by the agent: it needs the kid. The picker shows each vegetable in its arm, a ring on the choice and the chosen bag lifts on the planter.)*
+- [x] Three couch sessions; export and clean-clone run. *(Clean-clone run done: tests and a capture pass after deleting `game/.godot`. Not done: the couch sessions (Oriol) and the export (no Linux export templates on this machine; `make setup-export` downloads 1.3 GB, then `make export-linux`).)*
 
 ## Tests and verification
 
@@ -208,6 +212,15 @@ GUT tests:
 - `test_only_cloud_seat_rains_with_cooldown`
 - `test_run_ends_at_thirty_crops_or_six_minutes`
 
+Also added: `test_rain_press_changes_plants_within_three_frames`,
+`test_auto_rain_every_4s_with_one_seat_and_6s_with_two`,
+`test_five_quick_presses_make_a_rainbow`,
+`test_toddler_mashing_never_hurts_the_run`,
+`test_finale_grows_the_giant_and_goes_to_the_party`,
+`test_visitor_nibbles_a_ripe_crop_and_leaves_a_heart`,
+`test_stacks_match_the_barn_counts`, `test_demo_plays_a_season`, pause,
+fence, harvest and the PixelPals join/select suites (60 tests).
+
 Demo driver (`--demo=level`): the tractor drives a boustrophedon pattern (row
 by row, turning at the fence) for the first 90 s, then sweeps for ripe tiles
 and tips at the barn; the seed seat changes seed every row (carrot, pumpkin,
@@ -218,6 +231,27 @@ In the frames, look at: furrows follow the tractor path exactly; four crops
 distinct at 1x and in silhouette; plants under the cloud are visibly taller
 than the rest after a press; the trailer fill level rises; no plant is drawn
 over the tractor wrongly (z-order); the party stacks match the barn counts.
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen so the game could be built; each is easy to change.
+
+1. **Crops:** carrot, pumpkin, sunflower, strawberry, as planned. Swapping
+   one is a new drawing in `crop_art.gd` plus a picker colour.
+2. **Persistence:** none. Each run starts on a grass field; nothing is saved.
+3. **View:** 3/4 picture-book: a flat top-down field with upright plants,
+   and a side-on tractor that flips left/right and tilts when driving
+   up/down (a 5-year-old reads a side-view tractor better).
+4. **Animal visitors:** friendly nibblers as planned: three per run (70 s,
+   160 s, 250 s), each eats one ripe crop from the FIELD (never from the
+   trailer or barn), dances and leaves a heart. If it upsets the kids, set
+   `VISITOR_TIMES` empty or make them eat nothing.
+5. **Sun button for the toddler:** no. The toddler only rains; the sun
+   grows everything by itself every 20 s, and the sun in the corner beams
+   when it does.
+6. Extra defaults: the rain cooldown is 0.8 s (a mashed press inside it still
+   giggles and splashes), the demo's level ends at 150 s instead of 360 s,
+   and the tractor's yard fence keeps it out of the barn and crates.
 
 ## Open questions for Oriol
 
