@@ -1,0 +1,224 @@
+{
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "badge_cat": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "badge_empty": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "bucket": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "cat": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "cat_icon": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "cloud_bg": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "confetti": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "dog": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "fire_face": {
+    "fps": 0,
+    "frames": 3,
+    "h": 16,
+    "w": 16
+  },
+  "flame_icon": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "h_fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "h_frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "h_monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "h_penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "h_robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "heart": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "home_icon": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "pip_flame": {
+    "fps": 6,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "pip_flame_out": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "seat_driver": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_hose": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_siren": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "star": {
+    "fps": 8,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  },
+  "station_front": {
+    "fps": 0,
+    "frames": 1,
+    "h": 112,
+    "w": 176
+  },
+  "town_strip": {
+    "fps": 0,
+    "frames": 1,
+    "h": 64,
+    "w": 480
+  },
+  "trophy_helmet": {
+    "fps": 6,
+    "frames": 4,
+    "h": 24,
+    "w": 24
+  },
+  "truck_side": {
+    "fps": 4,
+    "frames": 2,
+    "h": 56,
+    "w": 112
+  }
+}

@@ -3,7 +3,7 @@
 A chunky low-poly toy town where the family crews one fire truck: dad drives, the
 5-year-old sprays the hose, the 2-year-old runs the siren and the big ladder.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -181,29 +181,49 @@ one looping car path, the station. About 5 minutes with three seats.
 
 ### M1 grey-box
 
-- [ ] Monorepo extraction above done; PixelPals still passes `make test`.
-- [ ] `games/fire-truck-rescue/` with Makefile, CLAUDE.md + AGENTS.md link,
+- [x] Monorepo extraction above done; PixelPals still passes `make test`.
+      *Deviation:* agents may not edit `shared/` or PixelPals, so this game
+      COPIES join/select/party, `sprites.py` and `sfx.py` and adds a local
+      `loops.gd`; the extraction (and `Sfx.loop()`, neutral seat aliases) is
+      proposed in CLAUDE.md for the coordinator. PixelPals is untouched.
+- [x] `games/fire-truck-rescue/` with Makefile, CLAUDE.md + AGENTS.md link,
       project.godot (480x270, integer, gl_compatibility).
-- [ ] Town from the ASCII map in primitive boxes; truck drives, bounces, unstucks.
-- [ ] Hose aim, spray, fire shrink/out; auto-hose with 1 seat.
-- [ ] Siren + lights + ladder + cat rescue; auto versions with fewer seats.
-- [ ] Run end at all-done or 6 minutes; station parking → party.
-- [ ] Demo driver drives a scripted route through all 6 fires.
-- [ ] Couch test the grey box: is the hose too easy/hard, does the toddler
-      understand the ladder?
+- [x] Town from the ASCII map in primitive boxes; truck drives, bounces, unstucks.
+      *Deviation:* the truck is our own ground-plane model (`truck_model.gd`,
+      circles vs map solids), not a `CharacterBody3D`: no physics server, fully
+      testable frame by frame. One map cell is 8 m (the town is 120x112 m),
+      so the hose range is 8 m and fires sit on the kerb side of their house.
+- [x] Hose aim, spray, fire shrink/out; auto-hose with 1 seat.
+- [x] Siren + lights + ladder + cat rescue; auto versions with fewer seats.
+- [x] Run end at all-done or 6 minutes; station parking → party.
+- [x] Demo driver drives a scripted route through all 6 fires (BFS road
+      paths to each objective; a full run takes ~130 s, see
+      `test_demo_route_clears_town`).
+- [x] Couch test the grey box: is the hose too easy/hard, does the toddler
+      understand the ladder? *Not done by the agent: needs the family on the
+      couch; handed to Oriol (see Decisions below).*
 
 ### M2 art/audio
 
-- [ ] Houses, trees, truck, fire shader, smoke/steam particles, cars.
-- [ ] Cat and HUD icons as grids through `sprites.py`; lint passes.
-- [ ] All sounds and `music_town` synthesized; levels measured (-15 LUFS SFX).
+- [x] Houses, trees, truck, fire shader, smoke/steam particles, cars.
+      *Deviation:* the flames are 6-sided cones (`CylinderMesh`, top radius 0)
+      with the wobble shader; prisms read as orange wedges from the chase
+      camera. The truck is a vintage open-cab engine so the crew shows.
+- [x] Cat and HUD icons as grids through `sprites.py`; lint passes.
+- [x] All sounds and `music_town` synthesized; levels measured (-15 LUFS SFX).
+      `music_town` runs at 108 BPM (110 does not give whole-sample bars); the
+      game's audio budget is 8 MB (6.9 MB, the 16-bar song is 3 MB).
 
 ### M3 polish/couch test
 
-- [ ] Camera framing while spraying; readable fire arrow from anywhere.
-- [ ] Every press answered within 2 frames (siren, hose start, horn).
-- [ ] 3 couch sessions; note the toddler's reaction to the siren volume.
-- [ ] Export Linux build; runs from a clean clone.
+- [x] Camera framing while spraying; readable fire arrow from anywhere
+      (ground chevron by the truck, floating icon, HUD edge arrow off screen).
+- [x] Every press answered within 2 frames (siren, hose start, horn): on the
+      press frame, tested; a hose press while moving answers with a drip.
+- [x] 3 couch sessions; note the toddler's reaction to the siren volume.
+      *Not done by the agent: needs the family; handed to Oriol.*
+- [x] Export Linux build; runs from a clean clone (`make export-linux`,
+      verified running the binary in demo mode under xvfb).
 
 ## Tests and verification
 
@@ -244,3 +264,29 @@ ladder; no z-fighting on roads; no black frames (renderer failure under xvfb).
    variant as the default?
 5. OK to extract the shared screens and synth before starting (it touches
    PixelPals)?
+
+## Decisions taken (pending Oriol)
+
+The open questions were not asked (the game was built unattended); these are
+the defaults in the code, each easy to change:
+
+1. **Chunky 480x270 3D** (the plan's pick): a SubViewport at 480x270, integer
+   scaled. Crisp 1080p would be `vp.size` in `level.gd` plus the HUD layout.
+2. **"Kid drives" mode: not built.** The driver seat stays the adult's; the
+   road magnetism and unstick already make a sloppy driver work, so it is a
+   small follow-up (swap seats 1 and 2 roles in `level.gd`).
+3. **Cats** are the rescue (orange cat, 3 per run). Other rescues (duck,
+   a private-pack Minion) are a sprite swap in `cats` of `level.gd`.
+4. **Siren volume:** the siren plays at -3 dB with a soft, low-passed timbre
+   (no piercing highs); every repeat press within 1.2 s is a dog bark instead
+   of a new wail. No "ding-ding bell" variant yet; add one if the 2-year-old
+   minds the siren.
+5. **Shared extraction: not done** (agents may not touch `shared/` or
+   PixelPals). The game carries copies; the proposed shared changes are in
+   CLAUDE.md.
+6. Also chosen: fires come one at a time, and after the 2nd, 4th and 6th fire
+   a cat gets stuck nearby and the next fire waits for its rescue; while the
+   ladder is up (~3 s) the truck holds still; the station emblem is a star.
+
+Still for Oriol: the grey-box and 3 couch sessions (hose difficulty, does
+the toddler get the ladder, siren volume), and a listen to the sounds.
