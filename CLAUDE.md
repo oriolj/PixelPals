@@ -31,10 +31,14 @@ Write every new lesson there, or in its `references/field-notes.md`.
 - **No text in the game UI.** Use icons, colours and characters. (Debug
   overlays are fine behind a flag.)
 - **Never let a child's input end or hurt the run.**
-- **Third-party characters** (Sonic, Knuckles, Robotnik, Minions) live only
-  in gitignored `game/private_pack/` and `art_src/private/`. Never commit
-  them, never show them in anything published. The committed cast is
-  penguin, monkey, fox, frog and robot.
+- **Third-party characters** (Sonic, Shadow, Knuckles, Robotnik, the three
+  Minions, Mario, Luigi) are fan art for private family use. They live in
+  `game/private_pack/` and `art_src/private/` and ARE committed, because
+  [oriolj/PixelPals](https://github.com/oriolj/PixelPals) is a **private**
+  repo (Oriol, 2026-09-26). So: **never make this repo public, fork it
+  publicly, export the pack or show it in anything published** while the pack
+  is in the history. The shippable cast is penguin, monkey, fox, frog and
+  robot; `make export-linux` excludes the pack.
 - **Verify before claiming.** Run `make test` for logic and `make shot
   SHOT_SCREEN=<screen>` for visuals, then look at `shots/<screen>/sheet.png`
   (it is upscaled for inspection).
@@ -107,8 +111,9 @@ Sprites (w x h, frames). They are generated from `art_src/*.txt` by
 | check | 8x8 | 1 | ready tick |
 | trophy | 24x24 | 2 | party screen |
 
-The private pack is `sonic`, `knuckles`, `robotnik`, `minion_tall` and
-`minion_short`, each 16x16 with 2 frames. Its files are
+The private pack is `sonic`, `shadow`, `knuckles`, `robotnik`,
+`minion_tall`, `minion_short`, `minion_bob`, `mario` and `luigi`, each 16x16
+with 2 frames. Its files are
 `game/private_pack/art/` plus its own `manifest.json`, and
 `game/private_pack/riders.json`.
 
