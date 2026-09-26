@@ -11,7 +11,7 @@ G  := \033[32m
 Y  := \033[33m
 R  := \033[0m
 
-.PHONY: help setup start play demo editor import test sprites sfx assets shot shots export-linux clean tmux tmux-d tmux-n tmux-new-session
+.PHONY: help setup setup-export start play demo editor import test sprites sfx assets shot shots export-linux clean tmux tmux-d tmux-n tmux-new-session
 
 help: ## Show this help
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(C)%-14s$(R) %s\n", $$1, $$2}'
@@ -70,7 +70,14 @@ shot: ## Capture frames of SHOT_SCREEN (join|select|level|party) in demo mode ->
 shots: ## Capture every screen
 	@for s in join select level party; do $(MAKE) --no-print-directory shot SHOT_SCREEN=$$s; done
 
-export-linux: ## Build a standalone Linux binary into build/
+setup-export: ## Download the Linux export templates (1.3 GB download, keeps only ~100 MB)
+	@d=$$HOME/.local/share/godot/export_templates/$(GODOT_VERSION).stable; \
+	if [ -f $$d/linux_release.x86_64 ]; then echo -e "$(G)templates already in $$d$(R)"; exit 0; fi; \
+	mkdir -p $$d && curl -SLo .tools/templates.tpz https://github.com/godotengine/godot/releases/download/$(GODOT_VERSION)-stable/Godot_v$(GODOT_VERSION)-stable_export_templates.tpz && \
+	unzip -qjo .tools/templates.tpz 'templates/linux_*x86_64' 'templates/version.txt' -d $$d && command rm -f .tools/templates.tpz && \
+	echo -e "$(G)templates -> $$d$(R)"
+
+export-linux: ## Build a standalone Linux binary into build/ (needs make setup-export once; the private pack is NOT included)
 	@mkdir -p build
 	@$(GODOT) --headless --path $(GAME) --export-release "Linux" ../build/pixelpals.x86_64
 	@echo -e "$(G)build/pixelpals.x86_64$(R)"

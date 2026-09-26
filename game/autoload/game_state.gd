@@ -67,8 +67,18 @@ func boot(root: Node) -> void:
 var _root: Node
 
 
+## Tests: point screens at a throwaway root (and restore with set_root(null)).
+func set_root(root: Node) -> void:
+	_root = root
+
+
 func goto(screen_name: String) -> void:
-	if current:
+	if _root == null:
+		# No tree to show it in (unit tests that only check the requested screen).
+		current_name = screen_name
+		screen_changed.emit(screen_name)
+		return
+	if current and is_instance_valid(current):
 		current.queue_free()
 	var script: GDScript = load("res://scripts/screens/%s.gd" % screen_name)
 	current = script.new()
