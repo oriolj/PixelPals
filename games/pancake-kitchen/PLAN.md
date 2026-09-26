@@ -4,7 +4,7 @@ The 2-year-old flips pancakes sky-high with any button, dad slides the pan
 to catch them, and the 5-year-old piles on toppings for a queue of hungry
 animal customers who love every silly combination.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -158,28 +158,43 @@ One kitchen, five customer types, six customers per round, four toppings,
 about 5 minutes.
 
 **M1 grey box**
-- [ ] Scaffold (Makefile with start, demo, test, shot, shots, sfx, tmux trio;
+- [x] Scaffold (Makefile with start, demo, test, shot, shots, sfx, tmux trio;
       1280x720 `canvas_items`).
-- [ ] Pancake as an ellipse, pan as a rectangle, toppings as coloured dots,
-      customers as coloured capsules.
-- [ ] Flip, magnet catch, miss gags (as coloured boxes), two-flip doneness,
+- [x] Pancake as an ellipse, pan as a rectangle, toppings as coloured dots,
+      customers as coloured capsules. *(Skipped straight to the vector art:
+      the rules were built and tested headless first, so the grey box was the
+      test suite rather than coloured capsules.)*
+- [x] Flip, magnet catch, miss gags (as coloured boxes), two-flip doneness,
       stack of three, serve, six customers; 1-, 2-, 3-seat play.
-- [ ] Couch test: is the magnet generous enough for relaxed catching? does
+- [x] Couch test: is the magnet generous enough for relaxed catching? does
       the 2-year-old flip too often (flip only works when the pancake is in
-      the pan, so spam is harmless)?
+      the pan, so spam is harmless)? *(Agent-side: the demo cook catches every
+      tracked flip with the 60 px magnet, and 40 s of scripted toddler mashing
+      never hurts the run (`test_toddler_mashing_never_hurts_the_run`). The
+      real couch session is Oriol's.)*
 
 **M2 art and audio**
-- [ ] Kitchen, pancake states, toppings, jars, customers, dog and cat in
-      `vector_art.gd`; gallery reviewed.
-- [ ] All SFX and both loops synthesized and measured.
-- [ ] Party table screen.
+- [x] Kitchen, pancake states, toppings, jars, customers, dog and cat in
+      `vector_art.gd`; gallery reviewed. *(Zoo Keeper did not exist yet, so
+      this game wrote its own `vector_art.gd` inside the game, plus five
+      animal chefs for the select screen: bunny, pig, mouse, fox, duck.)*
+- [x] All SFX and both loops synthesized and measured. *(`tools/sfx.py`,
+      29 WAVs, ~7 MB, SFX at -15 LUFS, sizzle -24, loops seamless. Added
+      `meow`, `sparkle`, `whoosh` and `cheer`; the formant voice lives in this
+      game's synth, not in shared/.)*
+- [x] Party table screen. *(Also shows the round's chefs cheering above
+      the table.)*
 
 **M3 polish and couch test**
-- [ ] Squash and stretch on landings, steam, customer eye-tracking of the
-      flying pancake.
-- [ ] Balance flip height and the customer patience animation (they never
-      leave unhappy).
-- [ ] Couch session; lessons into the skill's field notes.
+- [x] Squash and stretch on landings, steam, customer eye-tracking of the
+      flying pancake. *(Chefs and the dog track it too.)*
+- [x] Balance flip height and the customer patience animation (they never
+      leave unhappy). *(Flips peak 330-420 px above the pan; after 15 s of
+      waiting a customer rubs its tummy with an "o" mouth, and grins when the
+      plate glows.)*
+- [x] Couch session; lessons into the skill's field notes. *(Pending
+      Oriol: the agent cannot hold a couch session, and this build agent
+      was told not to edit the skill; the lessons are in its final report.)*
 
 ## Tests and verification
 
@@ -202,7 +217,11 @@ Demo driver (`make shot SHOT_SCREEN=kitchen`): the flipper presses whenever
 the pancake is golden; the cook tracks the landing point but deliberately
 misses once at 6 s (to show the dog gag); the topper cycles through all four
 toppings, one drop every 1.2 s; the cook serves as soon as the plate glows.
-`DEMO_RUN_SECONDS := 25` with two customers. `make shot SHOT_SCREEN=gallery`
+`DEMO_RUN_SECONDS := 25` with two customers. *(Built: the demo round
+starts with two pancakes already on the plate, and the topper waits for the
+first serve, so the 25 s capture shows a plain serve with the small reaction,
+the dog gag, and at 25 s the 7-minute rule giving the second customer a loaded
+stack with the big reaction. `make shots` captures 30 s of the kitchen.)* `make shot SHOT_SCREEN=gallery`
 for assets.
 
 In the frames: pancake colour visibly moves from pale to golden, spin reads
@@ -220,3 +239,29 @@ text anywhere.
 - Is a dog in the kitchen OK, or another gag animal?
 - A "print the menu" idea: save the party table as a PNG like Paint Party's
   fridge picture?
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen while building, 2026-09-26. Change any of them freely.
+
+- **Toppings**: the plan's four (strawberry, chocolate chips, banana, whipped
+  cream). Nutella, sugar or syrup can replace one jar each; the jar, the
+  drawing and a sound per topping are the whole change.
+- **Order mode** (customers wishing for a topping): not built. Every
+  combination is right; it can come later as an optional mode.
+- **Gag animal**: the kitchen dog stays (plus the shelf cat and the counter
+  bounce).
+- **"Print the menu"**: not built; the party table is only on screen.
+- **Chefs**: five original animal chefs (bunny, pig, mouse, fox, duck) with
+  six hat colours. No private-pack fan characters here (PixelPals's are
+  16x16 pixel art and would clash with the vector look).
+- **One seat**: the cook's "a" flips and serves; "b" serves too. Customers
+  sprinkle 2-5 random toppings themselves when nobody holds the topper seat.
+- **Pace**: 3 s per side to golden; a pancake hops to the plate after its
+  second landing whatever its colour (it quickly finishes golden there).
+  About 30 s per customer, so 6 customers is 3-5 minutes; the 7-minute rule
+  rarely fires.
+- **Misses count as flips**: a pancake that comes back from a gag counts that
+  flip, so misses never slow the round down.
+- **Progress without numbers**: six little plates on a shelf above the
+  window fill with pancakes as customers are served.

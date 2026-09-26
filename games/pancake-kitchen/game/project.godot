@@ -1,0 +1,35 @@
+; Engine configuration file.
+; Hand-maintained: keep it small. Flat vector art at 1280x720 (not pixel art).
+
+config_version=5
+
+[application]
+
+config/name="Pancake Kitchen"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7")
+
+[autoload]
+
+Players="*res://autoload/players.gd"
+Game="*res://autoload/game_state.gd"
+Art="*res://autoload/art.gd"
+Sfx="*res://autoload/sfx.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=2
+environment/defaults/default_clear_color=Color(1, 0.945, 0.84, 1)
