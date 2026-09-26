@@ -74,3 +74,16 @@ func test_unseated_devices_that_press_are_offered_to_join() -> void:
 	assert_has(Players.unseated_devices_just_pressed(), "demo:x")
 	Players.join("demo:x")
 	assert_does_not_have(Players.unseated_devices_just_pressed(), "demo:x")
+
+
+func test_dir4_just_pressed_fires_once_per_flick() -> void:
+	Players.join("demo:a")
+	Players.set_scripted("demo:a", {"move": Vector2(1, 0)})
+	Players.poll()
+	assert_eq(Players.dir4_just_pressed(Players.Seat.DRIVER), Vector2i(1, 0))
+	Players.poll()
+	assert_eq(Players.dir4_just_pressed(Players.Seat.DRIVER), Vector2i.ZERO, "held")
+	Players.set_scripted("demo:a", {"move": Vector2(0, -1)})
+	Players.poll()
+	assert_eq(Players.dir4_just_pressed(Players.Seat.DRIVER), Vector2i(0, -1), "new direction")
+	assert_eq(Players.dir4_just_pressed(Players.Seat.GUNNER), Vector2i.ZERO, "empty seat")

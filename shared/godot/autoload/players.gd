@@ -279,6 +279,26 @@ func dir4(seat: int) -> Vector2i:
 	return Vector2i(0, int(signf(v.y)))
 
 
+static func _snap4(v: Vector2) -> Vector2i:
+	if v.length() < DEADZONE:
+		return Vector2i.ZERO
+	if absf(v.x) >= absf(v.y):
+		return Vector2i(int(signf(v.x)), 0)
+	return Vector2i(0, int(signf(v.y)))
+
+
+## A 4-direction flick: the direction this frame if it differs from last
+## frame's (so holding right yields one event), else ZERO. For menus and
+## choices (junctions, food pickers, next-shape trays).
+func dir4_just_pressed(seat: int) -> Vector2i:
+	var d := seats[seat]
+	if d == "":
+		return Vector2i.ZERO
+	var now := _snap4(_now.get(d, _empty_state()).move)
+	var before := _snap4(_prev.get(d, _empty_state()).move)
+	return now if now != before else Vector2i.ZERO
+
+
 func pressed(seat: int, button: String) -> bool:
 	return seats[seat] != "" and device_pressed(seats[seat], button)
 
