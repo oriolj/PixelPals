@@ -26,6 +26,7 @@ Every idea now has a plan in `games/<slug>/PLAN.md` (status: plan). The first ga
 | 10 | **[Zoo Keeper](../games/zoo-keeper/PLAN.md)** | walks the keeper around | picks which food each animal wants (4 foods) | the animal makes its sound and dances | vector | animal sounds, learning foods |
 | 11 | **[Pancake Kitchen](../games/pancake-kitchen/PLAN.md)** | moves the pan and catches | adds toppings | flips the pancake (boing) | vector | silly food, no wrong answers |
 | 12 | **[Pillow Fort Hide and Seek](../games/pillow-fort/PLAN.md)** | moves the flashlight | finds the hidden toys (4 directions) | "peekaboo": characters pop out | 2D | toddler peekaboo stage |
+| 13 | **[Space Mission](../games/space-mission/PLAN.md)** | flies the Shuttle, sky crane, drives the Mars rover | robot arm: builds the ISS module by module, drills Mars rocks | Earth photos, parachute, Mars helicopter | pixel (Endesga 32) | real space: ISS, Shuttle, Mars landing, rover, blue Mars sunset |
 
 ## A path toward independence
 

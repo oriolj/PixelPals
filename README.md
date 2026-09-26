@@ -27,6 +27,7 @@ make test             # tests of every playable game
 | [Zoo Keeper](games/zoo-keeper/PLAN.md) | plan |
 | [Pancake Kitchen](games/pancake-kitchen/PLAN.md) | plan |
 | [Pillow Fort Hide and Seek](games/pillow-fort/PLAN.md) | plan |
+| [Space Mission](games/space-mission/PLAN.md): ISS, Shuttle, Mars landing and rover | plan |
 
 The ideas and the reasoning behind them are in [docs/ideas.md](docs/ideas.md).
 Contributor and agent rules are in [CLAUDE.md](CLAUDE.md).
