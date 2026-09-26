@@ -2,7 +2,7 @@
 .tools/
 .venv/
 # Godot
-game/.godot/
+.godot/
 *.translation
 # Outputs
 shots/
