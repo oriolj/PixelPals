@@ -23,8 +23,10 @@ func _ready() -> void:
 
 
 func _load(path: String) -> AudioStream:
-	if ResourceLoader.exists(path):
-		return load(path)
+	# Same rule as Art: from source read the file itself (no import cache
+	# needed); an exported build only has the imported streams.
+	if OS.has_feature("template"):
+		return load(path) if ResourceLoader.exists(path) else null
 	var abs := ProjectSettings.globalize_path(path)
 	if not FileAccess.file_exists(abs):
 		return null

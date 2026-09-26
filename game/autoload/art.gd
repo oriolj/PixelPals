@@ -34,16 +34,18 @@ func size_of(sprite_name: String, fallback := Vector2i(16, 16)) -> Vector2i:
 
 
 func _load_image_texture(path: String) -> Texture2D:
-	# Imported resources exist when the editor has scanned the project;
-	# fall back to loading the raw PNG so a fresh checkout still runs.
-	if ResourceLoader.exists(path):
-		return load(path)
-	var abs := ProjectSettings.globalize_path(path)
-	if FileAccess.file_exists(path) or FileAccess.file_exists(abs):
-		var img := Image.load_from_file(abs)
-		if img:
-			return ImageTexture.create_from_image(img)
-	return null
+	# From source (make start, tests, a fresh clone) read the PNG bytes directly:
+	# exact pixels, and no dependency on the .godot/imported cache, which is
+	# missing or stale on a fresh clone and made load() fail. An exported build
+	# only has the imported textures, so it goes through the ResourceLoader.
+	if OS.has_feature("template"):
+		return load(path) if ResourceLoader.exists(path) else null
+	if not FileAccess.file_exists(path):
+		return null
+	var img := Image.new()
+	if img.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK:
+		return null
+	return ImageTexture.create_from_image(img)
 
 
 ## SpriteFrames with a "default" animation. Placeholder: a solid rect of `tint`.

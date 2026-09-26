@@ -11,7 +11,7 @@ G  := \033[32m
 Y  := \033[33m
 R  := \033[0m
 
-.PHONY: help setup setup-export start play demo editor import test sprites sfx assets shot shots export-linux clean tmux tmux-d tmux-n tmux-new-session
+.PHONY: help setup setup-export ensure-import start play demo editor import test sprites sfx assets shot shots export-linux clean tmux tmux-d tmux-n tmux-new-session
 
 help: ## Show this help
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(C)%-14s$(R) %s\n", $$1, $$2}'
@@ -32,23 +32,28 @@ setup: ## Download the pinned Godot binary, GUT and the Python tool deps
 	@$(MAKE) --no-print-directory import
 	@echo -e "$(G)Ready. make start$(R)"
 
+# A fresh clone (or a wiped game/.godot) has no import cache: GUT's class_names
+# are unknown until Godot has scanned the project once.
+ensure-import:
+	@[ -f $(GAME)/.godot/global_script_class_cache.cfg ] || $(MAKE) --no-print-directory import
+
 import: ## Let Godot scan and import the project (needed after new art/audio)
 	@$(GODOT) --headless --path $(GAME) --import >/dev/null 2>&1 || $(GODOT) --headless --path $(GAME) --editor --quit >/dev/null 2>&1 || true
 	@echo -e "$(G)Imported$(R)"
 
-start: ## Run the game (pads and/or keyboard)
+start: ensure-import ## Run the game (pads and/or keyboard)
 	@echo -e "$(C)Keyboard: WASD+Shift = seat 1, arrows+Enter = seat 2, Space/any other key = seat 3. Esc = pause.$(R)"
 	@$(GODOT) --path $(GAME)
 
 play: start ## Alias of start
 
-demo: ## Run the game on scripted input (watch it play itself)
+demo: ensure-import ## Run the game on scripted input (watch it play itself)
 	@$(GODOT) --path $(GAME) -- --demo=$(SHOT_SCREEN)
 
 editor: ## Open the Godot editor
 	@$(GODOT) --path $(GAME) --editor &
 
-test: ## Run the GUT test suite headless
+test: ensure-import ## Run the GUT test suite headless
 	@$(GODOT) --headless --path $(GAME) -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit
 
 sprites: ## Render art_src/ grids to game/art PNGs, lint them, write the contact sheet
@@ -59,7 +64,7 @@ sfx: ## Synthesize the sound effects and music into game/audio
 
 assets: sprites sfx import ## Rebuild all generated art and audio
 
-shot: ## Capture frames of SHOT_SCREEN (join|select|level|party) in demo mode -> shots/
+shot: ensure-import ## Capture frames of SHOT_SCREEN (join|select|level|party) in demo mode -> shots/
 	@command rm -rf shots/$(SHOT_SCREEN) && mkdir -p shots/$(SHOT_SCREEN)
 	@xvfb-run -a -s "-screen 0 1280x720x24" $(GODOT) --path $(GAME) --resolution 320x180 \
 		--write-movie $(CURDIR)/shots/$(SHOT_SCREEN)/f.png --fixed-fps 30 --quit-after $$(( $(SHOT_SECONDS) * 30 )) \
@@ -77,7 +82,7 @@ setup-export: ## Download the Linux export templates (1.3 GB download, keeps onl
 	unzip -qjo .tools/templates.tpz 'templates/linux_*x86_64' 'templates/version.txt' -d $$d && command rm -f .tools/templates.tpz && \
 	echo -e "$(G)templates -> $$d$(R)"
 
-export-linux: ## Build a standalone Linux binary into build/ (needs make setup-export once; the private pack is NOT included)
+export-linux: ensure-import ## Build a standalone Linux binary into build/ (needs make setup-export once; the private pack is NOT included)
 	@mkdir -p build
 	@$(GODOT) --headless --path $(GAME) --export-release "Linux" ../build/pixelpals.x86_64
 	@echo -e "$(G)build/pixelpals.x86_64$(R)"
