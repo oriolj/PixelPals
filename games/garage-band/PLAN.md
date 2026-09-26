@@ -2,7 +2,7 @@
 
 A three-piece band in the garage where every note lands on the beat and in key, so whatever anyone plays sounds good.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -174,27 +174,46 @@ playback on the party screen, about 5 minutes including two plays.
 
 ### M1 grey-box
 
-- [ ] Skeleton (vector project settings, Makefile, CLAUDE.md + AGENTS.md,
-  shared autoload symlinks).
-- [ ] `band_synth.gd`: clock, scheduler, 3 voice types, one-shot mixing.
-- [ ] Quantiser and chord-tone nudge as pure functions (`music_rules.gd`).
-- [ ] Performance benchmark test; decide generator vs fallback.
-- [ ] Grey stage: rectangles for pads, lanes, cymbal; gems scroll.
-- [ ] Fold-down for 1 and 2 seats; recording and replay.
-- [ ] Couch test: does the Drummer feel the delay? Is the Lead highway
-  readable from the sofa?
+- [x] Skeleton (vector project settings, Makefile, CLAUDE.md + AGENTS.md,
+  shared autoload symlinks). *Deviation: no 2D MSAA; the Compatibility
+  renderer (needed for xvfb captures) lacks it and Vulkan does not start
+  under xvfb. `canvas_items` stretch draws the vectors at window resolution.*
+- [x] `band_synth.gd`: clock, scheduler, 3 voice types, one-shot mixing.
+  Rendering is partition-invariant, so a replay is bit-exact. *Deviation:
+  stereo frames (drums panned) from a mono voice mix.*
+- [x] Quantiser and chord-tone nudge as pure functions (`music_rules.gd`).
+  A note with no chord tone within one step (E over F) stays; it is in the
+  scale anyway.
+- [x] Performance benchmark test; decide generator vs fallback. **Generator
+  kept**: 1 s of audio with 9 voices takes about 30-40 ms (budget 150 ms).
+- [x] Grey stage: rectangles for pads, lanes, cymbal; gems scroll. The
+  Lead's lanes are stacked (top = highest note) so up/down on the stick
+  moves up/down the highway; gems slide right to left.
+- [x] Fold-down for 1 and 2 seats; recording and replay. The Lead's B
+  crashes whenever the Crasher seat is empty; a live hit cancels that
+  drum's pending auto hits for a bar (the very first hit can meet an auto
+  hit already sounding).
+- [x] Couch test: does the Drummer feel the delay? Is the Lead highway
+  readable from the sofa? *Agent side only: verified in the frames and by
+  the timing tests (early press at once, late press at most about 110 ms);
+  the real sofa test is Oriol's.*
 
 ### M2 art and audio
 
-- [ ] Garage, band, lights, speakers, gems, covers in vector.
-- [ ] One-shots rendered by `tools/sfx.py`; loudness report.
-- [ ] Two more songs (a slow one, a fast one), same scale.
+- [x] Garage, band, lights, speakers, gems, covers in vector. Riders x3 on
+  stage, x4 on select, x1.5-scaled stage on the party screen.
+- [x] One-shots rendered by `tools/sfx.py`; loudness report. `make
+  audio-check` also measures the play demo's rendered output.
+- [x] Two more songs (a slow one, a fast one), same scale: rocket (vi-IV-I-V,
+  120 BPM) and cat (I-IV-I-V lullaby, 80 BPM).
 
 ### M3 polish and couch test
 
-- [ ] Beat vignette, speaker pulses, crash light changes.
-- [ ] Tune the quantise window and the mix from the couch notes.
-- [ ] Party replay with bows; clean-clone run.
+- [x] Beat vignette, speaker pulses, crash light changes.
+- [x] Tune the quantise window and the mix from the couch notes. *Tuned
+  from measurements (no DC, no clipping, crashes softened, auto-drummer at
+  half level); the 35 % window stays until Oriol's couch notes.*
+- [x] Party replay with bows; clean-clone run.
 
 ## Tests and verification
 
@@ -218,8 +237,8 @@ GUT tests (`game/tests/`):
 Demo driver ("play"): the Lead follows the gems exactly for 8 bars, then
 plays random scale notes; the Drummer hits the suggested pads with a
 random 0-120 ms error; the Crasher presses every 1.7 s (off the beat on
-purpose, to show quantisation). A second tool, `tools/render_demo.gd`
-run headless, writes the synth output of the same demo to
+purpose, to show quantisation). A second tool, `tools/render_demo.gd` (in `game/tools/`)
+run headless (`make audio-check`), writes the synth output of the same demo to
 `shots/play/audio.wav` so its level and spectrogram can be measured by the
 synth script's `--check` report.
 
@@ -239,3 +258,27 @@ party frames show the band bowing.
    repo.
 4. Is 96 BPM right, or should the tempo follow the kids (slower for the
    2-year-old's crashes)?
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen while building (2026-09-26); change any of them after a
+couch test.
+
+1. **Songs**: original tunes only (sun, rocket, cat), all in C major
+   pentatonic. Nursery tunes can be added as more `songs.gd` entries.
+2. **Lead highway**: kept as a light challenge with gems, but nothing is
+   lost by free-jamming: every note sounds in key and on time, and gems
+   only add stars.
+3. **Saving the recording**: not saved. The party replays it from memory;
+   a WAV export to `~/Music/GarageBand/` (never the repo) is a small
+   follow-up if wanted.
+4. **Tempo**: fixed per song (sun 96, rocket 120, cat 80 BPM); the cat is the
+   slow choice for the 2-year-old.
+5. **Early window**: 35 % of a grid step, as planned.
+6. **Party length**: the whole song replays (about 1.5 minutes); the Lead's A
+   skips after 2 s, the kids cannot skip.
+7. **Hold to strum**: holding A plays one note per eighth, exactly on the grid.
+8. **Shared helpers**: `Players.dir4_just_pressed` already existed in
+   `shared/`. `shared/tools/synth.py` and a shared `band_synth.gd` were not
+   extracted (agents may not edit `shared/`); `tools/sfx.py` is a copy of
+   PixelPals's plus the kit.

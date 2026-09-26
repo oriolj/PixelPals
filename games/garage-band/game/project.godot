@@ -1,0 +1,42 @@
+; Engine configuration file.
+; Hand-maintained: keep it small. Garage Band is flat vector art:
+; 640x360 canvas, canvas_items stretch (vectors drawn at window resolution).
+; No 2D MSAA: the Compatibility renderer (needed for xvfb captures) lacks it.
+
+config_version=5
+
+[application]
+
+config/name="Garage Band"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7")
+
+[audio]
+
+driver/mix_rate=44100
+
+[autoload]
+
+Players="*res://autoload/players.gd"
+Game="*res://autoload/game_state.gd"
+Art="*res://autoload/art.gd"
+Sfx="*res://autoload/sfx.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.1, 0.11, 0.17, 1)
