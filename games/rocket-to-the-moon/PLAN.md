@@ -2,7 +2,7 @@
 
 Count down, blast off and fly a rocket through the stars to the Moon, grabbing fuel and planets on the way.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -114,6 +114,7 @@ the same renderer and lint.
 | flag | 16x16 | 2 | grid, tinted with seat colours |
 | helmet | 20x20 | 1 | grid, drawn over the 16x16 riders |
 | earth_ground | 320x48 | 1 | grid |
+| rocket_stage, sparkle, cloud, bird, balloon, confetti | various | additions made during the build (see CLAUDE.md) |
 | sky_band, star_far, star_near | procedural | — | `_draw()`: gradient bands, 1-2 px stars in 3 parallax layers |
 | album_frame, silhouette | 16x16 | 1 | grid; silhouettes are the planet grids filled with one colour by the generator |
 
@@ -135,7 +136,10 @@ BPM loop) and `music_menu` (reused).
   pattern, join/select/party, the digit glyphs, and above all
   `level/aim.gd` (the cone aim assist and the 90-degree turret rotation
   are exactly the claw's needs), the soft-bump rules from `level/rules.gd`.
-- **Extract into shared/ first:** `aim.gd` (to `shared/godot/`), the
+- **Extract into shared/ first:** *(not done: this build was one of twelve
+  parallel agents with shared/ read-only, so `aim.gd`, the renderer/lint and
+  the synth are copied from PixelPals; the extraction is still worth doing
+  once the games settle.)* `aim.gd` (to `shared/godot/`), the
   sprite renderer and lint (`shared/tools/sprites.py` with a per-game
   palette and `art_src`), the shared screen router and screens, and
   `shared/tools/synth.py`.
@@ -163,27 +167,37 @@ planets, about 5 minutes.
 
 ### M1 grey-box
 
-- [ ] Skeleton (pixel settings from PixelPals, Makefile, CLAUDE.md +
+- [x] Skeleton (pixel settings from PixelPals, Makefile, CLAUDE.md +
   AGENTS.md, shared autoload symlinks).
-- [ ] Launch countdown state machine with placeholder rectangles.
-- [ ] Scrolling flight, spawn timeline, fuel, asteroids with soft bumps.
-- [ ] Grabber arm with aim assist; booster.
-- [ ] Moon landing with retries and the sliding pad.
-- [ ] Fold-down for 1 and 2 seats, the 8 s auto-press.
-- [ ] Couch test: is the countdown too long for the 2-year-old? Can the
-  5-year-old catch planets?
+- [x] Launch countdown state machine with placeholder rectangles
+  (`scripts/logic/countdown.gd`, reused for the stage separation with 3 lights).
+- [x] Scrolling flight, spawn timeline (`game/data/timeline.json`), fuel, asteroids with soft bumps.
+- [x] Grabber arm with aim assist; booster.
+- [x] Moon landing with retries and the sliding pad.
+- [x] Fold-down for 1 and 2 seats, the 8 s auto-press.
+- [x] Couch test: is the countdown too long for the 2-year-old? Can the
+  5-year-old catch planets? *Done as far as an agent can: the demo driver
+  plays every seat and the tests cover the rules; the real couch test with
+  the kids is Oriol's (pending).*
 
 ### M2 art and audio
 
-- [ ] All grids and generators; `make sprites` passes the lint; contact
+- [x] All grids and generators; `make sprites` passes the lint; contact
   sheet reviewed at 8x, rocket and planets checked as silhouettes.
-- [ ] Every sound above; loudness report.
+  *Deviation: most sprites are generators (geometry) whose grids are written
+  to `art_src/generated/*.txt`, so they stay reviewable text; small ones are
+  hand grids in `art_src/objects.txt` and `icons.txt`.*
+- [x] Every sound above; loudness report (`make sfx`: SFX at -15 LUFS, music at
+  -14 LUFS, peaks under -1 dBFS, seamless loops, 5.9 MB). *Additions: `puff`,
+  `pop`, `whoosh`. `rumble` is a 4.6 s one-shot covering ignition and lift-off,
+  not a loop (the shared Sfx has no looping one-shot player).*
 
 ### M3 polish and couch test
 
-- [ ] Screen shake on lift-off, parallax stars, stage separation.
-- [ ] Album page on the party screen, saved across runs.
-- [ ] Clean-clone run; tuning from couch notes.
+- [x] Screen shake on lift-off, parallax stars, stage separation.
+- [x] Album page on the party screen, saved across runs (`user://album.json`).
+- [x] Clean-clone run; tuning from couch notes. *The clean run is verified
+  (`game/.godot` wiped, tests and a shot green); tuning waits for couch notes.*
 
 ## Tests and verification
 
@@ -225,3 +239,30 @@ the scrolling stars.
    a space whale)? The album should match their favourites.
 4. Is a single 5-minute trip right, or should there be a shorter "just
    the launch" mode for the 2-year-old alone?
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen for the open questions; each is a small change if Oriol
+prefers otherwise.
+
+1. **Countdown: lights AND big pixel digits.** Five red lights go out one by
+   one, and a big yellow digit 5, 4, 3, 2, 1 shows the count (3x5 glyphs,
+   shapes, not text). The separation uses 3 lights, 0.8 s each.
+2. **The booster is a flame on the rocket**, not a separate on-screen button:
+   the flame doubles in size, the scroll speeds up and the Launcher's portrait
+   hops. The big button appears on screen only when a stage change waits for
+   the Launcher.
+3. **Planets:** Mars (with a white cap), Saturn (ring), Earth, Jupiter (red
+   spot), Neptune, a purple candy-striped planet, a green planet with its own
+   little moon, and Pluto with a red heart. No UFO or space whale yet; ask the
+   kids and swap kinds in `tools/sprites.py` (`planet_frame`).
+4. **One trip only** (about 4.5 minutes of flight plus the 10 s launch). No
+   "just the launch" mode yet; the launch screen can be reached alone with
+   `make demo SHOT_SCREEN=launch`, and a toddler mode would be a small
+   addition to `select`.
+
+Other defaults: with a Grabber seated, only the claw collects pickups (the
+magnet is the 1-seat and no-Grabber fallback); balloons refill the tank but
+only fuel cans count on the party screen; a bump drops at most the cans you
+have (never negative); the stage separation countdown happens with the space
+timeline still running.

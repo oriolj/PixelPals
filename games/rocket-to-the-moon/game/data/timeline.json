@@ -1,0 +1,146 @@
+{
+ "_doc": "Spawn timeline per stage (seconds). See scripts/logic/timeline.gd. Kinds: fuel, balloon, bird, asteroid, planet (needs planet 1-8), comet.",
+ "sky": {
+  "length": 60,
+  "events": [
+   {
+    "kind": "fuel",
+    "from": 3,
+    "to": 56,
+    "every": 4.0
+   },
+   {
+    "kind": "balloon",
+    "from": 5,
+    "to": 55,
+    "every": 5.0
+   },
+   {
+    "kind": "bird",
+    "from": 2,
+    "to": 50,
+    "every": 3.5
+   }
+  ]
+ },
+ "space": {
+  "length": 150,
+  "events": [
+   {
+    "kind": "fuel",
+    "from": 3,
+    "to": 146,
+    "every": 4.5
+   },
+   {
+    "kind": "asteroid",
+    "from": 5,
+    "to": 70,
+    "every": 3.4
+   },
+   {
+    "kind": "asteroid",
+    "from": 80,
+    "to": 142,
+    "every": 2.8
+   },
+   {
+    "kind": "comet",
+    "from": 12,
+    "to": 140,
+    "every": 11
+   },
+   {
+    "kind": "planet",
+    "at": 7.0,
+    "planet": 1
+   },
+   {
+    "kind": "planet",
+    "at": 15.5,
+    "planet": 2
+   },
+   {
+    "kind": "planet",
+    "at": 24.0,
+    "planet": 3
+   },
+   {
+    "kind": "planet",
+    "at": 32.5,
+    "planet": 4
+   },
+   {
+    "kind": "planet",
+    "at": 41.0,
+    "planet": 5
+   },
+   {
+    "kind": "planet",
+    "at": 49.5,
+    "planet": 6
+   },
+   {
+    "kind": "planet",
+    "at": 58.0,
+    "planet": 7
+   },
+   {
+    "kind": "planet",
+    "at": 66.5,
+    "planet": 8
+   },
+   {
+    "kind": "planet",
+    "at": 75.0,
+    "planet": 3
+   },
+   {
+    "kind": "planet",
+    "at": 83.5,
+    "planet": 6
+   },
+   {
+    "kind": "planet",
+    "at": 92.0,
+    "planet": 1
+   },
+   {
+    "kind": "planet",
+    "at": 100.5,
+    "planet": 8
+   },
+   {
+    "kind": "planet",
+    "at": 109.0,
+    "planet": 2
+   },
+   {
+    "kind": "planet",
+    "at": 117.5,
+    "planet": 7
+   },
+   {
+    "kind": "planet",
+    "at": 126.0,
+    "planet": 4
+   },
+   {
+    "kind": "planet",
+    "at": 134.5,
+    "planet": 5
+   }
+  ]
+ },
+ "moon": {
+  "length": 40,
+  "events": [
+   {
+    "kind": "fuel",
+    "from": 1,
+    "to": 18,
+    "every": 4.0
+   }
+  ]
+ }
+}

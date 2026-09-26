@@ -1,0 +1,320 @@
+{
+  "album_frame": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "arm_link": {
+    "fps": 0,
+    "frames": 1,
+    "h": 4,
+    "w": 4
+  },
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "asteroid": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "balloon": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 16
+  },
+  "big_button": {
+    "fps": 0,
+    "frames": 2,
+    "h": 16,
+    "w": 24
+  },
+  "bird": {
+    "fps": 8,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "claw": {
+    "fps": 0,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "cloud": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "comet": {
+    "fps": 6,
+    "frames": 2,
+    "h": 8,
+    "w": 16
+  },
+  "confetti": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "countdown_light": {
+    "fps": 0,
+    "frames": 2,
+    "h": 12,
+    "w": 12
+  },
+  "earth_ground": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 320
+  },
+  "flag": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "flame": {
+    "fps": 14,
+    "frames": 8,
+    "h": 12,
+    "w": 8
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "fuel": {
+    "fps": 3,
+    "frames": 2,
+    "h": 12,
+    "w": 8
+  },
+  "gantry": {
+    "fps": 0,
+    "frames": 1,
+    "h": 64,
+    "w": 16
+  },
+  "helmet": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "launch_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 64
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "moon": {
+    "fps": 0,
+    "frames": 1,
+    "h": 96,
+    "w": 96
+  },
+  "moon_ground": {
+    "fps": 0,
+    "frames": 1,
+    "h": 32,
+    "w": 320
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_1": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_2": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_3": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_4": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_5": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_6": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_7": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_8": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "rocket": {
+    "fps": 6,
+    "frames": 10,
+    "h": 40,
+    "w": 24
+  },
+  "rocket_stage": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 24
+  },
+  "seat_grabber": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_launcher": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_pilot": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_1": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_2": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_3": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_4": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_5": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_6": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_7": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "silhouette_8": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "smoke": {
+    "fps": 0,
+    "frames": 4,
+    "h": 16,
+    "w": 16
+  },
+  "sparkle": {
+    "fps": 10,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  }
+}
