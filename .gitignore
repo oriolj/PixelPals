@@ -1,0 +1,12 @@
+# Pinned tools (make setup)
+.tools/
+.venv/
+# Godot
+game/.godot/
+*.translation
+# Outputs
+shots/
+build/
+# Third-party characters: private family use only, never committed or published
+game/private_pack/
+art_src/private/

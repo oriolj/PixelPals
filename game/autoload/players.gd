@@ -1,0 +1,295 @@
+extends Node
+## Seats and devices: who is playing, on what, as which role.
+##
+## A "device key" names one physical input source:
+##   "pad:<id>"  a joypad (Godot device id)
+##   "kb:0"      keyboard block 0 — WASD + Left Shift / Tab
+##   "kb:1"      keyboard block 1 — arrow keys + Enter / Right Ctrl / Right Shift
+##   "kb:2"      keyboard block 2 — Space and every key not owned by blocks 0/1
+##   "demo:<n>"  scripted input (demo mode, tests)
+## Everything else in the game asks this autoload per SEAT, never per device,
+## so pads, keyboard and scripted input share every code path.
+
+signal seat_joined(seat: int, device: String)
+signal seat_left(seat: int, device: String)
+
+enum Seat { DRIVER, GUNNER, HONKER }
+const SEAT_COUNT := 3
+const SEAT_COLORS: Array[Color] = [
+	Color("#41a6f6"),  # driver: blue
+	Color("#ffcd75"),  # gunner: yellow
+	Color("#a7f070"),  # honker: green
+]
+
+## Logical buttons every device reports.
+##   "a"      main button (fire / honk / confirm)
+##   "b"      back
+##   "start"  pause / parent menu
+##   "any"    any button or key of that device (toddler-proof)
+const BUTTONS := ["a", "b", "start", "any"]
+
+const KB_BLOCKS := {
+	0: {
+		"up": [KEY_W], "down": [KEY_S], "left": [KEY_A], "right": [KEY_D],
+		"a": [KEY_SHIFT, KEY_TAB], "b": [KEY_Q], "start": [KEY_ESCAPE],
+	},
+	1: {
+		"up": [KEY_UP], "down": [KEY_DOWN], "left": [KEY_LEFT], "right": [KEY_RIGHT],
+		"a": [KEY_ENTER, KEY_KP_ENTER, KEY_CTRL], "b": [KEY_BACKSPACE], "start": [KEY_P],
+	},
+	2: {
+		"up": [], "down": [], "left": [], "right": [],
+		"a": [KEY_SPACE], "b": [], "start": [],
+	},
+}
+
+const DEADZONE := 0.3
+
+## seat -> device key ("" = empty seat)
+var seats: Array[String] = ["", "", ""]
+## seat -> chosen rider id (see Game.roster)
+var riders: Array[String] = ["", "", ""]
+
+## device key -> {"move": Vector2, "a": bool, "b": bool, "start": bool, "any": bool}
+var _now := {}
+var _prev := {}
+## Scripted devices: device key -> state dict, set by demo mode or tests.
+var _scripted := {}
+## Keys pressed this frame that belong to no block 0/1 binding (feed kb:2 "any").
+var _loose_keys := {}
+var _owned_keys := {}
+
+
+func _ready() -> void:
+	process_priority = -100  # poll before any gameplay node reads input
+	for block in [0, 1]:
+		for action in KB_BLOCKS[block]:
+			for k in KB_BLOCKS[block][action]:
+				_owned_keys[k] = true
+	Input.joy_connection_changed.connect(_on_joy_connection_changed)
+
+
+func _process(_delta: float) -> void:
+	poll()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and not event.echo:
+		var k: int = event.physical_keycode
+		if not _owned_keys.has(k):
+			if event.pressed:
+				_loose_keys[k] = true
+			else:
+				_loose_keys.erase(k)
+
+
+# ---------------------------------------------------------------- polling
+
+func poll() -> void:
+	_prev = _now
+	_now = {}
+	for d in all_devices():
+		_now[d] = _read_device(d)
+
+
+func all_devices() -> Array[String]:
+	var out: Array[String] = ["kb:0", "kb:1", "kb:2"]
+	for id in Input.get_connected_joypads():
+		out.append("pad:%d" % id)
+	for d in _scripted:
+		out.append(d)
+	return out
+
+
+func _read_device(d: String) -> Dictionary:
+	if _scripted.has(d):
+		var s: Dictionary = _scripted[d]
+		var st := {"move": s.get("move", Vector2.ZERO), "a": s.get("a", false),
+			"b": s.get("b", false), "start": s.get("start", false)}
+		st["any"] = s.get("any", st.a or st.b or st.start)
+		return st
+	if d.begins_with("kb:"):
+		return _read_keyboard(int(d.substr(3)))
+	if d.begins_with("pad:"):
+		return _read_pad(int(d.substr(4)))
+	return _empty_state()
+
+
+func _empty_state() -> Dictionary:
+	return {"move": Vector2.ZERO, "a": false, "b": false, "start": false, "any": false}
+
+
+func _keys_down(keys: Array) -> bool:
+	for k in keys:
+		if Input.is_physical_key_pressed(k):
+			return true
+	return false
+
+
+func _read_keyboard(block: int) -> Dictionary:
+	var m: Dictionary = KB_BLOCKS[block]
+	var v := Vector2(
+		float(_keys_down(m.right)) - float(_keys_down(m.left)),
+		float(_keys_down(m.down)) - float(_keys_down(m.up)))
+	var st := {"move": v.limit_length(1.0), "a": _keys_down(m.a),
+		"b": _keys_down(m.b), "start": _keys_down(m.start)}
+	st["any"] = st.a or st.b or st.start or v != Vector2.ZERO
+	if block == 2:
+		# The toddler block: every key nobody else owns is a honk.
+		var loose := false
+		for k in _loose_keys:
+			if Input.is_physical_key_pressed(k):
+				loose = true
+				break
+		st.a = st.a or loose
+		st.any = st.a
+	return st
+
+
+func _read_pad(id: int) -> Dictionary:
+	var v := Vector2(Input.get_joy_axis(id, JOY_AXIS_LEFT_X), Input.get_joy_axis(id, JOY_AXIS_LEFT_Y))
+	if v.length() < DEADZONE:
+		v = Vector2.ZERO
+	var dpad := Vector2(
+		float(Input.is_joy_button_pressed(id, JOY_BUTTON_DPAD_RIGHT)) - float(Input.is_joy_button_pressed(id, JOY_BUTTON_DPAD_LEFT)),
+		float(Input.is_joy_button_pressed(id, JOY_BUTTON_DPAD_DOWN)) - float(Input.is_joy_button_pressed(id, JOY_BUTTON_DPAD_UP)))
+	if dpad != Vector2.ZERO:
+		v = dpad
+	var a := Input.is_joy_button_pressed(id, JOY_BUTTON_A) or Input.is_joy_button_pressed(id, JOY_BUTTON_X) \
+		or Input.get_joy_axis(id, JOY_AXIS_TRIGGER_RIGHT) > 0.5
+	var b := Input.is_joy_button_pressed(id, JOY_BUTTON_B)
+	var start := Input.is_joy_button_pressed(id, JOY_BUTTON_START)
+	var any := false
+	for btn in JOY_BUTTON_SDL_MAX:
+		if Input.is_joy_button_pressed(id, btn):
+			any = true
+			break
+	return {"move": v.limit_length(1.0), "a": a, "b": b, "start": start, "any": any or v != Vector2.ZERO}
+
+
+# ---------------------------------------------------------------- devices
+
+func device_move(d: String) -> Vector2:
+	return _now.get(d, _empty_state()).move
+
+
+func device_pressed(d: String, button: String) -> bool:
+	return _now.get(d, _empty_state())[button]
+
+
+func device_just_pressed(d: String, button: String) -> bool:
+	return _now.get(d, _empty_state())[button] and not _prev.get(d, _empty_state())[button]
+
+
+## Devices that pressed "a"/"any" this frame and are not seated (join screen).
+func unseated_devices_just_pressed(button := "a") -> Array[String]:
+	var out: Array[String] = []
+	for d in _now:
+		if seat_of(d) == -1 and device_just_pressed(d, button):
+			out.append(d)
+	return out
+
+
+func set_scripted(d: String, state: Dictionary) -> void:
+	_scripted[d] = state
+
+
+func clear_scripted(d := "") -> void:
+	if d == "":
+		_scripted.clear()
+	else:
+		_scripted.erase(d)
+
+
+# ---------------------------------------------------------------- seats
+
+func seat_of(d: String) -> int:
+	return seats.find(d)
+
+
+func device_of(seat: int) -> String:
+	return seats[seat]
+
+
+func is_seated(seat: int) -> bool:
+	return seats[seat] != ""
+
+
+func seated_count() -> int:
+	return seats.count("") * -1 + SEAT_COUNT
+
+
+## Seat a device in the first free seat (DRIVER, then GUNNER, then HONKER).
+## Returns the seat, or -1 if it is already seated or every seat is taken.
+func join(d: String) -> int:
+	if seat_of(d) != -1:
+		return -1
+	var seat := seats.find("")
+	if seat == -1:
+		return -1
+	seats[seat] = d
+	seat_joined.emit(seat, d)
+	return seat
+
+
+func join_seat(d: String, seat: int) -> bool:
+	if seat_of(d) != -1 or seats[seat] != "":
+		return false
+	seats[seat] = d
+	seat_joined.emit(seat, d)
+	return true
+
+
+func leave(seat: int) -> void:
+	var d := seats[seat]
+	if d == "":
+		return
+	seats[seat] = ""
+	seat_left.emit(seat, d)
+
+
+func reset() -> void:
+	for s in SEAT_COUNT:
+		leave(s)
+	riders = ["", "", ""]
+
+
+func _on_joy_connection_changed(id: int, connected: bool) -> void:
+	if connected:
+		return
+	var seat := seat_of("pad:%d" % id)
+	if seat != -1:
+		leave(seat)
+
+
+# ---------------------------------------------------------------- per seat
+
+## Analog move vector for a seat (zero if empty).
+func move(seat: int) -> Vector2:
+	return device_move(seats[seat]) if seats[seat] != "" else Vector2.ZERO
+
+
+## Move snapped to 4 directions (for the gunner). Zero when idle.
+func dir4(seat: int) -> Vector2i:
+	var v := move(seat)
+	if v.length() < DEADZONE:
+		return Vector2i.ZERO
+	if absf(v.x) >= absf(v.y):
+		return Vector2i(signi(int(signf(v.x))), 0)
+	return Vector2i(0, int(signf(v.y)))
+
+
+func pressed(seat: int, button: String) -> bool:
+	return seats[seat] != "" and device_pressed(seats[seat], button)
+
+
+func just_pressed(seat: int, button: String) -> bool:
+	return seats[seat] != "" and device_just_pressed(seats[seat], button)
+
+
+## True if the device of any seated player just pressed button.
+func anyone_just_pressed(button: String) -> bool:
+	for s in SEAT_COUNT:
+		if just_pressed(s, button):
+			return true
+	return false

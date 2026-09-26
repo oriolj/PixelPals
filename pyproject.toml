@@ -1,0 +1,12 @@
+[project]
+name = "pixelpals-tools"
+version = "0.1.0"
+description = "Asset tools for PixelPals: sprite renderer/linter, SFX synth, shot sheets"
+requires-python = ">=3.12"
+dependencies = [
+    "pillow>=11",
+    "numpy>=2",
+]
+
+[tool.uv]
+package = false
