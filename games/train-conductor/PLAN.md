@@ -4,7 +4,7 @@ A wooden toy railway seen from above: dad runs the engine, the 5-year-old
 throws the points at every junction, the 2-year-old toots the whistle, and
 coloured passengers ride home to their matching coloured stations.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -25,7 +25,7 @@ Status: plan (2026-09-26)
 
 | Seat | Role | Pad | Keyboard |
 |---|---|---|---|
-| 1 `Seat.DRIVER` | Engine (adult) | stick up/down or right trigger: throttle; stick down / B: brake; A: horn; start: pause | kb:0: W faster, S slower/brake, Shift horn, Esc pause |
+| 1 `Seat.DRIVER` | Engine (adult) | stick up/down or right trigger: throttle; stick down / B: brake; A: horn; start: pause (*built:* stick/d-pad only; the shared `players.gd` folds the right trigger into A, so RT is the horn) | kb:0: W faster, S slower/brake, Shift horn, Esc pause |
 | 2 `Seat.GUNNER` | Points (5 y) | stick or d-pad left/right: set next junction; A: open the doors at a station | kb:1: Left/Right points, Enter doors |
 | 3 `Seat.HONKER` | Whistle (2 y) | any button | kb:2: Space or any unowned key |
 
@@ -88,6 +88,9 @@ zooming camera, which pixel art at 320x180 would fight (no free rotation).
 
 - **Canvas:** 1280x720 base, `stretch/mode = "canvas_items"`, aspect keep,
   2D MSAA x4 so Polygon2D edges stay smooth at 1080p and 4K.
+  *Deviation:* Godot 4.7 has no 2D MSAA in the Compatibility renderer (it
+  warns and ignores it); edges are smoothed with antialiased outline
+  polylines instead, and the shapes are `draw_*` calls rather than Polygon2D nodes.
 - **Palette (fixed list in `palette.gd`):** track wood `#d9a066`, groove
   `#8f563b`, grass `#99e550`/`#6abe30`, water `#5fcde4`, station colours red
   `#e43b44`, blue `#3978a8`, yellow `#feae34`, green `#3e8948`, ink outline
@@ -114,6 +117,10 @@ Asset list:
 | Animals: cow, duck, sheep | circles and ellipses, 2-pose look-up animation | 48 |
 | Steam puffs and rings | circles with alpha fade, CPUParticles2D | 12-40 |
 | Riders on the train | shared cast PNGs (pixel) scaled x3 nearest, framed in a round window | 48 |
+
+*Deviations:* the map has no track-on-track crossing, so "crossing" is the
+farm road's level crossing; the engine is 112x52 and the tender 100 long so
+the x3 riders fit; passengers are drawn front-on (~26x44) so kids read them.
 | HUD icons (stars, delivery pips) | same vector helpers | 32 |
 
 ## Audio
@@ -171,26 +178,46 @@ bridge, 3 animal spots; 12 passengers over the run. About 5 minutes.
 
 ### M1 grey-box
 
-- [ ] Shared extraction done (or reuse Fire Truck's if it came first).
-- [ ] Track graph with plain lines; engine and 3 carriages following it.
-- [ ] Throttle/brake, platform zone, roll-back on overshoot.
-- [ ] Junction choice + lock + visible sign; tour rule for 1 seat.
-- [ ] Passenger boarding/delivery by colour, carriage coupling.
-- [ ] Whistle, animals stepping aside; run end and party.
-- [ ] Demo driver plays a full run; couch test with plain shapes.
+- [x] Shared extraction done (or reuse Fire Truck's if it came first).
+      *Deviation:* agents could not edit `shared/` while 11 games were being
+      built, so the screens, synth (`tools/sfx.py`), sprite renderer and
+      `scripts/vector/shapes.gd` are local copies; the proposed shared diff
+      is in the build report and CLAUDE.md "Local copies".
+- [x] Track graph with plain lines; engine and 3 carriages following it.
+      (Went straight to the wooden track; carriages 1..5.)
+- [x] Throttle/brake, platform zone, roll-back on overshoot.
+- [x] Junction choice + lock + visible sign; tour rule for 1 seat.
+      The points seat flicks toward the branch *on screen* (any direction
+      across both branches toggles), so "left" never means train-relative left.
+- [x] Passenger boarding/delivery by colour, carriage coupling.
+      2 seats per carriage, starting with 1 carriage, max 5.
+- [x] Whistle, animals stepping aside; run end and party.
+- [x] Demo driver plays a full run; couch test with plain shapes.
+      Demo verified by test and captures; the couch test itself is pending
+      Oriol (no grey-box phase was built: the art came in the first pass).
 
 ### M2 art/audio
 
-- [ ] Wooden track generator with sleepers and grooves; stations, houses,
+- [x] Wooden track generator with sleepers and grooves; stations, houses,
       scenery; engine face and carriage windows with riders.
-- [ ] Night finale lighting (CanvasModulate + house window lights).
-- [ ] All sounds and both music loops; per-station delivery chimes.
+- [x] Night finale lighting (CanvasModulate + house window lights).
+      Lights and fireworks sit on a camera-following CanvasLayer outside the
+      night tint. The train rolls into the next platform (no separate depot).
+- [x] All sounds and both music loops; per-station delivery chimes.
+      Plus `music_menu`, `wheee`, `firework` and the menu blips. Needs a human listen.
 
 ### M3 polish/couch test
 
-- [ ] Check the kid can predict which way the train will go (sign readability).
-- [ ] Tune the platform zone width until dad hits perfect stops about half the time.
-- [ ] Three couch sessions; export and clean-clone run.
+- [x] Check the kid can predict which way the train will go (sign readability).
+      Checked in captures: the next sign glows and grows, its arrow points
+      along the chosen branch, the blade swings, beacons pulse. A real
+      5-year-old check is pending Oriol.
+- [x] Tune the platform zone width until dad hits perfect stops about half the time.
+      Tuned by simulation: docking window -300..+60 px, perfect ±35 px gives
+      ~55% perfect stops for a ±0.3 s braking error. Confirm on the couch.
+- [x] Three couch sessions; export and clean-clone run.
+      Export (`make export-linux`) and the clean-clone test + capture pass.
+      The three couch sessions are Oriol's to run (pending).
 
 ## Tests and verification
 
@@ -229,3 +256,20 @@ is not too dark to read.
 4. Carriages carrying the riders from the select screen, or does each kid
    pick "their" carriage colour?
 5. Later: a 2-player mode where the 5-year-old drives and dad throws points?
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen while building (2026-09-26); change any of them on the couch.
+
+1. **View:** top-down wooden railway, as planned.
+2. **Points:** one junction ahead only (the next one glows; it locks 1 s
+   before the engine). The kid flicks toward the branch as seen on screen.
+3. **Station names:** colours + shapes only, no text.
+4. **Riders:** the select-screen riders ride the train (driver in the cab,
+   kids on the tender); carriages have fixed colours and carry passengers.
+5. **Later 2-player swap (kid drives):** not built; the seats map to roles
+   in one place (`level.gd read_input()`), so a swap is a small change.
+6. Tuning: 2 passengers per carriage, 1 to 5 carriages, max speed 300 px/s,
+   up to 10 waiting passengers, one new every 12 s; the cow waits 2 s.
+7. Right trigger: horn (shared input folds it into A), throttle is the stick.
+8. The finale ends at the next platform instead of a separate depot.

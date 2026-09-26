@@ -1,0 +1,32 @@
+{
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  }
+}
