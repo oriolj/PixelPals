@@ -2,7 +2,7 @@
 
 Paint one big picture together, with brush strokes, stamps and splats, and print it for the fridge.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -80,7 +80,9 @@ paint (soft round dabs, smooth strokes, anti-aliased), and a printed
 picture at fridge size needs far more than 320x180 pixels, so pixel art
 does not fit.
 
-- Screen 640x360, `canvas_items` stretch, MSAA 4x.
+- Screen 640x360, `canvas_items` stretch, MSAA 4x. *Deviation:* no MSAA;
+  the Compatibility renderer (kept so it runs under xvfb and on any GPU)
+  has no 2D MSAA, so edges use anti-aliased draw calls instead.
 - **The painting is a separate 1920x1080 `SubViewport`** (A4 landscape at
   about 160 dpi), shown scaled into a 512x288 easel area. It never clears
   (`render_target_clear_mode = CLEAR_MODE_NEVER`), so each dab drawn into
@@ -91,12 +93,12 @@ does not fit.
 
 | Asset | Size (px) | How |
 |---|---|---|
-| brush dab | 8 / 24 / 64 diameter (canvas px) | a generated soft-edged radial `Image` (alpha falloff) tinted per colour, stamped along the stroke every 1/4 radius |
+| brush dab | 12 / 32 / 72 diameter (canvas px; *deviation:* 8/24/64 read too thin at TV distance) | a generated soft-edged radial `Image` (alpha falloff) tinted per colour, stamped along the stroke every 1/4 radius |
 | stamps x8 | 96-160 on canvas | `Polygon2D` point lists from formulas (star = 10 points, heart = parametric curve, flower = 6 circles plus a centre) drawn into the SubViewport |
 | splat | 120-260 on canvas | an irregular blob: a circle with 12-20 noise-offset radii, plus 3-6 drip polygons and droplets |
 | easel, paint pots x4, palette page dots | 32-512 | polygons and circles in `_draw()` |
 | brush cursor | size of the brush | ring in `_draw()` with the colour inside |
-| gold frame | 544x320 | nested polygons with a bevel gradient shader |
+| gold frame | 544x320 | nested polygons with a bevel gradient (*deviation:* vertex-colour gradients, no shader needed) |
 | gallery wall | 640x360 | flat polygons |
 | riders | 16x16 x2 frames | reused PixelPals PNGs at x2 |
 
@@ -117,7 +119,9 @@ loop, soft enough to talk over) and `music_menu` (reused).
   `tools/shots.py`.
 - **From PixelPals:** the demo driver pattern, join/select/party screens,
   the Makefile targets, the synth.
-- **Extract into shared/ first:** `Players.dir4_just_pressed(seat)` (the
+- **Extract into shared/ first:** (*as built:* `dir4_just_pressed` was
+  already in `players.gd`; the rest stayed local, per the rule that agents
+  do not edit `shared/`) `Players.dir4_just_pressed(seat)` (the
   pot picks; Garage Band needs it too), the shared screen router and
   screens, `shared/tools/synth.py`, and `shared/godot/vector.gd` (the
   polygon helpers Tower Topple and Garage Band also use).
@@ -126,7 +130,8 @@ loop, soft enough to talk over) and `music_menu` (reused).
 
 - **Painting into a never-clearing SubViewport**, with strokes as dabs
   interpolated between frames so fast moves leave no gaps.
-- **Undo:** at the end of each action, `get_texture().get_image()` (a GPU
+- **Undo:** (*as built:* at the START of each action, the canvas before it,
+  which is the same ring shifted by one) at the end of each action, `get_texture().get_image()` (a GPU
   readback, a few ms) is kept in a ring of 10 `Image`s (8 MB each, 80 MB
   max); undo draws the snapshot back as one full-size sprite.
 - **Coverage map** for splat placement: a 16x9 array of painted
@@ -152,28 +157,38 @@ gallery of the last three pictures; about 5 minutes per picture.
 
 ### M1 grey-box
 
-- [ ] Skeleton (vector settings, Makefile with `test` and `test-render`,
-  CLAUDE.md + AGENTS.md, shared autoload symlinks).
-- [ ] SubViewport canvas, dab strokes, 4 colours, 3 sizes.
-- [ ] Colour pots by direction, stamps as plain circles, splats as
-  plain blobs, coverage-based placement.
-- [ ] Undo ring, autosave, frame-it save to `user://`.
-- [ ] Fold-down for 1 and 2 seats.
-- [ ] Couch test: can the 5-year-old tell which pot is selected? Does
+- [x] Skeleton (vector settings, Makefile with `test` and `test-render`,
+  CLAUDE.md + AGENTS.md, shared autoload symlinks). `make test` runs both
+  suites; no MSAA (see Art direction).
+- [x] SubViewport canvas, dab strokes, 4 colours, 3 sizes.
+- [x] Colour pots by direction, stamps as plain circles, splats as
+  plain blobs, coverage-based placement (went straight to the M2 shapes).
+- [x] Undo ring, autosave, frame-it save to `user://`.
+- [x] Fold-down for 1 and 2 seats (also Brush + Splatter: no Colourist =
+  the Brush's own colour/tap-stamp mode).
+- [x] Couch test: can the 5-year-old tell which pot is selected? Does
   the toddler enjoy splats that avoid drawings, or want them on top?
+  Agent part done (the selected pot is enlarged on a yellow Colourist
+  card, bounces and the unselected ones dim); the family test itself is
+  pending Oriol, see the decisions below.
 
 ### M2 art and audio
 
-- [ ] Soft brush texture, 8 stamp shapes, splats with drips, rainbow splat.
-- [ ] Easel, pots, riders, gold frame, gallery wall.
-- [ ] Every sound above; loudness report.
+- [x] Soft brush texture, 8 stamp shapes, splats with drips, rainbow splat.
+- [x] Easel, pots, riders, gold frame, gallery wall.
+- [x] Every sound above; loudness report (`make sfx`: all at about
+  -15 LUFS, peaks ≤ -1 dBFS, loops seamless). Added `giggle` (the
+  toddler's cooldown press) and `whoosh` (leaving a seat).
 
 ### M3 polish and couch test
 
-- [ ] Print test: open a saved PNG and print it on the home printer;
-  check colours on paper and the margins.
-- [ ] The Pictures copy, gallery of the last three.
-- [ ] Clean-clone run; tuning from couch notes.
+- [x] Print test: open a saved PNG and print it on the home printer;
+  check colours on paper and the margins. Agent part done (1920x1080 RGB
+  PNG on `#fdfdf8` paper, render-tested); printing it is pending Oriol.
+- [x] The Pictures copy, gallery of the last three.
+- [x] Clean-clone run; tuning from couch notes (clean run done: wiped
+  `game/.godot`, tests and a shot green; couch-note tuning waits for the
+  playtest).
 
 ## Tests and verification
 
@@ -219,3 +234,28 @@ gallery render; the saved PNG matches the last frame's canvas.
    them in an in-game gallery on the select screen?
 4. Colouring-page outlines (a truck, a dinosaur) to paint inside, as an
    option for the 5-year-old later?
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen while building; each is easy to change.
+
+1. **Printing:** only save, never print automatically. Every framed picture
+   is a 1920x1080 PNG in `user://paintings/` and `~/Pictures/PaintParty/`;
+   print it from there (A4 landscape fits the 16:9 picture with margins).
+   Auto-print with `lp` can be added once the printer is known.
+2. **Splats on drawings:** never on purpose. They always go to the least
+   painted cell and shrink among drawings; the only way to hit dad's house
+   is a canvas that is already full. Turn on if the toddler asks for it.
+3. **Gallery:** the party screen shows the new picture and the previous two;
+   every picture is kept in `~/Pictures/PaintParty/`. No in-game gallery of
+   all pictures on the select screen yet.
+4. **Colouring pages:** not built (a later option).
+5. **Dad plus toddler (seat 3 direct join):** the keyboard's Space block
+   always takes the Splatter seat (as in PixelPals). A toddler on a second
+   PAD joins as seat 2 (Colourist), which is harmless: pots, stamps and pages.
+6. **Menu "b" = back to join** (as the plan says); the picture autosaves
+   first, so nothing is lost.
+7. **Unframed pictures** stay on disk as `wip-*.png` autosaves; they are not
+   reopened automatically on the next start.
+8. **Undo snapshots** are taken at the start of each action; a stamp and a
+   splat in the same frame undo together.

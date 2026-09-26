@@ -1,0 +1,6 @@
+# Family paintings never go in the repo (they live in user://paintings and
+# ~/Pictures/PaintParty); this is a guard in case a save path ever lands here.
+paintings/
+PaintParty/
+wip-*.png
+paint-2*.png
