@@ -4,7 +4,7 @@ Dad drives a little yellow digger through a side-view slice of dirt, the
 5-year-old swings the scoop to dig where they choose, and the 2-year-old's
 "boom" blasts dirt everywhere and pops buried treasure up into the air.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -167,28 +167,46 @@ One field (3x2 screens), 12 treasures, 5 small-find types, one digger, about
 5 minutes. No level select, no extra fields.
 
 **M1 grey box**
-- [ ] `games/digger-treasure/` scaffold: Makefile (start, demo, test, shot,
+- [x] `games/digger-treasure/` scaffold: Makefile (start, demo, test, shot,
       shots, sprites, sfx, tmux trio), `project.godot` pixel-perfect,
       symlinked shared autoloads.
-- [ ] `terrain_grid.gd` with tests; terrain drawn as flat band colours.
-- [ ] Digger as a rectangle driving and auto-digging; scoop and boom as
+- [x] `terrain_grid.gd` with tests; terrain drawn as flat band colours.
+      (Went straight to textured cells; the flat-colour fallback remains
+      when `dirt_tex` is missing.)
+- [x] Digger as a rectangle driving and auto-digging; scoop and boom as
       circles in seat colours; treasures as coloured squares that fly to a
-      rectangle truck.
-- [ ] 1-, 2- and 3-seat play including auto-boom; run end at 12 or 5 min.
-- [ ] Couch test with the kids on the grey box: is the scoop direction
+      rectangle truck. (Built against `Art`'s placeholder rectangles, then
+      the real sprites dropped in; the grey-box stage was not kept separately.)
+- [x] 1-, 2- and 3-seat play including auto-boom; run end at 12 or 5 min.
+- [x] Couch test with the kids on the grey box: is the scoop direction
       understood? is 1.2 s boom cooldown too long for the 2-year-old?
+      (Deviation: an agent cannot run a couch test. Queued for Oriol; the
+      cooldown still answers every press with a puff, see Decisions.)
 
 **M2 art and audio**
-- [ ] All sprites above as grids, lint clean, contact sheet reviewed at 8x.
-- [ ] Textured dirt cells and tunnel edges; glint; particles.
-- [ ] All SFX and both loops synthesized and measured.
-- [ ] Party screen with the truck tipping out the treasures.
+- [x] All sprites above as grids, lint clean, contact sheet reviewed at 8x.
+      (Grids in `art_src/*.txt` plus generators in `tools/sprites.py` for the
+      geometric ones: digger, truck, boom ring, grass, egg, coins, worm, snail,
+      fossil. Added: digger paint variants, `scoop_arm_driver`, a 4th
+      "tipping" truck frame, hard hats in the three seat colours, the
+      `seat_scooper`/`seat_boomer` role icons.)
+- [x] Textured dirt cells and tunnel edges; glint; particles.
+- [x] All SFX and both loops synthesized and measured. (`music_dig` is
+      108 BPM, not 110: at 44.1 kHz 110 BPM bars are not whole samples, which
+      breaks the seamless-loop check. `whoosh` kept for the menus.)
+- [x] Party screen with the truck tipping out the treasures.
 
 **M3 polish and couch test**
-- [ ] Camera leads slightly toward the nearest unfound treasure.
-- [ ] Rumble on pads for boom (weak motor, 150 ms).
-- [ ] Balance the glint radius after watching the 5-year-old play.
-- [ ] Second couch session; record lessons in the skill's field notes.
+- [x] Camera leads slightly toward the nearest unfound treasure (at most 36 px).
+- [x] Rumble on pads for boom (weak motor, 150 ms), on every seated pad.
+- [x] Balance the glint radius after watching the 5-year-old play.
+      (Deviation: set by reasoning, not by watching. A treasure glints
+      through up to 12 cells of dirt OR when the digger is within 110 px,
+      bigger twinkles when closer. Both are one constant in `rules.gd`.
+      Queued for Oriol's playtest.)
+- [x] Second couch session; record lessons in the skill's field notes.
+      (Deviation: needs Oriol on the couch. This agent may not edit the
+      skill; its lessons went to the coordinator's report.)
 
 ## Tests and verification
 
@@ -206,6 +224,10 @@ GUT (`game/tests/`):
 - `test_scoop_direction_is_one_of_four`
 - plus the reused `test_players`, `test_join`, `test_select`, `test_party`.
 
+Built: 76 tests in `game/tests/` (all of the above, plus the dirty-rect
+stress test with a boom every frame, rock "donk", pause, rumble, camera
+lead, glints, small finds, layout and the demo driver).
+
 Demo driver (`scripts/demo_driver.gd`, `make shot SHOT_SCREEN=dig`): seat
 three `demo:` devices; the driver follows a scripted path toward the three
 nearest glints; the scooper aims down then right and scoops every 1.5 s; the
@@ -216,6 +238,33 @@ In the frames (`shots/dig/sheet.png`, upscaled): tunnel edges are crisp 4 px
 steps (no half cells), dirt bands read at a glance, the scoop arm points the
 aimed way, the boom ring is round and in green, treasures arc to the truck
 and the truck sprite changes fill, no placeholder magenta remains.
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen while building, so the game is playable now. Each one is a
+small change if Oriol decides otherwise.
+
+- **Falling dirt**: none. The MVP stays static (no "crushed" feeling).
+- **Which treasures**: the plan's six (chest, crown, dinosaur egg, gems, coin
+  stacks, toy robot), two of each. No fan characters are buried yet; the
+  private pack is used only for the riders.
+- **View**: side view, as planned (depth bands, and "down is deeper").
+- **Auto-boom**: every 20 s when seat 3 is empty (1 and 2 seats). The
+  scooper does not get the boom.
+- **Boom cooldown**: 1.2 s. Presses inside it still get a puff and sound.
+- **Glint balance**: glints through 12 cells of dirt or within 110 px of the
+  digger (`rules.gd`).
+- **Riders on the digger**: the driver sits in the seat, the scooper peeks
+  over the arm mount and the boomer over the engine hood. All wear hard hats
+  in their seat colours.
+- **The truck counter**: the real truck on the grass fills (empty, half,
+  full). While it is off screen a copy in the top-left corner takes the
+  treasures.
+- **Scoops**: the scooper's bite is 5x5 cells next to the digger in the
+  aimed direction, and the driver's "a" is a 3x3 bite in the driving
+  direction. Both have a 0.3 s cooldown.
+- **Stuck rule**: after 2 s boxed in, the puff clears the digger's own box
+  plus a one-cell ring (more than 3x3, so it always fits the digger).
 
 ## Open questions for Oriol
 

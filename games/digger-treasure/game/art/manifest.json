@@ -1,0 +1,260 @@
+{
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "bone": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "boom_ring": {
+    "fps": 0,
+    "frames": 5,
+    "h": 64,
+    "w": 64
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "cloud_bg": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "coins": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "confetti": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "crown": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "digger": {
+    "fps": 8,
+    "frames": 4,
+    "h": 24,
+    "w": 32
+  },
+  "digger_blue": {
+    "fps": 8,
+    "frames": 4,
+    "h": 24,
+    "w": 32
+  },
+  "digger_green": {
+    "fps": 8,
+    "frames": 4,
+    "h": 24,
+    "w": 32
+  },
+  "digger_red": {
+    "fps": 8,
+    "frames": 4,
+    "h": 24,
+    "w": 32
+  },
+  "dino_egg": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "dirt_chunk": {
+    "fps": 0,
+    "frames": 4,
+    "h": 4,
+    "w": 4
+  },
+  "dirt_tex": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "dump_truck": {
+    "fps": 0,
+    "frames": 4,
+    "h": 24,
+    "w": 48
+  },
+  "fossil": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "gems": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "glint": {
+    "fps": 0,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  },
+  "grass_strip": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 320
+  },
+  "helmet": {
+    "fps": 0,
+    "frames": 1,
+    "h": 6,
+    "w": 12
+  },
+  "helmet_blue": {
+    "fps": 0,
+    "frames": 1,
+    "h": 6,
+    "w": 12
+  },
+  "helmet_green": {
+    "fps": 0,
+    "frames": 1,
+    "h": 6,
+    "w": 12
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "mole": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "scoop_arm": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 16
+  },
+  "scoop_arm_driver": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 16
+  },
+  "seat_boomer": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_driver": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_scooper": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "sky_hills": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 320
+  },
+  "snail": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "toy_robot": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "treasure_chest": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "trophy": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "worm": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  }
+}
