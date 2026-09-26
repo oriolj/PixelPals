@@ -4,7 +4,7 @@ Dad walks the zookeeper and the food cart around a tiny zoo, the 5-year-old
 picks which food each hungry animal wants from four pictures, and the
 2-year-old makes the animals sing and dance with any button.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26). Built in one pass; see [CLAUDE.md](CLAUDE.md) for the contracts.
 
 ## Why it fits our family
 
@@ -170,25 +170,38 @@ All synthesized by our code (a `tools/sfx.py`-style synth):
 One zoo, six animals, four foods, 12 meals, about 5 minutes.
 
 **M1 grey box**
-- [ ] Scaffold (Makefile with start, demo, test, shot, shots, sfx, tmux trio;
-      `project.godot` at 1280x720 canvas_items).
-- [ ] Animals as coloured circles with a letter-free icon (a coloured shape
-      per species), foods as four coloured squares, keeper as a capsule.
-- [ ] Food wheel, hint ladder, hunger scheduler, run end at 12 meals or 7
-      minutes; 1-, 2-, 3-seat play.
-- [ ] Couch test: does the 5-year-old understand the wheel without words?
-      does the 2-year-old find "their" animal?
+- [x] Scaffold (Makefile with start, demo, test, shot, shots, sfx, tmux trio;
+      `project.godot` at 1280x720 canvas_items). The Makefile also has
+      `gallery`, `assets`, `setup`, `import`, `ensure-import`, `editor`,
+      `export-linux`, `setup-export`.
+- [x] Animals as coloured circles... *Deviation*: skipped the grey box; the
+      vector art library went in first, so the logic was built and tested
+      directly on the final rigs.
+- [x] Food wheel, hint ladder, hunger scheduler, run end at 12 meals or 7
+      minutes; 1-, 2-, 3-seat play (tested for each).
+- [x] Couch test: *agent part only*. The rules a 5-year-old needs (wheel
+      pictures, wiggle then glow, third try always works) and the singer's
+      "nearest animal" pick are in place and tested. **The real couch session
+      is pending Oriol** (it needs the kids).
 
 **M2 art and audio**
-- [ ] `vector_art.gd`, six animals with all poses, keeper, foods, cart,
-      enclosures, bubble, wheel; gallery reviewed in silhouette.
-- [ ] Animal sounds (2-3 variants each), SFX, both loops, measured.
-- [ ] Party screen stage.
+- [x] `vector_art.gd`, six animals with all poses, keeper, foods, cart,
+      enclosures, bubble, wheel; gallery reviewed in silhouette (the seal
+      first read as a penguin in silhouette; it got a tail sweeping sideways).
+- [x] Animal sounds (2-3 variants each: 17 voices), SFX, both loops,
+      measured (`make sfx` report: peaks under -1 dBFS, voices -13 LUFS,
+      rabbits -18 on purpose, SFX -15, music loops seamless, 6.4 MB total).
+      Spectrograms checked; **a human listen is still pending**.
+- [x] Party screen stage.
 
 **M3 polish and couch test**
-- [ ] Animals turn to watch the keeper; dance synced to the music beat.
-- [ ] Balance: time between hunger waves, hint ladder speed.
-- [ ] Couch session with both kids; lessons into the skill's field notes.
+- [x] Animals turn to watch the keeper (eyes and head); dances use the
+      music's playback position as the beat clock (100 BPM).
+- [x] Balance: `rules.gd` pacing constants (first hunger 1.2 s, 2.5 s gap
+      after a meal, 4 s round break, 4.5 s end dance). First guess; tune on
+      the couch.
+- [x] Couch session with both kids: **pending Oriol**. Lessons from the build
+      (below) are ready for the skill's field notes.
 
 ## Tests and verification
 
@@ -206,6 +219,14 @@ GUT:
 - `test_solo_keeper_can_pick_and_throw`
 - `test_no_label_nodes_in_the_zoo_screen` (walks the tree: no `Label` or
   `RichTextLabel` outside the debug overlay)
+
+All twelve exist in `game/tests/zoo/` (the run-end test covers both
+endings; the scheduler tests run 200-300 seeds). Added: feeder dir4 + a,
+nothing picked throws nothing, round break, pause, idle call-outs,
+buddies follow, singing never blocks the feeder (a real bug the demo found:
+the singer's press made the penguin dance and a dancing animal refused
+food), art rigs and poses, gallery pages, join/select/party, and a demo
+driver test that plays the plan's scripted route against a real zoo.
 
 Demo driver (`make shot SHOT_SCREEN=zoo`): the keeper walks a scripted
 route to the monkey then the penguin; the feeder picks hay first (wrong,
@@ -227,3 +248,34 @@ the refusal head shake visible across two frames, no text anywhere.
   bamboo, ice cream as a silly one)?
 - Is a tilted top-down view right, or a side-on row of enclosures (simpler
   walking, left/right only)?
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen during the build so it could be finished; each is easy to change.
+
+- **Recordings**: none. All 17 animal voices are synthesized (formant
+  voice). If they do not read on the couch, the CC0-recordings question is
+  still yours.
+- **Which six animals**: the plan's guess (monkey, penguin, giraffe on top;
+  rabbit, elephant, seal below). Adding one is a builder in `animals.gd`, a
+  `RIGHT_FOOD` entry and a voice in `sfx.py`.
+- **Four foods only**; no second zoo.
+- **View**: the tilted top-down zoo, one and a half screens wide (1920x720
+  world, the camera follows the keeper sideways only).
+- **Keeper "a" with a feeder present** rings the cart's little bell (plan:
+  "open the gate"); it throws only when there is no feeder.
+- **The wheel sits beside and above the keeper**, on the side away from the
+  animal, and the keeper stands beside the gate: directly above him it covered
+  the animal the child has to look at.
+- **Select**: each seat picks a buddy animal (they trail the keeper) and a
+  hat colour (up/down); the keeper wears seat 1's hat.
+- **"Nearest animal"** for the singer is measured to each enclosure's feeding
+  spot, so the pick is stable while animals wander.
+- **The bell** gives every animal a snack but no extra stars.
+- **Palette**: the plan's 12 core colours plus extra shades for animals and
+  props (it named only nine). Star gold `#ffb938` differs from banana
+  `#ffd23f`.
+- **Shared code not extracted** (the plan's "extract to shared first"): this
+  build could not touch `shared/`. Music ducking is a local helper in
+  `game_state.gd`; `vector_art.gd` and the gallery are ready to move to
+  `shared/godot/vector/` for Pancake Kitchen.
