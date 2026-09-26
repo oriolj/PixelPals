@@ -4,7 +4,7 @@ A little yellow submarine explores a dark, glowing reef: dad steers, the
 5-year-old takes photos of every creature for the family album, the 2-year-old
 flashes the sub's lights and makes the sea dance.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-26)
 
 ## Why it fits our family
 
@@ -181,26 +181,50 @@ whale pass, album persistence. About 5-6 minutes.
 
 ### M1 grey-box
 
-- [ ] Shared `sprites.py` with palettes, `save.gd`, screens extracted.
-- [ ] Sub movement with inertia, bumps, current at the edges.
-- [ ] Viewfinder aim + assist + snap; album data model and strip with coloured squares.
-- [ ] Creature behaviours as coloured squares (hiders, light-lovers, whale).
-- [ ] Lights with any press; auto modes for fewer seats; pearl trail.
-- [ ] Run end, album screen, persistence and parent reset.
-- [ ] Demo driver finds at least 8 species in 60 s; couch test in grey.
+- [x] Shared `sprites.py` with palettes, `save.gd`, screens extracted.
+  *Deviation: agents may not edit `shared/`, so `tools/sprites.py` (with
+  `--palette`, the `; palette:` remap and the silhouette outputs) and
+  `game/scripts/save.gd` live in this game and are proposed for `shared/`
+  (see CLAUDE.md). The join/select screens are copies adapted from PixelPals.*
+- [x] Sub movement with inertia, bumps, current at the edges.
+- [x] Viewfinder aim + assist + snap; album data model and strip with coloured squares.
+- [x] Creature behaviours as coloured squares (hiders, light-lovers, whale).
+- [x] Lights with any press; auto modes for fewer seats; pearl trail.
+- [x] Run end, album screen, persistence and parent reset.
+- [x] Demo driver finds at least 8 species in 60 s; couch test in grey.
+  *The demo finds all 12 in about 40 s (tested). The grey couch test was
+  skipped: the art landed the same day, so the first couch test is with art
+  (pending Oriol).*
 
 ### M2 art/audio
 
-- [ ] All sprite grids, silhouettes, reef generator; lint and contact sheet.
-- [ ] Lighting with banding shader; depth-based darkness.
-- [ ] 12 species motifs and all SFX; music with depth filter.
+- [x] All sprite grids, silhouettes, reef generator; lint and contact sheet.
+  *Most sprites are geometry generators (`tools/art_gen.py`) rather than
+  hand grids, through the same renderer and lint; the reef generator
+  (`tools/reef.py`) writes `game/data/reef.json`, a map read at runtime
+  (tiles drawn from 16x16 tile sprites), not grid files. Sheets:
+  `art_src/contact_sheet*.png`, `art_src/album_sheet.png`.*
+- [x] Lighting with banding shader; depth-based darkness.
+  *The 4 bands + ordered dither are baked into the generated light
+  textures (`lights.gd`) instead of a shader: same pixels, testable
+  (`test_light_textures_are_banded_not_smooth`).*
+- [x] 12 species motifs and all SFX; music with depth filter.
+  *7.0 MB of audio (limit raised to 8 MB for the 24 s reef loop). Not yet
+  heard by a human.*
 
 ### M3 polish/couch test
 
-- [ ] Every flash and snap answered within 2 frames; no creature scary at 1x.
-- [ ] The dark zone is dark but readable on the TV; tune CanvasModulate.
-- [ ] Three couch sessions across days to see the album motivate return.
-- [ ] Export and clean-clone run (album saved outside the repo).
+- [x] Every flash and snap answered within 2 frames; no creature scary at 1x.
+- [x] The dark zone is dark but readable on the TV; tune CanvasModulate.
+  *Tuned from frames (the trench ambient raised so rocks read; the sub is
+  unshaded so it never turns olive). Still to confirm on the real TV.*
+- [x] Three couch sessions across days to see the album motivate return.
+  *Handed over: only Oriol can run these (pending Oriol, not done).*
+- [x] Export and clean-clone run (album saved outside the repo).
+  *Clean-clone run verified (wiped `game/.godot`, tests + capture green);
+  the album lives in `user://`. `make export-linux` was not run: it needs
+  the 1.3 GB templates (`make setup-export`), not installed on this machine
+  (pending).*
 
 ## Tests and verification
 
@@ -241,3 +265,36 @@ lit; the album strip fills over time; the flash never whites out more than
    fantasy creatures? A mix?
 4. Is a dark trench OK for the 2-year-old, or keep everything bright?
 5. Should printing the album page (a PNG for the fridge) come in M3?
+
+## Decisions taken (pending Oriol)
+
+Defaults chosen for the open questions and for gaps the plan left, so the
+game could be built today. Each is easy to change.
+
+1. **Pixel art with lighting** (the plan's choice): Endesga 32, banded 2D
+   lights. *Deviation: the plan's deep-water `#0e0f19` is not in Endesga 32;
+   the darkest water is `#181425`.*
+2. **One album per family**, kept between sessions in
+   `user://album.json` (species, count, best photo score; no names). The
+   demo and the tests use their own files and never touch it.
+3. **Real species** (clownfish, turtle...), drawn cute; the whale is a
+   13th "big friend" with its own double page, not one of the 12 slots.
+4. **The dark trench is kept**, but every creature there glows when lit,
+   the sub is always bright, and the toddler's lights make it dance.
+5. **No album print in M3** (a PNG for the fridge is a later add).
+6. **"All 12 found" ends the run when the 12 were photographed in this
+   dive**, not in the album overall (a full album would otherwise end every
+   dive at once).
+7. **Auto camera (no Camera seat)** snaps only subjects not yet
+   photographed this dive; auto lights (no Lights seat) flash every 8 s and
+   when a shy creature is within about 3 tiles of the sub, with 1 or 2 seats.
+8. **Join screen**: the Camera's B opens the album (so the Camera seat
+   cannot leave with B), the pilot's start and B act on release so that
+   start + B held for 3 s can be the parent reset.
+9. **The whale** comes after 20% of the dive, when the sub is in the top
+   half (at 80% it comes wherever the sub is), swimming past the sub once.
+10. **A press of the Lights seat inside its 0.25 s cooldown** still blows a
+    few bubbles, so no press goes unanswered.
+11. **Music**: the reef loop's low-pass opens as you go deeper (the plan's
+    wording); the opposite (muffled when deep) is a one-line change.
+

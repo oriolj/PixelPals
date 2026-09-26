@@ -1,0 +1,530 @@
+{
+  "album_slot": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "anemone": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "anglerfish": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "blue_tang": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "bubble": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "bubble_small": {
+    "fps": 0,
+    "frames": 1,
+    "h": 4,
+    "w": 4
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "clownfish": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "coral": {
+    "fps": 0,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "crab": {
+    "fps": 4,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "eel": {
+    "fps": 4,
+    "frames": 4,
+    "h": 24,
+    "w": 24
+  },
+  "flash": {
+    "fps": 30,
+    "frames": 3,
+    "h": 64,
+    "w": 64
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "icon_album": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_anglerfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_blue_tang": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_bubble": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_clownfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_crab": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_eel": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_jellyfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_lantern_fish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_octopus": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pufferfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_rock_smile": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_seahorse": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_shell": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_squid": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_starfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_turtle": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "icon_whale": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "jellyfish": {
+    "fps": 6,
+    "frames": 4,
+    "h": 24,
+    "w": 16
+  },
+  "kelp": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "kelp_top": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "lantern_fish": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "mini_bubble": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "mini_rock_smile": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "mini_shell": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "mini_starfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "octopus": {
+    "fps": 4,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "pearl": {
+    "fps": 8,
+    "frames": 4,
+    "h": 6,
+    "w": 6
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "polaroid": {
+    "fps": 0,
+    "frames": 1,
+    "h": 28,
+    "w": 24
+  },
+  "pufferfish": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "pufferfish_puffed": {
+    "fps": 6,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "rock": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "rock_smile": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "rock_top": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "sand": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "sand_top": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seahorse": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "seat_driver": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_gunner": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_honker": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "shell": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 12
+  },
+  "sil_anglerfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_blue_tang": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_bubble": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_clownfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_crab": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_eel": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_jellyfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_lantern_fish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_octopus": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_pufferfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_rock_smile": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_seahorse": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_shell": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_squid": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_starfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_turtle": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_whale": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 20
+  },
+  "sil_whale_big": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 128
+  },
+  "squid": {
+    "fps": 4,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "star": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "starfish": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 12
+  },
+  "sub": {
+    "fps": 12,
+    "frames": 4,
+    "h": 24,
+    "w": 40
+  },
+  "turtle": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "viewfinder": {
+    "fps": 0,
+    "frames": 2,
+    "h": 40,
+    "w": 48
+  },
+  "whale": {
+    "fps": 2,
+    "frames": 2,
+    "h": 48,
+    "w": 128
+  },
+  "wreck": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 96
+  }
+}
