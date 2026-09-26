@@ -1,0 +1,176 @@
+{
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "balloon": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 16
+  },
+  "big_star": {
+    "fps": 8,
+    "frames": 4,
+    "h": 24,
+    "w": 24
+  },
+  "bird": {
+    "fps": 8,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "bullet": {
+    "fps": 10,
+    "frames": 2,
+    "h": 6,
+    "w": 6
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "cloud_bg": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "cloud_grump": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 24
+  },
+  "cloud_scared": {
+    "fps": 10,
+    "frames": 2,
+    "h": 16,
+    "w": 24
+  },
+  "confetti": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "flower": {
+    "fps": 0,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "ground": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "heart": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "hills": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 320
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "seat_driver": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_gunner": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_honker": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "star": {
+    "fps": 8,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  },
+  "trophy": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "tub": {
+    "fps": 4,
+    "frames": 2,
+    "h": 24,
+    "w": 48
+  },
+  "turret": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  }
+}

@@ -162,6 +162,8 @@ func step(dt: float) -> void:
 
 func _add_icon(i: int) -> void:
 	var s := Art.sprite("star", C_YELLOW, Vector2i(8, 8))
+	s.stop()  # rows of spinning stars read as "I I I": show them face-on
+	s.frame = 0
 	var row := i / PER_ROW
 	var col := i % PER_ROW
 	var y := 10 + row * 10

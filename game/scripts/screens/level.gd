@@ -181,6 +181,8 @@ func _build() -> void:
 	hud = Hud.new()
 	add_child(hud)
 	var hud_star := _spr("star", C_YELLOW, Vector2i(8, 8), hud)
+	hud_star.stop()
+	hud_star.frame = 0
 	hud_star.position = Vector2(10, 6)
 	hud.star = hud_star
 
