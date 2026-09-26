@@ -41,3 +41,35 @@ The same `Players` seat/input autoload, the keyboard blocks, the demo driver
 and frame captures, the art pipeline (grids or generators plus lint) and the
 synthesized audio all carry over. Most ideas above are the "shared vehicle"
 pattern with a different vehicle.
+
+## Roadmap: shared work before the second game
+
+The 12 plans (written 2026-09-26) all ask for the same extractions from
+PixelPals into `shared/`. Do them once, as the first step of whichever game
+is built next, and keep PixelPals green (`make test` at the root):
+
+- [ ] **Screens**: the join, select and party screens and the screen router
+  (`Game.goto`), made generic. Seat names become neutral (seat 1/2/3 with
+  a per-game role icon) instead of DRIVER/GUNNER/HONKER.
+- [ ] **Input helpers**: `Players.dir4_just_pressed(seat)` (menus and
+  junction choices) and `aim.gd` (aim assist).
+- [ ] **Asset tools**: the `sprites.py` engine (grids, generators, lint,
+  contact sheet) and the `sfx.py` synth, split into a shared engine plus
+  per-game content.
+- [ ] **Vector helpers**: a small helper for drawing flat vector shapes
+  (Polygon2D, rounded rectangles, outlines) for the non-pixel games.
+- [ ] **Demo driver**: a base class so each game only scripts its own
+  inputs.
+
+## Open questions (all games)
+
+- **Dad plus toddler only.** With two pads, the second pad takes seat 2, not
+  the toddler's seat 3. On the keyboard, kb:2 already takes seat 3 when it
+  is free. Proposal: on the join screen, pressing a seat's icon direction
+  (or holding) picks that seat explicitly.
+- **kb:2 has no directions**, so the 5-year-old's roles need kb:1 or a pad.
+- **Real recordings** (e.g. CC0 animal sounds for Zoo Keeper) if the
+  synthesized ones do not sound right. This is Oriol's call.
+- **Which game next?** The recommended order is Tower Topple (a small scope
+  and the toddler's favourite), then Submarine Safari, then Fire Truck
+  Rescue.
