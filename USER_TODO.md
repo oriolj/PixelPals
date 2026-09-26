@@ -17,3 +17,7 @@ on what the playtest shows.
   mapping.
 - [ ] Optional: `make -C games/pixelpals setup-export` (1.3 GB download, keeps ~100 MB), then
   `make -C games/pixelpals export-linux` for a standalone binary.
+- [ ] **Pick the next game.** 12 plans are in `games/<slug>/PLAN.md`; I
+  recommend Tower Topple, then Submarine Safari, then Fire Truck Rescue.
+  Each plan ends with open questions that are your call. Building starts
+  with the shared extractions in [docs/ideas.md](docs/ideas.md#roadmap-shared-work-before-the-second-game).
