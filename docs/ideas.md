@@ -9,8 +9,8 @@ Ideas list, started 2026-09-26. Every idea keeps the PixelPals formula:
 - No game over, no text, sessions of 3-10 minutes.
 
 Not tied to pixel art: some ideas suit low-poly 3D or flat vector better.
-Every idea now has a plan in `games/<slug>/PLAN.md` (status: plan). The first game,
-[PixelPals](../games/pixelpals/README.md), is playable.
+All 12 ideas were built on 2026-09-27, one agent per game, each plan implemented M1-M3
+(status in each `PLAN.md`, how to play in each `README.md`). Space Mission (#13) is a plan.
 
 | # | Idea | Adult | 5-year-old | 2-year-old | Style | Why the kids would like it |
 |---|---|---|---|---|---|---|
@@ -74,3 +74,29 @@ is built next, and keep PixelPals green (`make test` at the root):
 - **Which game next?** The recommended order is Tower Topple (a small scope
   and the toddler's favourite), then Submarine Safari, then Fire Truck
   Rescue.
+
+## Shared API gaps found while building the 12 games
+
+Each game ships a local stand-in; move these into `shared/` together and
+switch the games over (then `make test` at the root, all games green):
+
+- [ ] `Sfx.duck(db, seconds)` / `Sfx.set_music_volume(db)` (Digger
+  Treasure, Zoo Keeper reach into `Sfx._music`).
+- [ ] `Sfx.loop(name, on, volume_db, pitch)` or a player handle, for
+  speed-driven loops (Fire Truck `loops.gd`, Train `load_stream()`,
+  Pancake sizzle, Tractor engine).
+- [ ] `Art.image(name) -> Image` (Digger Treasure `art_image.gd`).
+- [ ] Neutral seat aliases `Seat.ADULT/KID/TODDLER` (Fire Truck, Pillow
+  Fort, Zoo Keeper define their own).
+- [ ] The right trigger as its own button (shared `players.gd` folds RT
+  into "a"; Train wanted RT = throttle).
+- [ ] Explicit seat choice on join (Tower Topple's down-flick moves a pad
+  to the toddler seat; generalise it for dad + toddler on pads).
+- [ ] `shared/tools/synth.py` + per-game sound lists (12 copies of
+  PixelPals's `sfx.py` today) and `shared/tools/sprites.py` with
+  `--palette` remap and silhouettes (Submarine Safari's version).
+- [ ] `shared/godot/vector/` (shapes, palette helpers: Tractor, Train,
+  Tower, Pancake, Zoo each have one) and `shared/godot/save.gd`
+  (Submarine Safari's versioned JSON).
+- [ ] The join/select/party screens and the demo-driver base (copied into
+  every game).

@@ -15,18 +15,18 @@ make test             # tests of every playable game
 | Game | Status |
 |---|---|
 | [PixelPals](games/pixelpals/README.md): the flying bathtub | playable |
-| [Fire Truck Rescue](games/fire-truck-rescue/PLAN.md) | plan |
-| [Train Conductor](games/train-conductor/PLAN.md) | plan |
-| [Tractor Farm](games/tractor-farm/PLAN.md) | plan |
-| [Submarine Safari](games/submarine-safari/PLAN.md) | plan |
-| [Tower Topple](games/tower-topple/PLAN.md) | plan |
-| [Garage Band](games/garage-band/PLAN.md) | plan |
-| [Paint Party](games/paint-party/PLAN.md) | plan |
-| [Rocket to the Moon](games/rocket-to-the-moon/PLAN.md) | plan |
-| [Digger Treasure](games/digger-treasure/PLAN.md) | plan |
-| [Zoo Keeper](games/zoo-keeper/PLAN.md) | plan |
-| [Pancake Kitchen](games/pancake-kitchen/PLAN.md) | plan |
-| [Pillow Fort Hide and Seek](games/pillow-fort/PLAN.md) | plan |
+| [Fire Truck Rescue](games/fire-truck-rescue/README.md) | playable |
+| [Train Conductor](games/train-conductor/README.md) | playable |
+| [Tractor Farm](games/tractor-farm/README.md) | playable |
+| [Submarine Safari](games/submarine-safari/README.md) | playable |
+| [Tower Topple](games/tower-topple/README.md) | playable |
+| [Garage Band](games/garage-band/README.md) | playable |
+| [Paint Party](games/paint-party/README.md) | playable |
+| [Rocket to the Moon](games/rocket-to-the-moon/README.md) | playable |
+| [Digger Treasure](games/digger-treasure/README.md) | playable |
+| [Zoo Keeper](games/zoo-keeper/README.md) | playable |
+| [Pancake Kitchen](games/pancake-kitchen/README.md) | playable |
+| [Pillow Fort Hide and Seek](games/pillow-fort/README.md) | playable |
 | [Space Mission](games/space-mission/PLAN.md): ISS, Shuttle, Mars landing and rover | plan |
 
 The ideas and the reasoning behind them are in [docs/ideas.md](docs/ideas.md).
