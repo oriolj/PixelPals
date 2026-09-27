@@ -137,7 +137,7 @@ from PixelPals and adapted.
   a camera for the toddler.
 - **select:**
   - The riders appear in space helmets: penguin, monkey, fox, frog, robot,
-    plus the private pack (Sonic, Mario and the rest, private repo only).
+    plus the private pack (Sonic, Mario and the rest, local only, gitignored).
   - A second row has 3 planet icons for the starting stage (default:
     stage 1).
 - **pause:** as in PixelPals, driven by the Pilot only.

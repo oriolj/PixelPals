@@ -43,8 +43,7 @@ ends with a yawn. Personal (oriolj) scope. Load the **video-games** skill
   keyboard mixed. **No text in the UI.** The toddler seat can never pause,
   lift, or lose anything.
 - **Third-party characters** (the private pack riders, copied from PixelPals)
-  live in `game/private_pack/` and `art_src/private/`; they are committed only
-  because the repo is private. Never publish them; `make export-linux`
+  live in `game/private_pack/` and `art_src/private/`; they are gitignored and kept only on the family's machine (never committed). Never publish them; `make export-linux`
   excludes the pack.
 - **Verify before claiming**: `make test`, then `make shots` and look at
   `shots/<screen>/sheet.png`. `make shot` (fort) also runs `make light-check`.

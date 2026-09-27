@@ -42,7 +42,7 @@ over, no text, 4-6 minute runs. Personal (oriolj) scope. Load the
 - **No text in the UI. Never let a child's input end or hurt the run.** The
   siren seat can only make noise, lights and rescues.
 - **Third-party characters** live in `game/private_pack/` and
-  `art_src/private/` (committed only because the repo is private; see the root
+  `art_src/private/` (gitignored and kept only on the family's machine (never committed); see the root
   CLAUDE.md). `make export-linux` excludes the pack.
 - **Verify before claiming**: `make test`, then `make shots` and look at every
   `shots/<screen>/sheet.png`.

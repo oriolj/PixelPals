@@ -8,7 +8,7 @@ Usage: uv run python tools/sprites.py
 Sources
     art_src/*.txt           -> game/art/<name>.png + game/art/manifest.json
     art_src/private/*.txt   -> game/private_pack/art/<name>.png + its manifest.json
-                               + game/private_pack/riders.json (committed: private repo)
+                               + game/private_pack/riders.json (gitignored: local only)
     GENERATORS (below)      -> procedural sprites (room_bg, fort, spots, toys, tips, friends...)
 
 Grid format (one or more sprites per file)

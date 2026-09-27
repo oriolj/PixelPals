@@ -7,3 +7,7 @@
 # Outputs
 shots/
 build/
+# Third-party fan characters (Sonic, Minions, Mario...): family use only.
+# They live only on the family's machine; this repo is public.
+**/private_pack/
+**/art_src/private/

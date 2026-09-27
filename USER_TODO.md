@@ -31,3 +31,12 @@ that game.
 - [ ] **Decide on autostart** of the launcher at login (not set up):
   `cp ~/.local/share/applications/couch-games.desktop ~/.config/autostart/`
   on the TV PC. Your call: it only matters if that PC is used just for games.
+- [ ] **Back up the fan-character packs** (Sonic, Minions, Mario...). Since
+  the repo went public they exist only on this machine, in each game's
+  `game/private_pack/` and `art_src/private/` (gitignored). They are also in
+  the full pre-purge history bundle
+  `~/git/oriolj/VideoGames/PixelPals-private-history-2026-09-27.bundle`
+  (84 MB, outside the repo). Keep that bundle somewhere safe but private
+  (not in any public place); a fresh clone of the public repo will not have
+  the fan characters. To restore them on another machine: copy those folders
+  over, or `git clone <bundle>` into a scratch dir and copy them out.

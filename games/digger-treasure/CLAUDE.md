@@ -28,7 +28,7 @@ Load the **video-games** skill (`~/git/oriolj/LLM_SKILLS/skills/video-games/SKIL
   `sfx.gd`, and this game's `scripts/art_image.gd`). Run/test targets depend on
   `ensure-import`.
 - **Third-party characters** live in `game/private_pack/` and `art_src/private/`
-  (copied from PixelPals, committed only because the repo is private).
+  (copied from PixelPals, gitignored and kept only on the family's machine (never committed)).
   `make export-linux` excludes the pack.
 - **Verify before claiming:** `make test`, then `make shots` and look at
   `shots/<screen>/sheet.png`.

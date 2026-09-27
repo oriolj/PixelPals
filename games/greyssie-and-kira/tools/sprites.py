@@ -16,7 +16,7 @@ Usage: uv run python tools/sprites.py
 Sources
     art_src/*.txt           -> game/art/<name>.png + game/art/manifest.json
     art_src/private/*.txt   -> game/private_pack/art/<name>.png + its manifest.json
-                               + game/private_pack/riders.json (committed: private repo)
+                               + game/private_pack/riders.json (gitignored: local only)
     GENERATORS (below)      -> procedural sprites (cats, walkers, house tiles, spots, props)
 
 Grid format: see Pillow Fort / PixelPals (# name WxH fps=N [outline] [base=] [recolor=] [mirror];

@@ -284,7 +284,7 @@ Look at the frames for:
    who is chatty, who sleeps where.)
 3. **The house:** which rooms are on each of the three floors, and where are
    the stairs and the cats' bowls? A rough list is enough. It stays in this
-   private repo; no address or photos of the house.
+   public repo: no address or photos of the house.
 4. **Real meow recordings** from your phone as their voices, or
    synthesized?
 5. **Should the family appear as the walker** (pixel versions of you and

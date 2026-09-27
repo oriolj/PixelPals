@@ -33,7 +33,7 @@ Load the **video-games** skill (`~/git/oriolj/LLM_SKILLS/skills/video-games/SKIL
 - **Assets load from source bytes** (shared `art.gd`/`sfx.gd`); every run/test target depends
   on `ensure-import`. The data file `game/data/timeline.json` is read with `FileAccess`.
 - **Third-party riders** (Sonic, Minions, Mario...) are in `game/private_pack/` and
-  `art_src/private/` (copied from PixelPals), committed only because the repo is private;
+  `art_src/private/` (copied from PixelPals), gitignored and kept only on the family's machine (never committed);
   `make export-linux` excludes them.
 - **Verify before claiming**: `make test`, then `make shots` and look at `shots/<screen>/sheet.png`.
 

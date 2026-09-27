@@ -37,7 +37,7 @@ game over and no text. Load the **video-games** skill
   The Toppler's press before the button lights is purely cosmetic: faces
   giggle, and no impulse or physics property changes (a test guards this).
 - **Third-party characters** stay in `game/private_pack/` and
-  `art_src/private/` (committed only because the repo is private). `make
+  `art_src/private/` (gitignored and kept only on the family's machine (never committed)). `make
   export-linux` excludes the pack.
 - **Verify before claiming.** Run `make test`, then `make shots`, and look at
   `shots/<screen>/sheet.png` (2x). Physics is not bit-deterministic: tests

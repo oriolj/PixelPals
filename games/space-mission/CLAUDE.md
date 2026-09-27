@@ -47,7 +47,7 @@ seat completes itself after 5 s. Personal (oriolj) scope.
   for the two sound loops). Every run/test target depends on `ensure-import`.
 - **Third-party riders** (Sonic, Mario and the rest) are in
   `game/private_pack/` and `art_src/private/`, copied from PixelPals and
-  committed only because the repo is private. `make export-linux` excludes
+  gitignored and kept only on the family's machine (never committed). `make export-linux` excludes
   them. Never publish them.
 - **Verify before claiming**: `make test`, then `make shots` and look at
   `shots/<screen>/sheet.png`.

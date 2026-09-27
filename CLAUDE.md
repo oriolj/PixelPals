@@ -2,7 +2,7 @@
 
 Games that Oriol plays on the couch with his kids, aged 5 and 2. They run on a
 Linux PC on the TV with up to 3 pads, or keyboard only. The repo is
-[oriolj/PixelPals](https://github.com/oriolj/PixelPals) (**private**), named
+[oriolj/PixelPals](https://github.com/oriolj/PixelPals) (**public** since 2026-09-27), named
 after its first game. It is personal (oriolj) scope.
 
 Load the **video-games** skill
@@ -59,9 +59,12 @@ To see which games are playable and which are plans, run `make list`.
   more than 1k GitHub stars.
 - **Third-party characters** (Sonic, Shadow, Knuckles, Robotnik, the three
   Minions, Mario, Luigi) are fan art for private family use. They live in
-  each game's `private_pack/` and are committed ONLY because this repo is
-  private. **Never make this repo public, fork it publicly, export a private
-  pack, or show one in anything published.**
+  each game's `game/private_pack/` and `art_src/private/`, which are
+  **gitignored and exist only on the family's machine** (the repo is public;
+  they were purged from its history on 2026-09-27). Every game must run
+  without them (the roster falls back to the original five). **Never commit
+  them, force-add them, export a private pack, or show one in anything
+  published.** Back them up outside git (see `USER_TODO.md`).
 - **Every game quits from a pad.** The shared `players.gd` quits on
   Back/Select + Start held 1.5 s on any pad, or Ctrl+Q (back to the
   launcher). Never bind Back+Start (or Ctrl+Q) to anything else, and do not

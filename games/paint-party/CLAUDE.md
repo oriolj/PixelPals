@@ -42,7 +42,7 @@ hangs it in a gallery; the PNG is saved for printing.
   brush loop in `paint.gd` the same way); every run/test target depends on
   `ensure-import`.
 - **Third-party riders** (`game/private_pack/`, `art_src/private/`) are
-  PixelPals's private pack, committed only because the repo is private.
+  PixelPals's private pack, gitignored and kept only on the family's machine (never committed).
   `make export-linux` excludes it.
 - **Verify before claiming**: `make test` (logic headless + render under
   xvfb), then `make shots` and look at `shots/<screen>/sheet.png` and

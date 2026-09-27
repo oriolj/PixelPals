@@ -52,7 +52,7 @@ party screen replays the band's own recording while the band bows. Personal
   exist. And a `-s` script that errors never quits: guard with `timeout`.
 - **Keyboard-only is always playable**, 1, 2 or 3 seats, pads mixed in.
 - **Third-party characters** live in `game/private_pack/` (copied from
-  PixelPals, committed only because the repo is private). `make
+  PixelPals, gitignored and kept only on the family's machine (never committed)). `make
   export-linux` excludes it. Never publish it.
 
 ## Commands

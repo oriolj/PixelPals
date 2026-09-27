@@ -43,7 +43,7 @@ Personal (oriolj) scope. Greyssie and Kira are real cats; see "Privacy".
   and tail twitches (`test_toddler_input_never_hurts`); only the walker pauses.
 - **Keyboard-only with 1, 2 or 3 seats**, pads and keyboard mixed.
 - **Private pack**: the fan-art riders in `game/private_pack/` and
-  `art_src/private/` are committed only because the repo is private;
+  `art_src/private/` are gitignored and kept only on the family's machine (never committed);
   `make export-linux` excludes them.
 - **Verify before claiming**: `make test` (a test file that fails to parse
   fails the run), `make shots` and look at `shots/<screen>/sheet.png`,

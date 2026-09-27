@@ -51,7 +51,7 @@ barn or 6 minutes with a giant vegetable and a village fair.
   a kid presses removes a crop or a counter.
 - **Third-party characters** (Sonic, Shadow, Knuckles, Robotnik, the
   Minions, Mario, Luigi) come from PixelPals's `game/private_pack/`, copied
-  here. The repo is private; never publish or export the pack
+  here. The pack is gitignored (local only); never publish or export it
   (`make export-linux` excludes it).
 - **Verify before claiming.** `make test`, then `make shots` and look at
   every `shots/<screen>/sheet.png`; `make contact` for the art.

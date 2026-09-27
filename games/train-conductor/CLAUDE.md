@@ -155,4 +155,4 @@ resumes. Party: 12 s, or the driver's "a" after 1.5 s.
 - `level.gd load_stream()` duplicates `Sfx._load`, because a speed-driven
   loop needs its own `AudioStreamPlayer` (the shared `Sfx` has no handle).
 - The private pack (`game/private_pack/`, `art_src/private/`) is PixelPals's
-  fan riders, committed only because the repo is private; export excludes it.
+  fan riders, gitignored and kept only on the family's machine (never committed); export excludes it.
