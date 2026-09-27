@@ -29,6 +29,7 @@ make test             # tests of every playable game
 | [Pillow Fort Hide and Seek](games/pillow-fort/README.md) | playable |
 | [Space Mission](games/space-mission/README.md): ISS, Shuttle, Mars landing and rover | playable |
 | [Where Are Greyssie and Kira?](games/greyssie-and-kira/PLAN.md): find our two grey cats around the house | plan |
+| [Pony Trails](games/pony-trails/PLAN.md): groom, ride the trail with a foal, horse show | plan |
 
 The ideas and the reasoning behind them are in [docs/ideas.md](docs/ideas.md).
 Contributor and agent rules are in [CLAUDE.md](CLAUDE.md).
