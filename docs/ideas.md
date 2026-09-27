@@ -27,6 +27,7 @@ All 12 ideas were built on 2026-09-27, one agent per game, each plan implemented
 | 11 | **[Pancake Kitchen](../games/pancake-kitchen/PLAN.md)** | moves the pan and catches | adds toppings | flips the pancake (boing) | vector | silly food, no wrong answers |
 | 12 | **[Pillow Fort Hide and Seek](../games/pillow-fort/PLAN.md)** | moves the flashlight | finds the hidden toys (4 directions) | "peekaboo": characters pop out | 2D | toddler peekaboo stage |
 | 13 | **[Space Mission](../games/space-mission/PLAN.md)** | flies the Shuttle, sky crane, drives the Mars rover | robot arm: builds the ISS module by module, drills Mars rocks | Earth photos, parachute, Mars helicopter | pixel (Endesga 32) | real space: ISS, Shuttle, Mars landing, rover, blue Mars sunset |
+| 14 | **[Where Are Greyssie and Kira?](../games/greyssie-and-kira/PLAN.md)** | walks the house (3 floors, stairs), opens hiding spots, carries the cats | laser dot lures shy cats out | treat bag: the nearest cat meows back and shows its room | pixel (Sweetie 16) | our own two grey cats in our own home |
 
 ## A path toward independence
 
