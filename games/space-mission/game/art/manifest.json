@@ -1,0 +1,458 @@
+{
+  "arm_hand": {
+    "fps": 0,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "arm_segment": {
+    "fps": 0,
+    "frames": 1,
+    "h": 4,
+    "w": 24
+  },
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "astronaut_fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "astronaut_frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "astronaut_monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "astronaut_penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "astronaut_robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 24,
+    "w": 24
+  },
+  "aurora": {
+    "fps": 4,
+    "frames": 4,
+    "h": 16,
+    "w": 48
+  },
+  "big_screen": {
+    "fps": 0,
+    "frames": 1,
+    "h": 90,
+    "w": 160
+  },
+  "cable": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 1
+  },
+  "cargo_habitat": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "cargo_lab": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "cargo_robot": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "cargo_solar": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "confetti": {
+    "fps": 10,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "dock_ring": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "drill": {
+    "fps": 10,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "drill_sparks": {
+    "fps": 12,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  },
+  "dust_puff": {
+    "fps": 10,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  },
+  "earth": {
+    "fps": 0,
+    "frames": 1,
+    "h": 96,
+    "w": 768
+  },
+  "earth_clouds": {
+    "fps": 0,
+    "frames": 1,
+    "h": 96,
+    "w": 768
+  },
+  "earth_night": {
+    "fps": 0,
+    "frames": 1,
+    "h": 96,
+    "w": 768
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "helicopter": {
+    "fps": 12,
+    "frames": 2,
+    "h": 8,
+    "w": 12
+  },
+  "hurricane": {
+    "fps": 4,
+    "frames": 4,
+    "h": 16,
+    "w": 16
+  },
+  "ice": {
+    "fps": 3,
+    "frames": 2,
+    "h": 10,
+    "w": 12
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "iss_core": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 32
+  },
+  "iss_habitat": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "iss_lab": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "iss_port": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "iss_robot": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "iss_solar": {
+    "fps": 6,
+    "frames": 4,
+    "h": 16,
+    "w": 32
+  },
+  "lander_shell": {
+    "fps": 8,
+    "frames": 2,
+    "h": 32,
+    "w": 32
+  },
+  "mars_far": {
+    "fps": 0,
+    "frames": 1,
+    "h": 60,
+    "w": 320
+  },
+  "mars_ground": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "mars_mid": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 320
+  },
+  "mission_control": {
+    "fps": 0,
+    "frames": 1,
+    "h": 180,
+    "w": 320
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "parachute": {
+    "fps": 3,
+    "frames": 2,
+    "h": 32,
+    "w": 48
+  },
+  "patch": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 48
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "planet_earth": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "planet_mars": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "planet_mars_landing": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "rock_grey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 10,
+    "w": 12
+  },
+  "rock_red": {
+    "fps": 3,
+    "frames": 2,
+    "h": 10,
+    "w": 12
+  },
+  "rock_white": {
+    "fps": 3,
+    "frames": 2,
+    "h": 10,
+    "w": 12
+  },
+  "rover": {
+    "fps": 2,
+    "frames": 2,
+    "h": 24,
+    "w": 40
+  },
+  "sample_grey": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 6
+  },
+  "sample_ice": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 6
+  },
+  "sample_red": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 6
+  },
+  "sample_shell": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 6
+  },
+  "sample_white": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 6
+  },
+  "seat_arm": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_camera": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_pilot": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "shell": {
+    "fps": 3,
+    "frames": 2,
+    "h": 10,
+    "w": 12
+  },
+  "shuttle": {
+    "fps": 8,
+    "frames": 2,
+    "h": 20,
+    "w": 48
+  },
+  "site_crater": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "site_dunes": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "site_ice": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "site_rocks": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 32
+  },
+  "sky_crane": {
+    "fps": 8,
+    "frames": 2,
+    "h": 16,
+    "w": 32
+  },
+  "sparkle": {
+    "fps": 12,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  },
+  "stars_far": {
+    "fps": 0,
+    "frames": 1,
+    "h": 180,
+    "w": 320
+  },
+  "stars_near": {
+    "fps": 0,
+    "frames": 1,
+    "h": 180,
+    "w": 320
+  },
+  "sun_icon": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "sunrise_line": {
+    "fps": 6,
+    "frames": 4,
+    "h": 4,
+    "w": 320
+  },
+  "wheel": {
+    "fps": 10,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  }
+}

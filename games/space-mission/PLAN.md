@@ -3,7 +3,7 @@
 Fly the Space Shuttle to build the ISS in Earth orbit, land on Mars with a
 sky crane, then drive a rover across the red planet: one crew, three jobs.
 
-Status: plan (2026-09-26)
+Status: playable (2026-09-27)
 
 ## Why it fits our family
 
@@ -80,6 +80,8 @@ the Mars surface.
   chime. It is a counting game for the 5-year-old.
 
 ### Stage 2: Mars landing (about 1 minute), "seven minutes of fun"
+
+(As built: about 20-30 s, a 3 s entry plus the three beats.)
 
 This is a vertical descent in three beats, each a job for one seat. It
 cannot fail: every beat auto-completes after 5 s.
@@ -231,31 +233,48 @@ sounds. That is a nice detail and it keeps everything soft.
 with 1–3 seats.
 
 **M1: grey-box**
-- [ ] Skeleton copied from PixelPals: Makefile, project (320x180,
+- [x] Skeleton copied from PixelPals: Makefile, project (320x180,
   Endesga 32 palette file), join/select/party, demo driver, symlinked
-  shared autoloads.
-- [ ] Stage 1: shuttle flight, cargo spawn and loop, arm IK with snap
-  grab, ports, 5 modules attach, docking assist.
-- [ ] Stage 2: the parachute, site-pick and sky-crane beats, each with a
-  5 s auto-complete.
-- [ ] Stage 3: heightmap terrain, spring rover, targets with a drill, the
+  shared autoloads. (Join/select came from Rocket to the Moon, the
+  renderer and synth from Submarine Safari.)
+- [x] Stage 1: shuttle flight, cargo spawn and loop, arm IK with snap
+  grab, ports, 5 modules attach, docking assist. (Added: a magnet pulls the
+  hand onto cargo within 20 px and a held module onto its port within 22 px;
+  the Pilot's autopilot and the arm run themselves after 5 s idle.)
+- [x] Stage 2: the parachute, site-pick and sky-crane beats, each with a
+  5 s auto-complete (2 s when the beat's seat is empty).
+- [x] Stage 3: heightmap terrain, spring rover, targets with a drill, the
   helicopter reveal, and the sunset end.
-- [ ] Stage select on the select screen, and the solo and 2-seat fallbacks.
+- [x] Stage select on the select screen (the Pilot's up/down on the
+  planet row), and the solo and 2-seat fallbacks.
 
 **M2: art and audio**
-- [ ] Every asset in the table, linted, on a contact sheet reviewed at 8x.
-- [ ] The Earth shader with day/night and city lights, and Mars skies with
-  the blue sunset.
-- [ ] Every sound in the audio table, measured (peaks and loudness) like
-  PixelPals.
-- [ ] Helmeted astronauts for every rider, private pack included.
+- [x] Every asset in the table, linted, on a contact sheet reviewed at 8x
+  (`art_src/contact_sheet*.png`, `astronaut_sheet.png`). Deviations: `earth`
+  is three 768x96 strips (`earth`, `earth_night`, `earth_clouds`) so the
+  globe is never magnified; astronauts are 24x24 so every rider fits the
+  bubble. Additions: `dock_ring`, `drill`, `wheel`, `site_*`, `sample_*` per
+  colour, `sparkle`, `sun_icon`, `confetti`.
+- [x] The Earth shader with day/night and city lights, and Mars skies with
+  the blue sunset. Both shaders output palette colours only (ordered
+  dither). Deviation: `#8fd3ff` is not in Endesga 32, so the halo is
+  `#2ce8f5` inside and `#0099db` outside; the sunset sky is `#733e39` to
+  `#b86f50`.
+- [x] Every sound in the audio table, measured (peaks and loudness) like
+  PixelPals (`make sfx` prints the table). Additions: `boing`, `wave`,
+  `dock`, `join`, `select`, `ready`, `whoosh`. The Quindar tones are
+  trimmed 3 dB under the other SFX on purpose.
+- [x] Helmeted astronauts for every rider, private pack included (derived
+  by `tools/sprites.py`, with a lint that fails if the glass cuts a rider).
 
 **M3: polish and couch test**
-- [ ] Earth moments and golden photos, the album on the party screen.
-- [ ] The Mission Control party with highlights and the patch.
-- [ ] Sunrise counting chime, Quindar beeps, the "phone home" beam.
-- [ ] Couch test with the kids: tune the assists and each beat's
-  auto-complete timing.
+- [x] Earth moments and golden photos, the album on the party screen.
+- [x] The Mission Control party with highlights and the patch.
+- [x] Sunrise counting chime, Quindar beeps, the "phone home" beam.
+- [x] Couch test with the kids: tune the assists and each beat's
+  auto-complete timing. (Prepared, not done: every assist and timing is a
+  named constant (`AUTO`, `SNAP_R`, `MAGNET_R`, `DRILL_RANGE`...), and the
+  real playtest needs Oriol and the kids.)
 
 ## Tests and verification
 
@@ -277,6 +296,9 @@ with 1–3 seats.
 - `test_pause_only_by_pilot`
 - `test_photo_capture_stores_thumbnail` (with a fake viewport)
 
+All 16 are in `game/tests/` and pass (67 tests in all, with the menus,
+the demo driver and the extra stage tests).
+
 **Demo driver:** `--demo=orbit|landing|mars|party|join|select`. Scripted
 seats fly toward the cargo, the arm tracks and grabs, the camera presses
 every 2 s, the landing beats are pressed at 1 s, 2 s and 3 s, and the rover
@@ -291,7 +313,31 @@ drives right while the arm drills each target.
 - no element is off-screen;
 - nothing is dark or scary.
 
-## Open questions for Oriol
+## Decisions taken (pending Oriol)
+
+Taken as defaults on 2026-09-27 so the game could be built; each is easy to
+change.
+
+1. **The Space Shuttle**, as planned (no capsule option).
+2. **Generic hardware**, no agency names or logos.
+3. **Earth photos are kept in memory only** (the party shows them; nothing
+   is written to disk).
+4. **The landing stays its own mini-stage** (with its own start icon).
+5. **No Moon stop**; the Moon stays Rocket to the Moon's.
+6. **No text fact cards**; the true things are only shown (sunrise count,
+   the blue sunset, the beam home).
+
+## Proposed shared/ extractions
+
+- The helmet overlay (any 16x16 rider -> a 24x24 astronaut, with the fit
+  lint), now in `tools/sprites.py`, and the Sweetie 16 -> Endesga 32 remap
+  overrides (the plain nearest colour turns blue into grey).
+- `scripts/logic/arm_ik.gd` (analytic two-bone IK), for Digger Treasure.
+- `scripts/view/tex.gd` (whole textures and Images from source bytes) and
+  `scripts/view/loop_audio.gd` (looping players from source bytes): the
+  shared `Art` returns SpriteFrames only and `Sfx` one-shots only.
+
+## Open questions for Oriol (answered provisionally above)
 
 1. **Shuttle or a modern capsule?** The Shuttle retired in 2011 but it is
    iconic. The alternative is a Dragon- or Orion-style capsule, or both, as
