@@ -10,7 +10,7 @@ Ideas list, started 2026-09-26. Every idea keeps the PixelPals formula:
 
 Not tied to pixel art: some ideas suit low-poly 3D or flat vector better.
 All 12 ideas were built on 2026-09-27, one agent per game, each plan implemented M1-M3
-(status in each `PLAN.md`, how to play in each `README.md`). Space Mission (#13) is a plan.
+(status in each `PLAN.md`, how to play in each `README.md`). Space Mission (#13) was built the same day; Where Are Greyssie and Kira? (#14) is a plan.
 
 | # | Idea | Adult | 5-year-old | 2-year-old | Style | Why the kids would like it |
 |---|---|---|---|---|---|---|

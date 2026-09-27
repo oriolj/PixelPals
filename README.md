@@ -27,7 +27,7 @@ make test             # tests of every playable game
 | [Zoo Keeper](games/zoo-keeper/README.md) | playable |
 | [Pancake Kitchen](games/pancake-kitchen/README.md) | playable |
 | [Pillow Fort Hide and Seek](games/pillow-fort/README.md) | playable |
-| [Space Mission](games/space-mission/PLAN.md): ISS, Shuttle, Mars landing and rover | plan |
+| [Space Mission](games/space-mission/README.md): ISS, Shuttle, Mars landing and rover | playable |
 | [Where Are Greyssie and Kira?](games/greyssie-and-kira/PLAN.md): find our two grey cats around the house | plan |
 
 The ideas and the reasoning behind them are in [docs/ideas.md](docs/ideas.md).
