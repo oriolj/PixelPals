@@ -1,0 +1,29 @@
+{
+  "_comment": "Test fixture: a different house (two floors, stairs on the right, other rooms) to prove house.json is data only.",
+  "floors": [
+    {"id": "down", "rooms": [
+      {"id": "hall", "w": 100, "wall": "wall_cyan_plain", "floor": "floor_tiles",
+       "spots": [{"id": "hall_box", "kind": "box", "x": 30}, {"id": "hall_pot", "kind": "plant_pot", "x": 70}]},
+      {"id": "den", "w": 200, "wall": "wall_orange_stripes", "floor": "floor_carpet",
+       "furniture": [{"kind": "furn_table", "x": 150, "cup": true}],
+       "spots": [{"id": "den_sofa", "kind": "sofa", "x": 50}, {"id": "den_shelf", "kind": "bookshelf_top", "x": 110, "y": 48}]},
+      {"id": "stairs_down", "kind": "stairs", "w": 48}
+    ]},
+    {"id": "up", "rooms": [
+      {"id": "loft", "w": 180, "wall": "wall_blue_stars", "floor": "floor_wood",
+       "spots": [{"id": "loft_bed", "kind": "bed", "x": 60}, {"id": "loft_basket", "kind": "laundry_basket", "x": 140}]},
+      {"id": "stairs_up", "kind": "stairs", "w": 48}
+    ]}
+  ],
+  "stairs": [["stairs_down", "stairs_up"]],
+  "bowls": {"room": "hall", "x": 80},
+  "start": {"room": "den", "x": 100},
+  "spot_kinds": {
+    "box": {"sprite": "box", "tags": ["box"], "tell": "tail"},
+    "plant_pot": {"sprite": "plant_pot", "tags": ["plant"], "tell": "tail"},
+    "sofa": {"sprite": "sofa", "tags": ["under", "cosy"], "tell": "eyes"},
+    "bookshelf_top": {"sprite": "bookshelf_top", "tags": ["high"], "tell": "tail", "high": true},
+    "bed": {"sprite": "bed", "tags": ["under", "cosy"], "tell": "eyes"},
+    "laundry_basket": {"sprite": "laundry_basket", "tags": ["box", "cosy"], "tell": "tail"}
+  }
+}

@@ -1,0 +1,716 @@
+{
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "banister": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 48
+  },
+  "bathtub": {
+    "fps": 0,
+    "frames": 2,
+    "h": 20,
+    "w": 44
+  },
+  "bed": {
+    "fps": 0,
+    "frames": 2,
+    "h": 24,
+    "w": 56
+  },
+  "bookshelf_top": {
+    "fps": 0,
+    "frames": 2,
+    "h": 10,
+    "w": 18
+  },
+  "bowl_greyssie": {
+    "fps": 0,
+    "frames": 2,
+    "h": 8,
+    "w": 12
+  },
+  "bowl_kira": {
+    "fps": 0,
+    "frames": 2,
+    "h": 8,
+    "w": 12
+  },
+  "box": {
+    "fps": 0,
+    "frames": 2,
+    "h": 14,
+    "w": 20
+  },
+  "boxes": {
+    "fps": 0,
+    "frames": 2,
+    "h": 24,
+    "w": 28
+  },
+  "carry_fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "carry_frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "carry_monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "carry_penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "carry_robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "ceiling": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 16
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "climb_fox": {
+    "fps": 6,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "climb_frog": {
+    "fps": 6,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "climb_monkey": {
+    "fps": 6,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "climb_penguin": {
+    "fps": 6,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "climb_robot": {
+    "fps": 6,
+    "frames": 2,
+    "h": 20,
+    "w": 16
+  },
+  "confetti": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "cup": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "cupboard": {
+    "fps": 0,
+    "frames": 2,
+    "h": 28,
+    "w": 40
+  },
+  "curtain": {
+    "fps": 0,
+    "frames": 2,
+    "h": 64,
+    "w": 24
+  },
+  "cushion": {
+    "fps": 0,
+    "frames": 2,
+    "h": 8,
+    "w": 22
+  },
+  "desk": {
+    "fps": 0,
+    "frames": 2,
+    "h": 24,
+    "w": 36
+  },
+  "doorway": {
+    "fps": 0,
+    "frames": 1,
+    "h": 72,
+    "w": 12
+  },
+  "dust_bunny": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "floor_carpet": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 16
+  },
+  "floor_tiles": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 16
+  },
+  "floor_wood": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 16
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "furn_bookshelf": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 28
+  },
+  "furn_coat_rack": {
+    "fps": 0,
+    "frames": 1,
+    "h": 40,
+    "w": 12
+  },
+  "furn_door": {
+    "fps": 0,
+    "frames": 1,
+    "h": 44,
+    "w": 20
+  },
+  "furn_fridge": {
+    "fps": 0,
+    "frames": 1,
+    "h": 44,
+    "w": 20
+  },
+  "furn_lamp": {
+    "fps": 2,
+    "frames": 2,
+    "h": 32,
+    "w": 10
+  },
+  "furn_mirror": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 16
+  },
+  "furn_picture": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 16
+  },
+  "furn_plant_small": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 12
+  },
+  "furn_rug": {
+    "fps": 0,
+    "frames": 1,
+    "h": 4,
+    "w": 56
+  },
+  "furn_table": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 28
+  },
+  "furn_terrace_door": {
+    "fps": 0,
+    "frames": 4,
+    "h": 56,
+    "w": 28
+  },
+  "furn_tv": {
+    "fps": 0,
+    "frames": 1,
+    "h": 30,
+    "w": 28
+  },
+  "furn_washing_machine": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 22
+  },
+  "greyssie_alert": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_carried": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_eat": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_face": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 12
+  },
+  "greyssie_idle": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_peek_eyes": {
+    "fps": 1,
+    "frames": 2,
+    "h": 8,
+    "w": 12
+  },
+  "greyssie_pounce": {
+    "fps": 8,
+    "frames": 3,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_sit": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_sleep": {
+    "fps": 1,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_stalk": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_tail_tip": {
+    "fps": 3,
+    "frames": 2,
+    "h": 12,
+    "w": 8
+  },
+  "greyssie_walk": {
+    "fps": 8,
+    "frames": 4,
+    "h": 16,
+    "w": 20
+  },
+  "greyssie_zoomies": {
+    "fps": 12,
+    "frames": 4,
+    "h": 16,
+    "w": 20
+  },
+  "heart": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "house_mini": {
+    "fps": 0,
+    "frames": 1,
+    "h": 40,
+    "w": 64
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "kira_alert": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "kira_carried": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "kira_eat": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "kira_face": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 12
+  },
+  "kira_idle": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "kira_peek_eyes": {
+    "fps": 1,
+    "frames": 2,
+    "h": 8,
+    "w": 12
+  },
+  "kira_pounce": {
+    "fps": 8,
+    "frames": 3,
+    "h": 16,
+    "w": 20
+  },
+  "kira_sit": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "kira_sleep": {
+    "fps": 1,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "kira_stalk": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "kira_tail_tip": {
+    "fps": 3,
+    "frames": 2,
+    "h": 12,
+    "w": 8
+  },
+  "kira_walk": {
+    "fps": 8,
+    "frames": 4,
+    "h": 16,
+    "w": 20
+  },
+  "kira_zoomies": {
+    "fps": 12,
+    "frames": 4,
+    "h": 16,
+    "w": 20
+  },
+  "laser_dot": {
+    "fps": 6,
+    "frames": 2,
+    "h": 5,
+    "w": 5
+  },
+  "laundry_basket": {
+    "fps": 0,
+    "frames": 2,
+    "h": 16,
+    "w": 20
+  },
+  "meow_bubble_greyssie": {
+    "fps": 8,
+    "frames": 2,
+    "h": 14,
+    "w": 20
+  },
+  "meow_bubble_kira": {
+    "fps": 8,
+    "frames": 2,
+    "h": 14,
+    "w": 20
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "plant_pot": {
+    "fps": 0,
+    "frames": 2,
+    "h": 28,
+    "w": 16
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "roof": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 16
+  },
+  "seat_laser": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_shoes": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_treats": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "sink": {
+    "fps": 0,
+    "frames": 2,
+    "h": 28,
+    "w": 20
+  },
+  "slab": {
+    "fps": 0,
+    "frames": 1,
+    "h": 20,
+    "w": 16
+  },
+  "sock": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "sofa": {
+    "fps": 0,
+    "frames": 2,
+    "h": 24,
+    "w": 48
+  },
+  "sparkle": {
+    "fps": 8,
+    "frames": 3,
+    "h": 8,
+    "w": 8
+  },
+  "stairs": {
+    "fps": 0,
+    "frames": 1,
+    "h": 128,
+    "w": 48
+  },
+  "star": {
+    "fps": 4,
+    "frames": 2,
+    "h": 12,
+    "w": 12
+  },
+  "sunny_window": {
+    "fps": 0,
+    "frames": 2,
+    "h": 36,
+    "w": 28
+  },
+  "toy_box": {
+    "fps": 0,
+    "frames": 2,
+    "h": 16,
+    "w": 24
+  },
+  "toy_mouse": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "treat_bag": {
+    "fps": 10,
+    "frames": 3,
+    "h": 14,
+    "w": 12
+  },
+  "tv_box": {
+    "fps": 0,
+    "frames": 2,
+    "h": 10,
+    "w": 24
+  },
+  "walk_fox": {
+    "fps": 8,
+    "frames": 4,
+    "h": 20,
+    "w": 16
+  },
+  "walk_frog": {
+    "fps": 8,
+    "frames": 4,
+    "h": 20,
+    "w": 16
+  },
+  "walk_monkey": {
+    "fps": 8,
+    "frames": 4,
+    "h": 20,
+    "w": 16
+  },
+  "walk_penguin": {
+    "fps": 8,
+    "frames": 4,
+    "h": 20,
+    "w": 16
+  },
+  "walk_robot": {
+    "fps": 8,
+    "frames": 4,
+    "h": 20,
+    "w": 16
+  },
+  "wall_blue_stars": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "wall_cyan_plain": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "wall_green_flowers": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "wall_orange_stripes": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "wall_white_tiles": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "wall_wood": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "wall_yellow_dots": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "wardrobe": {
+    "fps": 0,
+    "frames": 2,
+    "h": 52,
+    "w": 28
+  },
+  "wardrobe_top": {
+    "fps": 0,
+    "frames": 2,
+    "h": 12,
+    "w": 20
+  },
+  "window": {
+    "fps": 0,
+    "frames": 4,
+    "h": 36,
+    "w": 28
+  },
+  "wool_ball": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "zzz": {
+    "fps": 2,
+    "frames": 3,
+    "h": 8,
+    "w": 8
+  }
+}

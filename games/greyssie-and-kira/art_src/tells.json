@@ -1,0 +1,74 @@
+{
+ "bathtub": [
+  -8,
+  -16
+ ],
+ "bed": [
+  4,
+  0
+ ],
+ "bookshelf_top": [
+  6,
+  -9
+ ],
+ "box": [
+  6,
+  -13
+ ],
+ "boxes": [
+  8,
+  -22
+ ],
+ "cupboard": [
+  0,
+  -8
+ ],
+ "curtain": [
+  11,
+  0
+ ],
+ "cushion": [
+  8,
+  -6
+ ],
+ "desk": [
+  -6,
+  -1
+ ],
+ "laundry_basket": [
+  6,
+  -15
+ ],
+ "plant_pot": [
+  2,
+  -17
+ ],
+ "sink": [
+  5,
+  -21
+ ],
+ "sofa": [
+  0,
+  0
+ ],
+ "sunny_window": [
+  7,
+  -4
+ ],
+ "toy_box": [
+  7,
+  -15
+ ],
+ "tv_box": [
+  9,
+  -8
+ ],
+ "wardrobe": [
+  0,
+  -18
+ ],
+ "wardrobe_top": [
+  6,
+  -10
+ ]
+}

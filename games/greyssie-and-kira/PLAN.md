@@ -3,7 +3,7 @@
 Find our two grey cats hiding around our three-storey home, coax them out
 with treats and a laser dot, and bring them both to their dinner bowls.
 
-Status: plan (2026-09-27)
+Status: playable (2026-09-27)
 
 ## Why it fits our family
 
@@ -218,27 +218,29 @@ code", and it is his call.
 ## MVP and milestones
 
 **M1: grey box**
-- [ ] Skeleton from PixelPals: Makefile, project, join/select/party, demo
+- [x] Skeleton from PixelPals: Makefile, project, join/select/party, demo
   driver, symlinked shared autoloads.
-- [ ] `house.json` with the default layout, walking, stairs, floor camera.
-- [ ] Hiding spots that open and close, and two cats that hide each round.
-- [ ] Treat shake → meow, bubble, mini view; the laser lure; pick up,
+- [x] `house.json` with the default layout, walking, stairs, floor camera.
+- [x] Hiding spots that open and close, and two cats that hide each round.
+- [x] Treat shake → meow, bubble, mini view; the laser lure; pick up,
   carry and bowls; four rounds of the day.
-- [ ] Fallbacks for 1 and 2 seats; the 60 s / 90 s no-fail timers.
+- [x] Fallbacks for 1 and 2 seats; the 60 s / 90 s no-fail timers.
 
 **M2: art and audio**
-- [ ] Both cats' full animation sets, clearly distinct at 1x and in
-  silhouette.
-- [ ] Rooms, furniture and time-of-day tints; the night is warm, never dark.
-- [ ] All sounds; meows are synthesized, or real recordings if Oriol
-  provides them.
+- [x] Both cats' full animation sets, clearly distinct at 1x and in
+  silhouette (`art_src/cats_compare.png`; looks are placeholder, pending Oriol).
+- [x] Rooms, furniture and time-of-day tints; the night is warm, never dark.
+- [x] All sounds; meows are synthesized, or real recordings if Oriol
+  provides them (the drop-in hook works; recordings placeholder, pending Oriol).
 
 **M3: polish and couch test**
-- [ ] Personalities tuned; zoomies, cup boing and box-too-small gags.
-- [ ] Party photo-strip with the find spots.
-- [ ] The real house layout and the real cats' looks, once Oriol describes
-  them.
-- [ ] Couch test.
+- [x] Personalities tuned (placeholder, pending Oriol); zoomies, cup boing and box-too-small gags.
+- [x] Party photo-strip with the find spots.
+- [x] The real house layout and the real cats' looks, once Oriol describes
+  them: placeholder, pending Oriol. Both are data only (`data/house.json`,
+  `data/cats.json`; see CLAUDE.md "Making it our real house and cats").
+- [x] Couch test: placeholder, pending Oriol (only a real couch session can
+  tick it; the headless `make demo-day` plays a whole day).
 
 ## Tests and verification
 
@@ -287,3 +289,53 @@ Look at the frames for:
    synthesized?
 5. **Should the family appear as the walker** (pixel versions of you and
    the kids), or keep the animal riders?
+
+## Decisions taken (pending Oriol)
+
+Taken on 2026-09-27 so the game could be built before the real details
+arrived. Each one is data or a drop-in file; none needs code.
+
+1. **The cats' looks** (`game/data/cats.json` `look`): Greyssie light grey
+   (Sweetie 13), fluffy and round, round ears, amber eyes, raspberry collar
+   (Sweetie has no pink); Kira dark grey (14), sleek, tall ears, lime-green
+   eyes, cyan collar (Sweetie's teal was too dark on grey fur). No patches.
+   **Send:** two or three photos of each cat in `~/tmp/` (side view and
+   face), or a description: fur shade, fluffy or sleek, eye colour, white
+   patches, collars, size. The photos are read locally, never committed;
+   then it is one JSON edit, `make sprites` and a look at the comparison sheet.
+2. **Personalities and hiding tastes** (`personality`, `favourite_spots`):
+   Greyssie bold, chatty (meows twice), likes high places and sun; Kira shy
+   (always needs the laser or 3 s alone), quiet, likes boxes and
+   under-things. **Send:** who is shy, who is chatty, where each one really
+   sleeps and hides, and whether either gets the zoomies.
+3. **The house** (`game/data/house.json`): the plan's default layout, three
+   floors, stairs on the left, bowls in the kitchen, 21 hiding spots.
+   **Send:** a rough list of the rooms on each floor, which side the stairs
+   are on, where the bowls are, and the real hiding places. No address, no
+   photos of the house.
+4. **Voices**: meows are formant-synthesized from each cat's `voice` block
+   (Greyssie bright and two-part, Kira a soft short mew). **Send (optional):**
+   ~10 s of real meows of each cat from the phone. Trimmed clips go in
+   `game/audio/real/meow_greyssie_*.wav` / `meow_kira_*.wav`, which the game
+   prefers automatically; they are gitignored and stay on this machine
+   unless Oriol asks otherwise.
+5. **The walker** is one of the animal riders (or the private-pack
+   characters); the laser and treat seats pick a hat colour. **Decide:**
+   whether the family should appear as pixel versions of themselves (that
+   would be new rider grids, drawn from a description, not from photos).
+6. **Small calls:** the plan's `hiss_free` sound is named `prrt`; the party
+   music is 105 BPM (96 BPM has no whole-sample eighth notes); the night
+   round's outside sky is plum, not navy, to stay warm; a cat that has been
+   free for 25 s without being picked up walks to the walker; zoomies are a
+   lap up the stairs and back, so no cat is ever stranded on another floor.
+
+Proposed shared change (not applied; `shared/` is read-only for this build):
+`Sfx.override(sound: String, streams: Array)` in `shared/godot/autoload/sfx.gd`,
+so a game can swap a sound's variants (the real-meow hook) without writing
+`Sfx._streams`:
+
+```gdscript
+## Replace a sound's variants (e.g. real recordings instead of the synth).
+func override(sound: String, streams: Array) -> void:
+	_streams[sound] = streams
+```

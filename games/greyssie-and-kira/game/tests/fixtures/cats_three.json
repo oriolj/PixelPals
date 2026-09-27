@@ -1,0 +1,14 @@
+{
+  "_comment": "Test fixture: three cats with other names, looks and personalities, to prove cats.json is data only.",
+  "cats": [
+    {"id": "tom", "look": {"fur": 3, "fur_dark": 2, "fur_light": 4, "build": "fluffy", "ears": "round", "eyes": 6, "nose": 2, "collar": 9, "collar_tag": 4, "patches": [{"where": "chest", "colour": 12}]},
+     "personality": {"shy": 0.1, "chatty": 0.1, "zoomies": 0.0, "likes": {"box": 5}}, "favourite_spots": ["box"],
+     "voice": {"pitch": 500, "parts": 1, "bright": 1.0, "length": 0.3, "vowels": ["i", "a", "u"]}},
+    {"id": "mia", "look": {"fur": 12, "fur_dark": 13, "fur_light": 12, "build": "sleek", "ears": "tall", "eyes": 10, "nose": 2, "collar": 5, "collar_tag": 4, "patches": []},
+     "personality": {"shy": 0.8, "chatty": 0.8, "zoomies": 0.0, "likes": {"under": 5}}, "favourite_spots": ["bed"],
+     "voice": {"pitch": 700, "parts": 2, "bright": 1.2, "length": 0.3, "vowels": ["i", "a", "u"]}},
+    {"id": "pip", "look": {"fur": 15, "fur_dark": 0, "fur_light": 14, "build": "sleek", "ears": "tall", "eyes": 4, "nose": 2, "collar": 3, "collar_tag": 4, "patches": []},
+     "personality": {"shy": 0.3, "chatty": 0.3, "zoomies": 0.0, "likes": {"high": 5}}, "favourite_spots": [],
+     "voice": {"pitch": 900, "parts": 1, "bright": 0.9, "length": 0.2, "vowels": ["i", "e", "u"]}}
+  ]
+}

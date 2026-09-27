@@ -1,0 +1,71 @@
+{
+  "_comment": "PLACEHOLDER looks and personalities (pending Oriol's photos and descriptions). Colours are Sweetie 16 indices: 0 ink 1a1c2c, 1 plum 5d275d, 2 raspberry b13e53, 3 orange ef7d57, 4 yellow ffcd75, 5 lime a7f070, 6 green 38b764, 7 teal 257179, 8 navy 29366f, 9 blue 3b5dc9, 10 sky 41a6f6, 11 cyan 73eff7, 12 white f4f4f4, 13 light grey 94b0c2, 14 grey 566c86, 15 dark grey 333c57. After an edit run `make sprites sfx` (looks and voices), then look at art_src/contact_sheet.png. See CLAUDE.md 'Making it our real house and cats'.",
+  "cats": [
+    {
+      "id": "greyssie",
+      "look": {
+        "fur": 13,
+        "fur_dark": 14,
+        "fur_light": 12,
+        "build": "fluffy",
+        "ears": "round",
+        "eyes": 4,
+        "nose": 2,
+        "collar": 2,
+        "collar_tag": 4,
+        "patches": []
+      },
+      "personality": {
+        "shy": 0.15,
+        "chatty": 0.9,
+        "zoomies": 0.5,
+        "likes": {
+          "high": 4,
+          "sunny": 4,
+          "warm": 2,
+          "behind": 1,
+          "box": 1,
+          "under": 0.5,
+          "inside": 0.5,
+          "plant": 1,
+          "cosy": 1
+        }
+      },
+      "favourite_spots": ["wardrobe_top", "sunny_window", "bookshelf_top", "tv_box"],
+      "voice": {"pitch": 620, "parts": 2, "bright": 1.35, "length": 0.42, "vowels": ["i", "a", "u"]}
+    },
+    {
+      "id": "kira",
+      "look": {
+        "fur": 14,
+        "fur_dark": 15,
+        "fur_light": 13,
+        "build": "sleek",
+        "ears": "tall",
+        "eyes": 5,
+        "nose": 2,
+        "collar": 11,
+        "collar_tag": 12,
+        "patches": []
+      },
+      "personality": {
+        "shy": 0.9,
+        "chatty": 0.2,
+        "zoomies": 0.35,
+        "likes": {
+          "box": 4,
+          "under": 4,
+          "inside": 3,
+          "cosy": 2,
+          "behind": 1,
+          "plant": 1,
+          "high": 0.3,
+          "sunny": 0.5,
+          "warm": 1
+        }
+      },
+      "favourite_spots": ["toy_box", "bed", "laundry_basket", "boxes"],
+      "voice": {"pitch": 780, "parts": 1, "bright": 0.8, "length": 0.24, "vowels": ["i", "e", "u"]}
+    }
+  ]
+}

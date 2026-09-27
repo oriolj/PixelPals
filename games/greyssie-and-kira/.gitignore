@@ -1,0 +1,4 @@
+# Oriol's real cat recordings stay on his machine (privacy): drop them in
+# game/audio/real/ and the game uses them; they are never committed.
+game/audio/real/*
+!game/audio/real/.gitkeep

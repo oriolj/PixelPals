@@ -1,0 +1,176 @@
+{
+  "_comment": "PLACEHOLDER house (pending Oriol's real room list). Floors are listed bottom to top; rooms left to right. Every x is the centre of the thing, in pixels from the room's left wall; y is the height above the floor (0 = on the floor). Walls and floors name tiles from game/art (wall_*, floor_*). Spot kinds are defined in spot_kinds below. See CLAUDE.md 'Making it our real house and cats'.",
+  "floors": [
+    {
+      "id": "ground",
+      "rooms": [
+        {"id": "stairs_ground", "kind": "stairs", "w": 48, "wall": "wall_wood", "floor": "floor_wood"},
+        {
+          "id": "entrance",
+          "w": 80,
+          "wall": "wall_orange_stripes",
+          "floor": "floor_tiles",
+          "furniture": [
+            {"kind": "furn_door", "x": 18},
+            {"kind": "furn_coat_rack", "x": 38},
+            {"kind": "furn_picture", "x": 62, "y": 70}
+          ],
+          "spots": [{"id": "shoe_box", "kind": "box", "x": 60}]
+        },
+        {
+          "id": "living",
+          "w": 144,
+          "wall": "wall_yellow_dots",
+          "floor": "floor_wood",
+          "window": {"x": 72, "y": 52},
+          "sunny": [72],
+          "furniture": [
+            {"kind": "furn_rug", "x": 60},
+            {"kind": "furn_tv", "x": 118},
+            {"kind": "furn_lamp", "x": 8},
+            {"kind": "furn_picture", "x": 36, "y": 80}
+          ],
+          "spots": [
+            {"id": "sofa", "kind": "sofa", "x": 36},
+            {"id": "living_window", "kind": "sunny_window", "x": 72, "y": 52},
+            {"id": "tv_box", "kind": "tv_box", "x": 118, "y": 30},
+            {"id": "living_plant", "kind": "plant_pot", "x": 136}
+          ]
+        },
+        {
+          "id": "kitchen",
+          "w": 128,
+          "wall": "wall_white_tiles",
+          "floor": "floor_tiles",
+          "furniture": [{"kind": "furn_fridge", "x": 12}, {"kind": "furn_table", "x": 84, "cup": true}],
+          "spots": [{"id": "kitchen_cupboard", "kind": "cupboard", "x": 46}]
+        },
+        {
+          "id": "laundry",
+          "w": 64,
+          "wall": "wall_cyan_plain",
+          "floor": "floor_tiles",
+          "furniture": [{"kind": "furn_washing_machine", "x": 16}],
+          "spots": [{"id": "laundry_corner", "kind": "laundry_basket", "x": 44}]
+        }
+      ]
+    },
+    {
+      "id": "first",
+      "rooms": [
+        {"id": "stairs_first", "kind": "stairs", "w": 48, "wall": "wall_wood", "floor": "floor_wood"},
+        {
+          "id": "kids",
+          "w": 128,
+          "wall": "wall_blue_stars",
+          "floor": "floor_carpet",
+          "window": {"x": 104, "y": 52},
+          "sunny": [104],
+          "furniture": [{"kind": "furn_rug", "x": 74}, {"kind": "furn_lamp", "x": 124}],
+          "spots": [
+            {"id": "kids_bed", "kind": "bed", "x": 30},
+            {"id": "toy_box", "kind": "toy_box", "x": 72},
+            {"id": "kids_curtain", "kind": "curtain", "x": 104}
+          ]
+        },
+        {
+          "id": "bathroom",
+          "w": 96,
+          "wall": "wall_white_tiles",
+          "floor": "floor_tiles",
+          "furniture": [{"kind": "furn_mirror", "x": 80, "y": 50}],
+          "spots": [
+            {"id": "bathtub", "kind": "bathtub", "x": 26},
+            {"id": "bath_basket", "kind": "laundry_basket", "x": 58},
+            {"id": "sink", "kind": "sink", "x": 80}
+          ]
+        },
+        {
+          "id": "parents",
+          "w": 128,
+          "wall": "wall_green_flowers",
+          "floor": "floor_carpet",
+          "furniture": [{"kind": "furn_picture", "x": 84, "y": 76}, {"kind": "furn_lamp", "x": 122}],
+          "spots": [
+            {"id": "wardrobe", "kind": "wardrobe", "x": 20},
+            {"id": "wardrobe_top", "kind": "wardrobe_top", "x": 20, "y": 52},
+            {"id": "parents_bed", "kind": "bed", "x": 82}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "top",
+      "rooms": [
+        {"id": "stairs_top", "kind": "stairs", "w": 48, "wall": "wall_wood", "floor": "floor_wood"},
+        {
+          "id": "study",
+          "w": 144,
+          "wall": "wall_wood",
+          "floor": "floor_wood",
+          "window": {"x": 58, "y": 56},
+          "furniture": [{"kind": "furn_bookshelf", "x": 118}, {"kind": "furn_lamp", "x": 90}],
+          "spots": [
+            {"id": "attic_boxes", "kind": "boxes", "x": 22},
+            {"id": "desk", "kind": "desk", "x": 60},
+            {"id": "bookshelf_top", "kind": "bookshelf_top", "x": 118, "y": 48}
+          ]
+        },
+        {
+          "id": "terrace",
+          "w": 112,
+          "wall": "wall_green_flowers",
+          "floor": "floor_wood",
+          "sunny": [80],
+          "furniture": [{"kind": "furn_terrace_door", "x": 18}, {"kind": "furn_plant_small", "x": 104}],
+          "spots": [
+            {"id": "terrace_pot", "kind": "plant_pot", "x": 48},
+            {"id": "sunny_cushion", "kind": "cushion", "x": 80}
+          ]
+        }
+      ]
+    }
+  ],
+  "stairs": [["stairs_ground", "stairs_first"], ["stairs_first", "stairs_top"]],
+  "bowls": {"room": "kitchen", "x": 112},
+  "start": {"room": "living", "x": 96},
+  "spot_kinds": {
+    "_comment": "sprite = art name (frame 0 closed, frame 1 open); tags feed the cats' likes in cats.json; tell = what shows while a cat hides there (tail or eyes); high = the cat needs coaxing down (laser, or 3 s with no laser seat); cosy = preferred at night.",
+    "sofa": {"sprite": "sofa", "tags": ["under", "cosy"], "tell": "eyes", "tell_at": [0, 0]},
+    "bed": {"sprite": "bed", "tags": ["under", "cosy"], "tell": "eyes", "tell_at": [4, 0]},
+    "desk": {"sprite": "desk", "tags": ["under"], "tell": "eyes", "tell_at": [-6, -1]},
+    "wardrobe": {"sprite": "wardrobe", "tags": ["inside", "cosy"], "tell": "eyes", "tell_at": [0, -18]},
+    "cupboard": {"sprite": "cupboard", "tags": ["inside"], "tell": "eyes", "tell_at": [0, -8]},
+    "box": {"sprite": "box", "tags": ["box"], "tell": "tail", "tell_at": [6, -13]},
+    "boxes": {"sprite": "boxes", "tags": ["box"], "tell": "tail", "tell_at": [8, -22]},
+    "toy_box": {"sprite": "toy_box", "tags": ["box"], "tell": "tail", "tell_at": [7, -15]},
+    "laundry_basket": {"sprite": "laundry_basket", "tags": ["box", "cosy"], "tell": "tail", "tell_at": [6, -15]},
+    "bathtub": {"sprite": "bathtub", "tags": ["inside"], "tell": "tail", "tell_at": [-8, -16]},
+    "sink": {"sprite": "sink", "tags": ["inside"], "tell": "tail", "tell_at": [5, -21]},
+    "curtain": {"sprite": "curtain", "tags": ["behind", "sunny"], "tell": "tail", "tell_at": [11, 0]},
+    "plant_pot": {"sprite": "plant_pot", "tags": ["plant"], "tell": "tail", "tell_at": [2, -17]},
+    "tv_box": {"sprite": "tv_box", "tags": ["warm", "cosy"], "tell": "tail", "tell_at": [9, -8]},
+    "cushion": {"sprite": "cushion", "tags": ["sunny", "cosy"], "tell": "tail", "tell_at": [8, -6]},
+    "sunny_window": {
+      "sprite": "sunny_window",
+      "tags": ["sunny", "high"],
+      "tell": "tail",
+      "high": true,
+      "tell_at": [7, -4]
+    },
+    "wardrobe_top": {
+      "sprite": "wardrobe_top",
+      "tags": ["high"],
+      "tell": "tail",
+      "high": true,
+      "tell_at": [6, -10]
+    },
+    "bookshelf_top": {
+      "sprite": "bookshelf_top",
+      "tags": ["high"],
+      "tell": "tail",
+      "high": true,
+      "tell_at": [6, -9]
+    }
+  }
+}
