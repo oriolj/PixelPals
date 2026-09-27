@@ -1,7 +1,9 @@
 # Couch co-op games monorepo. Each game lives in games/<slug>/ with its own
 # Makefile; this one holds the shared tools and forwards to a game with G=<slug>.
 GODOT_VERSION := 4.7.2
-G             ?= pixelpals
+# No G: `make start` opens the TV launcher. G=<slug> picks one game.
+G             ?=
+GAME_G        := $(or $(G),pixelpals)
 SESSION       := pixelpals
 # Games that are built (have a Makefile); the rest are plans only.
 BUILT         := $(patsubst games/%/Makefile,%,$(wildcard games/*/Makefile))
@@ -36,18 +38,19 @@ setup-tools: ## Download the pinned Godot binary into .tools/ and sync the Pytho
 setup: setup-tools ## Shared tools, then set up every built game
 	@for g in $(BUILT); do $(MAKE) --no-print-directory -C games/$$g setup; done
 
-start: ## Play a game (G=pixelpals by default)
-	@$(MAKE) --no-print-directory -C games/$(G) start
+start: ## Open the TV launcher (or play one game directly: make start G=<slug>)
+	@if [ -n "$(G)" ]; then $(MAKE) --no-print-directory -C games/$(G) start; \
+	else $(MAKE) --no-print-directory -C launcher start; fi
 
 demo: ## Watch a game play itself (G=pixelpals)
-	@$(MAKE) --no-print-directory -C games/$(G) demo
+	@$(MAKE) --no-print-directory -C games/$(GAME_G) demo
 
 test: ## Run the tests of every built game, then the launcher's
 	@for g in $(BUILT); do echo -e "$(C)== $$g$(R)"; $(MAKE) --no-print-directory -C games/$$g test || exit 1; done
 	@echo -e "$(C)== launcher$(R)"; $(MAKE) --no-print-directory -C launcher test
 
 shots: ## Capture every screen of a game (G=pixelpals)
-	@$(MAKE) --no-print-directory -C games/$(G) shots
+	@$(MAKE) --no-print-directory -C games/$(GAME_G) shots
 
 launcher: ## Play on the TV: the game launcher, fullscreen (any pad or the keyboard)
 	@$(MAKE) --no-print-directory -C launcher start

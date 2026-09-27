@@ -13,7 +13,7 @@ every new lesson back into it in the same turn.
 ## Layout
 
 ```
-Makefile              shared tools + forwarding: make start G=<slug>, make test (all), make list
+Makefile              shared tools + forwarding: make start (launcher) / make start G=<slug>, make test (all), make list
 .tools/               pinned Godot binary (gitignored; make setup-tools)
 pyproject.toml        one uv venv for every game's Python tools (Pillow, numpy)
 shared/

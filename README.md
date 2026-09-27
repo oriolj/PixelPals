@@ -23,7 +23,7 @@ make launcher         # the game picker, fullscreen: any pad or the keyboard dri
 ```
 make setup            # once: Godot 4.7.2 + Python venv, then each playable game
 make list             # every game: playable or plan
-make start            # play PixelPals (or: make start G=<slug>)
+make start            # the TV launcher (or one game: make start G=<slug>)
 make demo             # watch it play itself
 make test             # tests of every playable game
 ```
