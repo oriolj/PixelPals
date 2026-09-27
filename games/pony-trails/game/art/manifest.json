@@ -1,0 +1,872 @@
+{
+  "apple": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_down": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_left": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_right": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "arrow_up": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "barn": {
+    "fps": 0,
+    "frames": 1,
+    "h": 40,
+    "w": 48
+  },
+  "bell": {
+    "fps": 4,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "bird": {
+    "fps": 8,
+    "frames": 2,
+    "h": 6,
+    "w": 8
+  },
+  "bridle": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "brush": {
+    "fps": 6,
+    "frames": 2,
+    "h": 12,
+    "w": 16
+  },
+  "bush": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 16
+  },
+  "carrot": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 12
+  },
+  "check": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "coat_appaloosa": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "coat_bay": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "coat_black": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "coat_chestnut": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "coat_grey": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "coat_palomino": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "coat_pinto": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "cone_blue": {
+    "fps": 0,
+    "frames": 1,
+    "h": 10,
+    "w": 8
+  },
+  "cone_green": {
+    "fps": 0,
+    "frames": 1,
+    "h": 10,
+    "w": 8
+  },
+  "cone_red": {
+    "fps": 0,
+    "frames": 1,
+    "h": 10,
+    "w": 8
+  },
+  "cone_yellow": {
+    "fps": 0,
+    "frames": 1,
+    "h": 10,
+    "w": 8
+  },
+  "confetti": {
+    "fps": 0,
+    "frames": 6,
+    "h": 4,
+    "w": 4
+  },
+  "cow": {
+    "fps": 2,
+    "frames": 2,
+    "h": 16,
+    "w": 24
+  },
+  "duck": {
+    "fps": 4,
+    "frames": 4,
+    "h": 8,
+    "w": 10
+  },
+  "fence": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "flag": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "flower_blue": {
+    "fps": 2,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "flower_pink": {
+    "fps": 2,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "flower_yellow": {
+    "fps": 2,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "foal_appaloosa": {
+    "fps": 8,
+    "frames": 13,
+    "h": 20,
+    "w": 24
+  },
+  "foal_bay": {
+    "fps": 8,
+    "frames": 13,
+    "h": 20,
+    "w": 24
+  },
+  "foal_black": {
+    "fps": 8,
+    "frames": 13,
+    "h": 20,
+    "w": 24
+  },
+  "foal_chestnut": {
+    "fps": 8,
+    "frames": 13,
+    "h": 20,
+    "w": 24
+  },
+  "foal_grey": {
+    "fps": 8,
+    "frames": 13,
+    "h": 20,
+    "w": 24
+  },
+  "foal_palomino": {
+    "fps": 8,
+    "frames": 13,
+    "h": 20,
+    "w": 24
+  },
+  "foal_pinto": {
+    "fps": 8,
+    "frames": 13,
+    "h": 20,
+    "w": 24
+  },
+  "fox": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "frog": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "gate": {
+    "fps": 6,
+    "frames": 3,
+    "h": 24,
+    "w": 32
+  },
+  "grandstand": {
+    "fps": 0,
+    "frames": 1,
+    "h": 32,
+    "w": 96
+  },
+  "grass": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "half_door": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 32
+  },
+  "hand": {
+    "fps": 0,
+    "frames": 2,
+    "h": 12,
+    "w": 12
+  },
+  "hay_bale": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 16
+  },
+  "hay_rack": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 24
+  },
+  "heart": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "hills_far": {
+    "fps": 0,
+    "frames": 1,
+    "h": 60,
+    "w": 320
+  },
+  "hoof_pick": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 12
+  },
+  "horseshoe": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "icon_kb": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "icon_pad": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_fox_0": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_fox_1": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_fox_2": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_frog_0": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_frog_1": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_frog_2": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_monkey_0": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_monkey_1": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_monkey_2": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_penguin_0": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_penguin_1": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_penguin_2": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_robot_0": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_robot_1": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "jockey_robot_2": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "judge": {
+    "fps": 2,
+    "frames": 2,
+    "h": 32,
+    "w": 24
+  },
+  "jump_1": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "jump_2": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "jump_3": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "jump_4": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "jump_5": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "jump_6": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "lantern": {
+    "fps": 4,
+    "frames": 2,
+    "h": 12,
+    "w": 8
+  },
+  "log": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 20
+  },
+  "lucky_horseshoe": {
+    "fps": 3,
+    "frames": 2,
+    "h": 8,
+    "w": 8
+  },
+  "mare_bay": {
+    "fps": 4,
+    "frames": 25,
+    "h": 32,
+    "w": 40
+  },
+  "mare_big_bay": {
+    "fps": 1,
+    "frames": 10,
+    "h": 64,
+    "w": 80
+  },
+  "mare_big_black": {
+    "fps": 1,
+    "frames": 10,
+    "h": 64,
+    "w": 80
+  },
+  "mare_big_chestnut": {
+    "fps": 1,
+    "frames": 10,
+    "h": 64,
+    "w": 80
+  },
+  "mare_big_grey": {
+    "fps": 1,
+    "frames": 10,
+    "h": 64,
+    "w": 80
+  },
+  "mare_big_palomino": {
+    "fps": 1,
+    "frames": 10,
+    "h": 64,
+    "w": 80
+  },
+  "mare_big_pinto": {
+    "fps": 1,
+    "frames": 10,
+    "h": 64,
+    "w": 80
+  },
+  "mare_big_tack": {
+    "fps": 1,
+    "frames": 10,
+    "h": 64,
+    "w": 80
+  },
+  "mare_black": {
+    "fps": 4,
+    "frames": 25,
+    "h": 32,
+    "w": 40
+  },
+  "mare_chestnut": {
+    "fps": 4,
+    "frames": 25,
+    "h": 32,
+    "w": 40
+  },
+  "mare_grey": {
+    "fps": 4,
+    "frames": 25,
+    "h": 32,
+    "w": 40
+  },
+  "mare_palomino": {
+    "fps": 4,
+    "frames": 25,
+    "h": 32,
+    "w": 40
+  },
+  "mare_pinto": {
+    "fps": 4,
+    "frames": 25,
+    "h": 32,
+    "w": 40
+  },
+  "mini_jump": {
+    "fps": 0,
+    "frames": 1,
+    "h": 10,
+    "w": 12
+  },
+  "monkey": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "mud_back": {
+    "fps": 0,
+    "frames": 4,
+    "h": 10,
+    "w": 20
+  },
+  "mud_head": {
+    "fps": 0,
+    "frames": 4,
+    "h": 10,
+    "w": 12
+  },
+  "mud_legs": {
+    "fps": 0,
+    "frames": 4,
+    "h": 12,
+    "w": 16
+  },
+  "mud_tail": {
+    "fps": 0,
+    "frames": 4,
+    "h": 14,
+    "w": 12
+  },
+  "path": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "pebble": {
+    "fps": 0,
+    "frames": 1,
+    "h": 4,
+    "w": 4
+  },
+  "penguin": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "pick_pole": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 8
+  },
+  "puddle": {
+    "fps": 0,
+    "frames": 1,
+    "h": 4,
+    "w": 16
+  },
+  "rabbit": {
+    "fps": 4,
+    "frames": 4,
+    "h": 10,
+    "w": 12
+  },
+  "rainbow": {
+    "fps": 0,
+    "frames": 1,
+    "h": 60,
+    "w": 160
+  },
+  "reeds": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "ribbon_blue": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "ribbon_purple": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "ribbon_red": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "ribbon_yellow": {
+    "fps": 0,
+    "frames": 1,
+    "h": 8,
+    "w": 8
+  },
+  "robot": {
+    "fps": 3,
+    "frames": 2,
+    "h": 16,
+    "w": 16
+  },
+  "rosette_blue": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 12
+  },
+  "rosette_green": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 12
+  },
+  "rosette_purple": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 12
+  },
+  "rosette_red": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 12
+  },
+  "rosette_wall": {
+    "fps": 0,
+    "frames": 1,
+    "h": 180,
+    "w": 320
+  },
+  "rosette_yellow": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 12
+  },
+  "saddle": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 24
+  },
+  "saddle_rack": {
+    "fps": 0,
+    "frames": 1,
+    "h": 24,
+    "w": 24
+  },
+  "seat_brush": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_neigh": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "seat_rider": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "sheep": {
+    "fps": 4,
+    "frames": 4,
+    "h": 12,
+    "w": 16
+  },
+  "show_fence": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "sky_afternoon": {
+    "fps": 0,
+    "frames": 1,
+    "h": 60,
+    "w": 320
+  },
+  "sky_golden": {
+    "fps": 0,
+    "frames": 1,
+    "h": 60,
+    "w": 320
+  },
+  "sky_morning": {
+    "fps": 0,
+    "frames": 1,
+    "h": 60,
+    "w": 320
+  },
+  "sky_rain": {
+    "fps": 0,
+    "frames": 1,
+    "h": 60,
+    "w": 320
+  },
+  "sparkle": {
+    "fps": 10,
+    "frames": 4,
+    "h": 8,
+    "w": 8
+  },
+  "splash": {
+    "fps": 12,
+    "frames": 3,
+    "h": 8,
+    "w": 16
+  },
+  "stable_cat": {
+    "fps": 4,
+    "frames": 4,
+    "h": 12,
+    "w": 16
+  },
+  "stage_show": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "stage_stable": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "stage_trail": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "stall_door": {
+    "fps": 6,
+    "frames": 3,
+    "h": 48,
+    "w": 32
+  },
+  "stall_floor": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "stall_wall": {
+    "fps": 0,
+    "frames": 1,
+    "h": 16,
+    "w": 16
+  },
+  "stream": {
+    "fps": 3,
+    "frames": 2,
+    "h": 10,
+    "w": 32
+  },
+  "tree": {
+    "fps": 0,
+    "frames": 1,
+    "h": 32,
+    "w": 24
+  },
+  "trees_mid": {
+    "fps": 0,
+    "frames": 1,
+    "h": 48,
+    "w": 320
+  },
+  "twig_log": {
+    "fps": 0,
+    "frames": 1,
+    "h": 6,
+    "w": 12
+  },
+  "water_trough": {
+    "fps": 0,
+    "frames": 1,
+    "h": 12,
+    "w": 32
+  },
+  "wild_horse_1": {
+    "fps": 7,
+    "frames": 5,
+    "h": 24,
+    "w": 32
+  },
+  "wild_horse_2": {
+    "fps": 7,
+    "frames": 5,
+    "h": 24,
+    "w": 32
+  },
+  "wild_horse_3": {
+    "fps": 7,
+    "frames": 5,
+    "h": 24,
+    "w": 32
+  }
+}

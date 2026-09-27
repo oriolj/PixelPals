@@ -4,7 +4,7 @@ Groom your horses in the stable, ride the countryside trail with a foal
 trotting beside the mare, and finish at the horse show where everyone wins a
 rosette.
 
-Status: plan (2026-09-27)
+Status: playable (2026-09-27)
 
 ## Why it fits our family
 
@@ -242,26 +242,49 @@ skill.
 ## MVP and milestones
 
 **M1: grey box**
-- [ ] Skeleton (Makefile, project, join/select/party, demo driver,
+- [x] Skeleton (Makefile, project, join/select/party, demo driver,
   symlinked shared autoloads).
-- [ ] Stable: mud patches with brush scrubbing, carrot presses, hooves and
-  saddle, 90 s auto-finish.
-- [ ] Trail: mare gaits and jump assist, foal tether and lanes, gates,
-  animals reacting to the neigh.
-- [ ] Show: bell, mare course, foal mini course, rosettes.
-- [ ] Stage select; 1- and 2-seat fallbacks.
+- [x] Stable: mud patches with brush scrubbing, carrot presses, hooves and
+  saddle, 90 s auto-finish. *Deviation:* an idle seat is also helped after
+  5 s (the brush scrubs itself, the hand walks to the next hoof), so the cat
+  only shows up when the whole family wanders off.
+- [x] Trail: mare gaits and jump assist, foal tether and lanes, gates,
+  animals reacting to the neigh. *Deviation:* wildflowers are picked by
+  trotting through their lane; apples and lucky horseshoes need the hop.
+- [x] Show: bell, mare course, foal mini course, rosettes. *Deviation:*
+  one refusal per jump at most; the second approach always clears (the
+  5-second rule for a Rider who is not pressing).
+- [x] Stage select; 1- and 2-seat fallbacks. *Deviation:* the stage row
+  is moved by the Rider's left/right once they are ready (their up/down
+  already picks the mare's coat).
 
 **M2: art and audio**
-- [ ] Every asset in the table, with all 6 mare coats and 7 foal coats,
-  linted, on contact sheets.
-- [ ] The gaits read at 1x (reviewed at 4x and in silhouette).
-- [ ] Every sound; neighs through the formant synth, hoof loops locked to
-  the gaits.
+- [x] Every asset in the table, with all 6 mare coats and 7 foal coats,
+  linted, on contact sheets. *Deviations:* one mud sprite per patch
+  (`mud_head`, `mud_back`, `mud_legs`, `mud_tail`, 4 fade stages each, dark
+  wet mud with a tan dried crust so it reads on every coat); `mare_big` is a
+  clean 2x of the trail mare's drawing (friendly but blocky) shown at 1x;
+  saddle and bridle on the big mare are one `mare_big_tack` overlay;
+  additions: `barn`, `tree`, `bush`, `reeds`, `twig_log`, `lantern`,
+  `half_door`, `stall_door`, `grandstand`, `pick_pole`, `sparkle`, `heart`,
+  `pebble`, the `coat_<coat>` swatches as horse heads; seat 2's helmet is
+  `fee761` (the darker yellow read orange on the fox).
+- [x] The gaits read at 1x (reviewed at 4x and in silhouette): walk one
+  hoof lifted at a time, trot diagonal pairs with a bob, canter rocking
+  with a suspension frame, jump tucked (`art_src/gait_sheet.png`).
+- [x] Every sound; neighs through the formant synth, hoof loops locked to
+  the gaits (walk 1.0 s / trot 0.5 s / canter 0.6 s cycles, the animation
+  uses the same cycle). Additions: `foal_neigh_1..2`, `step_hup`, `birds`,
+  `join`, `select`, `ready`, `whoosh`. Nobody has listened to them yet.
 
 **M3: polish and couch test**
-- [ ] Rain shower and rainbow, the wild herd, the stable cat helper.
-- [ ] The persistent rosette wall and lucky horseshoes over the door.
-- [ ] Couch test: the brush speed, the jump window, the foal lane feel.
+- [x] Rain shower and rainbow, the wild herd, the stable cat helper.
+- [x] The persistent rosette wall and lucky horseshoes over the door (the
+  last 12 days are kept, 8 are shown).
+- [x] Couch test: the brush speed, the jump window, the foal lane feel.
+  *Agent side only:* each is one constant (`Grooming.SCRUB_TIME` 2 s,
+  `MareRide.WINDOW` 0.4 s, `FoalTether.LANE_SPEED` 70 px/s) and was checked
+  with the demo driver and the captures. The real couch test is Oriol's.
 
 ## Tests and verification
 
@@ -303,7 +326,22 @@ seats:
 - the rosette wall shows earlier sessions' rosettes;
 - nothing is dark or scary; the rain is gentle and warm.
 
-## Open questions for Oriol
+## Decisions taken (pending Oriol)
+
+Oriol said "do whatever you think best"; these defaults were taken and are
+easy to change:
+
+1. **A big mare with a tethered foal**, as planned: the adult rides the mare
+   and the 5-year-old steers the foal, which carries nobody.
+2. **No fan-horse characters** (no Spirit, no My Little Pony). The fan riders
+   of the private pack are available, in riding helmets.
+3. **Default coats: a bay mare and a palomino foal** (both can be changed on
+   the select screen).
+4. **Show jumping**, as planned.
+5. **The stable grooming stage is kept** as its own stage. The select screen
+   can start at the trail or the show to skip it.
+
+## Open questions for Oriol (answered by the defaults above)
 
 1. **Horses or ponies?** A big mare with a foal, or ponies the kids ride
    themselves? The plan has the adult riding the mare and the 5-year-old
