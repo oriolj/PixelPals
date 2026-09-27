@@ -17,13 +17,16 @@ Makefile              shared tools + forwarding: make start G=<slug>, make test 
 .tools/               pinned Godot binary (gitignored; make setup-tools)
 pyproject.toml        one uv venv for every game's Python tools (Pillow, numpy)
 shared/
-  godot/autoload/     players.gd (seats + input), art.gd (sprite loader), sfx.gd (sound)
+  godot/autoload/     players.gd (seats + input + the Back+Start quit combo), art.gd (sprite loader), sfx.gd (sound)
   tools/shots.py      frame-capture inspection sheet
 games/<slug>/         one game each
   PLAN.md             the plan (every game has one; built games keep it as history)
   CLAUDE.md, AGENTS.md -> CLAUDE.md, README.md, Makefile   (built games)
   game/               the Godot project (project.godot at its root)
+  cover.png           the launcher's card image (made by make covers; committed)
   art_src/, tools/    the game's own art sources and generators
+launcher/             the TV game picker (Godot, 1080p): make launcher; see launcher/CLAUDE.md
+  tools/covers.py     make covers: each committed game's cover.png from its demo capture
 docs/ideas.md         index of every game idea and its status
 USER_TODO.md          what only Oriol can do (playtests, listening, pads)
 ```
@@ -59,6 +62,17 @@ To see which games are playable and which are plans, run `make list`.
   each game's `private_pack/` and are committed ONLY because this repo is
   private. **Never make this repo public, fork it publicly, export a private
   pack, or show one in anything published.**
+- **Every game quits from a pad.** The shared `players.gd` quits on
+  Back/Select + Start held 1.5 s on any pad, or Ctrl+Q (back to the
+  launcher). Never bind Back+Start (or Ctrl+Q) to anything else, and do not
+  disable it; `Players.quit_combo_enabled` is for the launcher only.
+- **Every playable game has a `cover.png`** for the launcher (16:9, native
+  capture size). Make it with `make covers` at the root once the game is
+  committed, LOOK at `launcher/shots/covers.png`, and add the chosen frame to
+  `PICKS` in `launcher/tools/covers.py`. The launcher finds games by
+  themselves: `game/project.godot` = playable, a lone `PLAN.md` = "coming
+  soon"; the card title is README.md's `# ` heading and the pitch the first
+  paragraph under it, so keep those meaningful.
 - **Verify before claiming.** Run `make test`, then `make shot` in the game
   and look at `shots/<screen>/sheet.png` (upscaled for inspection).
 

@@ -11,10 +11,11 @@ G_ := \033[32m
 Y  := \033[33m
 R  := \033[0m
 
-.PHONY: help list setup setup-tools start demo test shots tmux tmux-d tmux-n tmux-new-session
+.PHONY: help list setup setup-tools start demo test shots launcher launcher-window covers install-desktop tmux tmux-d tmux-n tmux-new-session
 
 help: ## Show this help
-	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(C)%-14s$(R) %s\n", $$1, $$2}'
+	@echo -e "  $(G_)On the TV: make launcher$(R)  (any pad or keyboard picks a game; hold Back+Start or Ctrl+Q to leave a game)"
+	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(C)%-16s$(R) %s\n", $$1, $$2}'
 	@echo -e "  Per game: $(Y)make -C games/<slug> help$(R)   (built: $(BUILT))"
 
 list: ## List every game and its status
@@ -41,11 +42,31 @@ start: ## Play a game (G=pixelpals by default)
 demo: ## Watch a game play itself (G=pixelpals)
 	@$(MAKE) --no-print-directory -C games/$(G) demo
 
-test: ## Run the tests of every built game
+test: ## Run the tests of every built game, then the launcher's
 	@for g in $(BUILT); do echo -e "$(C)== $$g$(R)"; $(MAKE) --no-print-directory -C games/$$g test || exit 1; done
+	@echo -e "$(C)== launcher$(R)"; $(MAKE) --no-print-directory -C launcher test
 
 shots: ## Capture every screen of a game (G=pixelpals)
 	@$(MAKE) --no-print-directory -C games/$(G) shots
+
+launcher: ## Play on the TV: the game launcher, fullscreen (any pad or the keyboard)
+	@$(MAKE) --no-print-directory -C launcher start
+
+launcher-window: ## The launcher in a 1280x720 window, games windowed too (development)
+	@$(MAKE) --no-print-directory -C launcher window
+
+covers: ## Capture each committed game's cover.png from its demo (then LOOK at launcher/shots/covers.png)
+	@uv run --quiet python launcher/tools/covers.py
+
+install-desktop: ## Add "Couch Games" to the desktop app menu (~/.local/share/applications)
+	@mkdir -p $(HOME)/.local/share/applications
+	@printf '%s\n' '[Desktop Entry]' 'Type=Application' 'Name=Couch Games' \
+		'Comment=Pick a couch co-op game with a controller' \
+		'Exec=make -C $(CURDIR) launcher' 'Icon=$(CURDIR)/launcher/game/icon.png' \
+		'Terminal=false' 'Categories=Game;' 'StartupNotify=false' \
+		> $(HOME)/.local/share/applications/couch-games.desktop
+	@command -v update-desktop-database >/dev/null && update-desktop-database -q $(HOME)/.local/share/applications || true
+	@echo -e "$(G_)~/.local/share/applications/couch-games.desktop$(R) (icon: launcher/game/icon.png)"
 
 tmux: ## Attach to (or create) the pixelpals tmux session
 	@tmux new-session -A -s $(SESSION)

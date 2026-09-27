@@ -22,3 +22,12 @@ that game.
 - [ ] Export templates are installed now (4.7.2, Linux only):
   `make -C games/<slug> export-linux` builds a standalone binary without
   the private pack.
+- [ ] **Try the TV launcher with real pads** (`make launcher`, or "Couch Games"
+  in the app menu after `make install-desktop`). Check on the TV: the cards
+  read from the sofa, the pads' bubbles appear, A launches, and **holding
+  Back/Select + Start for 1.5 s** quits a game back to the launcher on each
+  pad (Xbox and 8BitDo; on an 8BitDo, Select is Back). Agents tested it only
+  under xvfb with scripted input. Nothing is blocked; say what to change.
+- [ ] **Decide on autostart** of the launcher at login (not set up):
+  `cp ~/.local/share/applications/couch-games.desktop ~/.config/autostart/`
+  on the TV PC. Your call: it only matters if that PC is used just for games.

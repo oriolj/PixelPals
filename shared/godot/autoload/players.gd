@@ -67,6 +67,7 @@ func _ready() -> void:
 			for k in KB_BLOCKS[block][action]:
 				_owned_keys[k] = true
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
+	_setup_quit_combo()
 
 
 func _process(_delta: float) -> void:
@@ -313,3 +314,132 @@ func anyone_just_pressed(button: String) -> bool:
 		if just_pressed(s, button):
 			return true
 	return false
+
+
+# ---------------------------------------------------------------- quit combo
+# Additive (2026-09-27, for the TV launcher): a parent-only way out of any game
+# with a pad. Hold Back/Select + Start on any pad for QUIT_HOLD_SECONDS, or
+# press Ctrl+Q on the keyboard, and the game quits (back to the launcher).
+# It runs on its own watcher node with PROCESS_MODE_ALWAYS, so it works while
+# a game's tree is paused, and it never touches the seat/input state above.
+# The hold must START inside this app: a combo still held when the app starts
+# (or when it is re-enabled) arms only after a release. Games must not bind
+# Back+Start to anything else.
+
+signal quit_requested
+
+const QUIT_HOLD_SECONDS := 1.5
+
+## false = the combo is ignored (the launcher turns it off while a game runs).
+var quit_combo_enabled := true:
+	set(v):
+		quit_combo_enabled = v
+		if not v:
+			_quit_armed = false
+			_quit_held = 0.0
+			_show_quit_ring(0.0)
+## What the combo does. Invalid (the default) = get_tree().quit(). Tests swap it.
+var quit_action := Callable()
+
+var _quit_held := 0.0
+var _quit_armed := false
+var _quit_layer: CanvasLayer = null
+var _quit_ring: Control = null
+
+
+class _QuitWatch extends Node:
+	var players: Node
+
+	func _process(delta: float) -> void:
+		players._quit_tick(delta)
+
+	func _input(event: InputEvent) -> void:
+		players._quit_key(event)
+
+
+class _QuitRing extends Control:
+	var progress := 0.0
+
+	func _draw() -> void:
+		var vp := get_viewport_rect().size
+		var r := maxf(4.0, minf(vp.x, vp.y) * 0.035)
+		var c := Vector2(vp.x - r * 1.8, vp.y - r * 1.8)
+		var w := maxf(1.0, r * 0.3)
+		draw_arc(c, r, 0.0, TAU, 32, Color(0.1, 0.11, 0.17, 0.55), w, true)
+		draw_arc(c, r, -PI / 2, -PI / 2 + TAU * progress, 32, Color("#f4f4f4"), w, true)
+
+
+func _setup_quit_combo() -> void:
+	var watch := _QuitWatch.new()
+	watch.name = "QuitWatch"
+	watch.players = self
+	watch.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(watch)
+
+
+## True while Back/Select + Start are both down on one pad (or a scripted
+## device whose state has "back" and "start").
+func quit_combo_held() -> bool:
+	for id in Input.get_connected_joypads():
+		if Input.is_joy_button_pressed(id, JOY_BUTTON_BACK) and Input.is_joy_button_pressed(id, JOY_BUTTON_START):
+			return true
+	for d in _scripted:
+		var s: Dictionary = _scripted[d]
+		if s.get("back", false) and s.get("start", false):
+			return true
+	return false
+
+
+func _quit_tick(delta: float) -> void:
+	var held := quit_combo_enabled and quit_combo_held()
+	if not held:
+		_quit_armed = quit_combo_enabled
+		if _quit_held > 0.0:
+			_quit_held = 0.0
+			_show_quit_ring(0.0)
+		return
+	if not _quit_armed:
+		return
+	_quit_held += delta
+	_show_quit_ring(clampf(_quit_held / QUIT_HOLD_SECONDS, 0.0, 1.0))
+	if _quit_held >= QUIT_HOLD_SECONDS:
+		_quit_held = 0.0
+		_quit_armed = false
+		_show_quit_ring(0.0)
+		_do_quit()
+
+
+func _quit_key(event: InputEvent) -> void:
+	if not quit_combo_enabled:
+		return
+	if event is InputEventKey and event.pressed and not event.echo \
+			and event.physical_keycode == KEY_Q and event.ctrl_pressed:
+		_do_quit()
+
+
+func _do_quit() -> void:
+	quit_requested.emit()
+	if quit_action.is_valid():
+		quit_action.call()
+	elif is_inside_tree():
+		get_tree().quit()
+
+
+func _show_quit_ring(progress: float) -> void:
+	if progress <= 0.0:
+		if _quit_layer:
+			_quit_layer.visible = false
+		return
+	if _quit_layer == null:
+		_quit_layer = CanvasLayer.new()
+		_quit_layer.name = "QuitRing"
+		_quit_layer.layer = 128
+		_quit_layer.process_mode = Node.PROCESS_MODE_ALWAYS
+		_quit_ring = _QuitRing.new()
+		_quit_ring.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_quit_ring.set_anchors_preset(Control.PRESET_FULL_RECT)
+		_quit_layer.add_child(_quit_ring)
+		add_child(_quit_layer)
+	_quit_layer.visible = true
+	_quit_ring.progress = progress
+	_quit_ring.queue_redraw()

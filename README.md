@@ -4,6 +4,22 @@ Games for a grown-up plus a 5-year-old and a 2-year-old on one screen.
 Nobody can lose, there is no text, and the toddler's any-button is always a
 good thing.
 
+## Play on the TV
+
+```
+make launcher         # the game picker, fullscreen: any pad or the keyboard drives it
+```
+
+- **Choose** with the d-pad or stick (arrows or A/D on the keyboard), **play** with
+  A (Enter or Space). The last game played comes first.
+- **Leave a game** from the sofa: hold **Back/Select + Start** on any pad for
+  1.5 s, or press **Ctrl+Q**. You land back in the launcher on the same card.
+- **Switch off**: the "Turn off" card at the end, hold A for 2 s.
+- `make install-desktop` adds "Couch Games" to the desktop menu. Details:
+  [launcher/README.md](launcher/README.md).
+
+## Everything else
+
 ```
 make setup            # once: Godot 4.7.2 + Python venv, then each playable game
 make list             # every game: playable or plan

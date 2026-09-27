@@ -87,3 +87,111 @@ func test_dir4_just_pressed_fires_once_per_flick() -> void:
 	Players.poll()
 	assert_eq(Players.dir4_just_pressed(Players.Seat.DRIVER), Vector2i(0, -1), "new direction")
 	assert_eq(Players.dir4_just_pressed(Players.Seat.GUNNER), Vector2i.ZERO, "empty seat")
+
+
+# ---------------------------------------------------------------- quit combo
+
+var _quits := 0
+
+
+func _count_quit() -> void:
+	_quits += 1
+
+
+func _with_counter() -> void:
+	_quits = 0
+	Players.quit_action = _count_quit
+	Players.quit_combo_enabled = true
+	Players._quit_tick(0.0)  # a frame with nothing held arms the combo
+
+
+func _restore_quit() -> void:
+	Players.clear_scripted()
+	Players._quit_tick(0.0)
+	Players.quit_action = Callable()
+	Players.quit_combo_enabled = true
+
+
+func test_back_plus_start_held_quits_after_the_hold_time() -> void:
+	_with_counter()
+	Players.set_scripted("demo:q", {"back": true, "start": true})
+	Players._quit_tick(1.0)
+	assert_eq(_quits, 0, "not yet: 1.0 s of 1.5 s")
+	Players._quit_tick(0.6)
+	assert_eq(_quits, 1, "quit after 1.5 s")
+	Players._quit_tick(2.0)
+	assert_eq(_quits, 1, "still held: quits once, needs a release to re-arm")
+	_restore_quit()
+
+
+func test_releasing_early_resets_the_hold() -> void:
+	_with_counter()
+	Players.set_scripted("demo:q", {"back": true, "start": true})
+	Players._quit_tick(1.2)
+	Players.set_scripted("demo:q", {"start": true})
+	Players._quit_tick(0.1)
+	Players.set_scripted("demo:q", {"back": true, "start": true})
+	Players._quit_tick(1.2)
+	assert_eq(_quits, 0, "each hold starts from zero")
+	_restore_quit()
+
+
+func test_start_or_back_alone_never_quits() -> void:
+	_with_counter()
+	Players.set_scripted("demo:q", {"start": true})
+	Players._quit_tick(5.0)
+	Players.set_scripted("demo:q", {"back": true})
+	Players._quit_tick(5.0)
+	assert_eq(_quits, 0)
+	_restore_quit()
+
+
+func test_combo_held_from_before_needs_a_release() -> void:
+	_quits = 0
+	Players.quit_action = _count_quit
+	Players.quit_combo_enabled = false  # e.g. the launcher while a game ran
+	Players.set_scripted("demo:q", {"back": true, "start": true})
+	Players.quit_combo_enabled = true
+	Players._quit_tick(3.0)
+	assert_eq(_quits, 0, "a hold that began before arming is ignored")
+	Players.clear_scripted()
+	Players._quit_tick(0.0)
+	Players.set_scripted("demo:q", {"back": true, "start": true})
+	Players._quit_tick(1.6)
+	assert_eq(_quits, 1, "armed after the release")
+	_restore_quit()
+
+
+func test_disabled_combo_does_nothing() -> void:
+	_with_counter()
+	Players.quit_combo_enabled = false
+	Players.set_scripted("demo:q", {"back": true, "start": true})
+	Players._quit_tick(5.0)
+	assert_eq(_quits, 0)
+	_restore_quit()
+
+
+func test_ctrl_q_quits() -> void:
+	_with_counter()
+	var ev := InputEventKey.new()
+	ev.pressed = true
+	ev.physical_keycode = KEY_Q
+	ev.ctrl_pressed = true
+	Players._quit_key(ev)
+	assert_eq(_quits, 1)
+	var plain := InputEventKey.new()
+	plain.pressed = true
+	plain.physical_keycode = KEY_Q
+	Players._quit_key(plain)
+	assert_eq(_quits, 1, "Q alone is kb:0's back button, not quit")
+	_restore_quit()
+
+
+func test_the_combo_leaves_seat_input_untouched() -> void:
+	_with_counter()
+	Players.join("demo:q")
+	Players.set_scripted("demo:q", {"back": true, "start": true})
+	Players.poll()
+	assert_true(Players.pressed(Players.Seat.DRIVER, "start"), "start still reads as start")
+	assert_false(Players.pressed(Players.Seat.DRIVER, "a"))
+	_restore_quit()

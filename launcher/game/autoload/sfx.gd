@@ -1,0 +1,1 @@
+../../../shared/godot/autoload/sfx.gd
